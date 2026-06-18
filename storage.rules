@@ -1,0 +1,57 @@
+rules_version = '2';
+
+// NOTE: `firestore.get` / `firestore.exists` here can only read the **(default)** Firestore
+// database, not named DBs like `main`. This project stores `useraccounts` on `main`, so
+// `isShopAdmin()` does not work for client SDK uploads. Dashboard catalog images are
+// uploaded via `/api/dashboard/catalog-product-image` (Admin SDK; bypasses these rules).
+// Deploy: firebase deploy --only storage
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isAdmin() {
+      return request.auth != null
+        && firestore.exists(/databases/main/documents/useraccounts/$(request.auth.uid))
+        && firestore.get(/databases/main/documents/useraccounts/$(request.auth.uid)).data.admin == true;
+    }
+
+    // Legacy catalog-product mockups (kept for historical assets uploaded from
+    // the dashboard before the gallery refactor). Public read for any
+    // remaining <Image> references; admin-only write.
+    match /catalog-products/{slug}/{fileName} {
+      allow read: if true;
+      allow create, update: if isAdmin()
+        && request.resource.size < 8 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+      allow delete: if isAdmin();
+    }
+
+    // Gallery — public read for `<Image>` (Next.js optimizer fetches these URLs server-side).
+    //
+    // Support both layouts:
+    //   • Flat uploads from the seeder / console: `gallery/photo.jpg`  (2 segments)
+    //   • Nested by slug:                         `gallery/{slug}/photo.jpg`  (3+ segments)
+    //
+    // Put the nested rule first so `gallery/alice/photo.jpg` does not get captured
+    // by the flat `{fileName}` wildcard (which matches exactly one segment after `gallery/`).
+    match /gallery/{slug}/{fileName} {
+      allow read: if true;
+      allow create, update: if isAdmin()
+        && request.resource.size < 20 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+      allow delete: if isAdmin();
+    }
+
+    match /gallery/{fileName} {
+      allow read: if true;
+      allow create, update: if isAdmin()
+        && request.resource.size < 20 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+      allow delete: if isAdmin();
+    }
+
+    // Default: deny (replace permissive catch-all when using structured paths only).
+    match /{path=**} {
+      allow read, write: if false;
+    }
+  }
+}

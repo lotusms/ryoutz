@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-serif: var(--font-display), ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: var(--font-geist-mono);
+
+  /*
+   * Semantic site colors — alias Tailwind’s default palette so you get
+   * hover:/focus:/opacity modifiers (e.g. bg-site-primary, hover:text-site-primary/90).
+   */
+  /* Gold = accents only; canvas = warm charcoal (stone), not cool navy (slate). */
+  --color-site-primary: var(--color-amber-400);
+  --color-site-secondary: var(--color-stone-400);
+  --color-site-tertiary: var(--color-yellow-300);
+  --color-site-bg: var(--color-stone-950);
+  --color-site-fg: var(--color-stone-100);
+
+  /* Optional: same tokens for inline style / email fallbacks (mirrors site-*). */
+  --site-primary: var(--color-site-primary);
+  --site-secondary: var(--color-site-secondary);
+  --site-tertiary: var(--color-site-tertiary);
+  --site-bg: var(--color-site-bg);
+  --site-fg: var(--color-site-fg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+/* Page chrome — theme-specific backgrounds live in `src/theme/themes.css`. */
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/*
+ * Light `Card` surfaces: keep semantic `text-site-*` utilities readable on pale
+ * paper (inherits into card content).
+ */
+[data-card-surface="light"] {
+  --color-site-fg: var(--color-stone-900);
+  --site-fg: var(--color-site-fg);
+}
+
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/*
+ * Next.js 16 devtools (compiled next-devtools) uses Base UI for the dev menu.
+ * Its modal backdrop is role="presentation" + data-base-ui-inert + fixed inset:0.
+ * When that scrim sticks open, it blocks every click (often noticed after login).
+ * This app does not use Base UI; disabling pointer-events on that layer restores
+ * the page in dev. Production builds do not inject these nodes.
+ */
+[role="presentation"][data-base-ui-inert] {
+  pointer-events: none !important;
+}
+
+@keyframes aura-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(6%, -10%) scale(1.12);
+    opacity: 1;
+  }
+}
+
+@keyframes aura-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-8%, 6%) scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes aura-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(5%, 8%) scale(1.06);
+    opacity: 0.95;
+  }
+}
+
+@keyframes shimmer-line {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes mobile-nav-item-in {
+  from {
+    opacity: 0;
+    transform: translate3d(1.25rem, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@layer utilities {
+  .animate-aura-1 {
+    animation: aura-1 18s ease-in-out infinite;
+  }
+
+  .animate-aura-2 {
+    animation: aura-2 24s ease-in-out infinite;
+  }
+
+  .animate-aura-3 {
+    animation: aura-3 20s ease-in-out infinite reverse;
+  }
+
+  .text-gradient-hero {
+    background-image: linear-gradient(
+      118deg,
+      var(--color-site-fg) 0%,
+      color-mix(in oklch, var(--color-site-primary) 50%, var(--color-stone-100)) 22%,
+      var(--color-stone-200) 42%,
+      var(--color-white) 58%,
+      color-mix(in oklch, var(--color-site-tertiary) 55%, white) 82%,
+      color-mix(in oklch, var(--color-site-primary) 60%, white) 100%
+    );
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer-line 10s linear infinite;
+    /*
+     * background-clip:text + tight line-height trims descenders (g, y, p).
+     * Inline-axis padding matches `.text-gradient-hero-subtle`; block padding frees tails.
+     */
+    padding-inline: 0.03em;
+    padding-block: 0.06em 0.22em;
+    line-height: 1.22;
+  }
+
+  .text-gradient-hero-subtle {
+    background-image: linear-gradient(
+      105deg,
+      var(--color-stone-300) 0%,
+      var(--color-stone-200) 40%,
+      color-mix(in oklch, var(--color-site-tertiary) 35%, var(--color-amber-50)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* Italic + clip:text can trim overshoots; keep a hair of inline padding. */
+    padding-inline-end: 0.06em;
+  }
+
+  /*
+   * Product image overlays — bottom fade for legible text on thumbnails.
+   * Light-theme variants: `src/theme/themes.css` (site-bg–based scrims).
+   */
+  .product-image-scrim-card {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    opacity: 0.9;
+    background-image: linear-gradient(
+      to top,
+      color-mix(in oklch, var(--color-site-bg) 88%, transparent) 0%,
+      color-mix(in oklch, var(--color-site-bg) 25%, transparent) 42%,
+      transparent 100%
+    );
+  }
+
+  .product-image-scrim-inner {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background-image: linear-gradient(
+      to top,
+      color-mix(in oklch, var(--color-site-bg) 72%, transparent) 0%,
+      color-mix(in oklch, var(--color-site-bg) 15%, transparent) 52%,
+      transparent 100%
+    );
+  }
+
+  .product-image-scrim-hero {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background-image: linear-gradient(
+      to top,
+      #000 0%,
+      rgb(0 0 0 / 0.35) 50%,
+      transparent 100%
+    );
+  }
+
+  /* Gallery watermark wells — block casual drag / long-press save where supported */
+  .gallery-image-protected {
+    -webkit-touch-callout: none;
+  }
+
+  .gallery-image-protected img {
+    -webkit-user-drag: none;
+    user-drag: none;
+    user-select: none;
+  }
+
+  .mobile-nav-item {
+    opacity: 0;
+  }
+
+  .mobile-nav-panel--open .mobile-nav-item {
+    animation: mobile-nav-item-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-nav-panel--open .mobile-nav-item {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

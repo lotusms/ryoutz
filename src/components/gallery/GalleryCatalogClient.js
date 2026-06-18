@@ -1,0 +1,225 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
+
+import { hasFirebaseConfig } from "@firebase/config";
+import CoverImageFrame from "@/components/ui/CoverImageFrame";
+import { orgName } from "@/config";
+import { fetchCatalogProductList } from "@/lib/catalogClientFetch";
+
+function GalleryCard({ product }) {
+  const showLightImageWell =
+    String(product?.medium || "").toLowerCase().includes("print") ||
+    String(product?.medium || "").toLowerCase().includes("tapestry");
+  return (
+    <Link href={`/gallery/${product.slug}`} className="group block w-full">
+      <div className="relative rounded-4xl shadow-lg shadow-stone-950/35 transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-stone-950/45">
+        <CoverImageFrame
+          src={product.image}
+          alt={`${product.title} — ${orgName}`}
+          imageWidth={product.imageWidth}
+          imageHeight={product.imageHeight}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+          frameLayout="masonry"
+          imageZoom={false}
+          frameClassName={
+            showLightImageWell
+              ? "relative w-full overflow-hidden bg-stone-100"
+              : "relative w-full overflow-hidden bg-site-bg"
+          }
+          scrim="card"
+          galleryProtected
+          galleryWatermarkSize="sm"
+        />
+        <div className="absolute bottom-0 left-0 right-0 z-20 p-5">
+          <p className="font-serif text-xl font-medium tracking-[-0.02em] text-stone-100">
+            {product.title}
+          </p>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+function GallerySkeleton({ delay = 0 }) {
+  const heightClass = delay % 2 === 0 ? "h-[22rem]" : "h-[30rem]";
+  return (
+    <div
+      className="w-full overflow-hidden rounded-4xl border-2 border-stone-700/35 bg-stone-900/40 shadow-lg shadow-stone-950/35 animate-pulse"
+      style={{ animationDelay: `${delay}ms` }}
+    >
+      <div
+        className={`relative overflow-hidden border-b border-white/5 bg-linear-to-br from-stone-800/60 via-stone-900/40 to-stone-800/60 ${heightClass}`}
+      />
+      <div className="px-5 py-4">
+        <div className="h-5 w-4/5 rounded-full bg-stone-600/60" />
+      </div>
+    </div>
+  );
+}
+
+function EmptyState() {
+  return (
+    <div className="relative overflow-hidden rounded-4xl border-2 border-stone-700/40 bg-linear-to-br from-stone-900/60 via-stone-950/60 to-stone-900/45 p-10 text-center shadow-2xl shadow-stone-950/40">
+      <div className="pointer-events-none absolute -left-10 -top-20 h-44 w-44 rounded-full bg-amber-300/12 blur-3xl" />
+      <div className="pointer-events-none absolute -right-12 -bottom-20 h-52 w-52 rounded-full bg-sky-300/10 blur-3xl" />
+      <p className="text-xs uppercase tracking-[0.32em] text-slate-400">Gallery</p>
+      <h2 className="mt-3 font-serif text-3xl tracking-[-0.03em] text-stone-100 sm:text-4xl">
+        New work is on the way
+      </h2>
+      <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-stone-300/90">
+        No visible pieces were returned. Confirm the Firestore{" "}
+        <code className="rounded bg-stone-800/80 px-1.5 py-0.5 text-xs">gallery</code>{" "}
+        collection has documents, previews include the same{" "}
+        <code className="rounded bg-stone-800/80 px-1.5 py-0.5 text-xs">NEXT_PUBLIC_FIREBASE_*</code>{" "}
+        and{" "}
+        <code className="rounded bg-stone-800/80 px-1.5 py-0.5 text-xs">NEXT_PUBLIC_FIRESTORE_DATABASE_ID</code>{" "}
+        as production, and nothing is marked unavailable in the dashboard. For a fully
+        server-rendered catalog, add{" "}
+        <code className="rounded bg-stone-800/80 px-1.5 py-0.5 text-xs">FIREBASE_SERVICE_ACCOUNT_JSON</code>{" "}
+        to the deployment environment (including Preview).
+      </p>
+      <Link
+        href="/contact"
+        className="mt-8 flex w-full items-center justify-center rounded-full border border-stone-500/60 bg-stone-900/50 px-6 py-3 text-sm font-semibold text-stone-100 transition hover:border-amber-300/45 hover:text-amber-100"
+      >
+        Get in touch
+      </Link>
+    </div>
+  );
+}
+
+export default function GalleryCatalogClient({ initialProducts }) {
+  const initial = Array.isArray(initialProducts) ? initialProducts : [];
+  const [products, setProducts] = useState(initial);
+  const [loading, setLoading] = useState(() => {
+    if (initial.length > 0) return false;
+    return hasFirebaseConfig();
+  });
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (initial.length > 0) {
+      setLoading(false);
+      return undefined;
+    }
+    if (!hasFirebaseConfig()) {
+      setLoading(false);
+      return undefined;
+    }
+
+    let cancelled = false;
+    (async () => {
+      try {
+        const list = await fetchCatalogProductList();
+        if (!cancelled) setProducts(list);
+      } catch {
+        if (!cancelled) setProducts([]);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [initial.length]);
+
+  useEffect(() => {
+    if (loading) return;
+    const t = window.setTimeout(() => setVisible(true), 80);
+    return () => window.clearTimeout(t);
+  }, [loading]);
+
+  const skeletons = useMemo(() => Array.from({ length: 8 }, (_, i) => i), []);
+  const [columnCount, setColumnCount] = useState(1);
+
+  useEffect(() => {
+    /** Keep these breakpoints in sync with `gridColumnsClass` below
+     * (Tailwind: sm=640, lg=1024, xl=1280). */
+    function updateColumnCount() {
+      const width = window.innerWidth;
+      if (width >= 1280) {
+        setColumnCount(4);
+      } else if (width >= 1024) {
+        setColumnCount(3);
+      } else if (width >= 640) {
+        setColumnCount(2);
+      } else {
+        setColumnCount(1);
+      }
+    }
+
+    updateColumnCount();
+    window.addEventListener("resize", updateColumnCount);
+    return () => window.removeEventListener("resize", updateColumnCount);
+  }, []);
+
+  const gridColumnsClass =
+    "grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4";
+
+  const productColumns = useMemo(() => {
+    const cols = Array.from({ length: columnCount }, () => []);
+    const heights = Array.from({ length: columnCount }, () => 0);
+
+    products.forEach((product) => {
+      const ratio =
+        Number(product.imageHeight) > 0 && Number(product.imageWidth) > 0
+          ? Number(product.imageHeight) / Number(product.imageWidth)
+          : 1.25;
+      const estimatedHeight = ratio + 0.42;
+      let target = 0;
+      for (let i = 1; i < heights.length; i += 1) {
+        if (heights[i] < heights[target]) target = i;
+      }
+      cols[target].push(product);
+      heights[target] += estimatedHeight;
+    });
+    return cols;
+  }, [products, columnCount]);
+
+  const skeletonColumns = useMemo(() => {
+    const cols = Array.from({ length: columnCount }, () => []);
+    skeletons.forEach((i, idx) => {
+      cols[idx % columnCount].push(i);
+    });
+    return cols;
+  }, [skeletons, columnCount]);
+
+  if (loading) {
+    return (
+      <div className={gridColumnsClass}>
+        {skeletonColumns.map((column, colIdx) => (
+          <div key={`skeleton-col-${colIdx}`} className="space-y-6">
+            {column.map((i) => (
+              <GallerySkeleton key={i} delay={i * 50} />
+            ))}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className={`transition-all duration-700 ease-out ${
+        visible ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
+      }`}
+    >
+      {products.length === 0 ? (
+        <EmptyState />
+      ) : (
+        <div className={gridColumnsClass}>
+          {productColumns.map((column, colIdx) => (
+            <div key={`product-col-${colIdx}`} className="space-y-6">
+              {column.map((p) => (
+                <GalleryCard key={p.id} product={p} />
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}

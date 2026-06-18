@@ -1,0 +1,81 @@
+"use client";
+
+import { RiFacebookCircleLine, RiInstagramLine } from "react-icons/ri";
+
+import { useDocumentThemeId } from "@/hooks/useDocumentThemeId";
+import { isLightThemeId } from "@/theme";
+
+const SOCIAL_LINKS = [
+  {
+    href: "https://www.instagram.com/ryoutzasphalt/",
+    label: "Instagram — @ryoutzasphalt",
+    Icon: RiInstagramLine,
+  },
+  {
+    href: "https://www.facebook.com/ryoutzasphalt",
+    label: "Facebook — RYoutz Asphalt Maintenance",
+    Icon: RiFacebookCircleLine,
+  },
+];
+
+/**
+ * @param {{ variant?: "footer" | "contact"; className?: string; showLabel?: boolean }} props
+ */
+export default function SocialMediaLinks({
+  variant = "contact",
+  className = "",
+  showLabel = false,
+}) {
+  const themeId = useDocumentThemeId();
+  const light = isLightThemeId(themeId);
+
+  const isFooter = variant === "footer";
+
+  const linkRing = isFooter
+    ? "ring-white/10 hover:bg-white/[0.06] hover:ring-amber-400/25"
+    : light
+      ? "ring-stone-300/50 hover:bg-amber-50/60 hover:ring-amber-400/35"
+      : "ring-white/10 hover:bg-white/[0.06] hover:ring-amber-400/25";
+
+  const iconClass = isFooter
+    ? "h-6 w-6 text-slate-400 transition group-hover:text-amber-200/95"
+    : light
+      ? "h-6 w-6 text-stone-500 transition group-hover:text-amber-700"
+      : "h-6 w-6 text-stone-400 transition group-hover:text-amber-300";
+
+  const labelClass = isFooter
+    ? "text-xs font-medium uppercase tracking-[0.28em] text-slate-500"
+    : light
+      ? "text-xs font-medium uppercase tracking-[0.28em] text-stone-600"
+      : "text-xs font-medium uppercase tracking-[0.28em] text-site-secondary";
+
+  const block = (
+    <ul
+      className={`flex flex-wrap items-center gap-2 ${className}`.trim()}
+      aria-label="Social media"
+    >
+      {SOCIAL_LINKS.map(({ href, label, Icon }) => (
+        <li key={href}>
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={label}
+            className={`group inline-flex rounded-full p-2.5 ring-1 transition ${linkRing}`}
+          >
+            <Icon className={iconClass} aria-hidden />
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+
+  if (!showLabel) return block;
+
+  return (
+    <div className="space-y-2">
+      <p className={labelClass}>Social</p>
+      {block}
+    </div>
+  );
+}

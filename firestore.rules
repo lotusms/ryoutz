@@ -1,0 +1,93 @@
+rules_version = '2';
+// Database: `main`. Deploy with: pnpm firebase:deploy:firestore:main
+// (`firebase deploy --only firestore:rules` may skip named DBs).
+// Create the DB in Console → Firestore → Databases if needed.
+//
+// Site is a photography portfolio — there is no storefront, no checkout,
+// no orders. Public reads are limited to gallery / merchandising data;
+// writes are admin-only via the `useraccounts/{uid}.admin == true` flag.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /** Dashboard admins: `useraccounts/{uid}` must include `admin: true` (boolean). */
+    function isAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/useraccounts/$(request.auth.uid))
+        && get(/databases/$(database)/documents/useraccounts/$(request.auth.uid)).data.admin == true;
+    }
+
+    // User profiles — doc id = Firebase Auth uid. Used solely to gate
+    // dashboard access via `admin: true`. Promote admins in the console.
+    match /useraccounts/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+
+      allow create: if request.auth != null
+        && request.auth.uid == userId
+        && request.resource.data.uid == userId
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.firstName is string
+        && request.resource.data.lastName is string
+        && request.resource.data.admin == false;
+
+      // Self-edit: uid / email / admin are immutable from the client.
+      allow update: if request.auth != null && request.auth.uid == userId
+        && request.resource.data.uid == resource.data.uid
+        && request.resource.data.email == resource.data.email
+        && request.resource.data.admin == resource.data.admin
+        && request.resource.data.firstName is string
+        && request.resource.data.lastName is string;
+
+      allow delete: if false;
+    }
+
+    // Gallery (source of truth for the public photography gallery).
+    //
+    // Document id = slug (kebab-case, used by `/gallery/[slug]`).
+    // Each doc mirrors a single object in Firebase Storage under the
+    // `gallery/` prefix; upserted by `firebase/seed-gallery-from-storage.mjs`.
+    //
+    // Canonical fields (extras are tolerated by the reader):
+    //   - slug:         string  (== document id)
+    //   - title:        string  (derived from filename if not set)
+    //   - description:  string  (optional)
+    //   - medium:       string  (default: "Photography")
+    //   - dimensions:   string  (optional, e.g. "24 × 36 in")
+    //   - image:        string  (public Firebase Storage download URL)
+    //   - storagePath:  string  (e.g. "gallery/golden_hour.jpg")
+    //   - storageBucket: string (e.g. "my-app.firebasestorage.app")
+    //   - contentType:  string  (e.g. "image/jpeg")
+    //   - sizeBytes:    number
+    //   - imageWidth:   number  (intrinsic width — used by next/image)
+    //   - imageHeight:  number  (intrinsic height)
+    //   - sortIndex:    number  (lower = earlier; ties broken by createdAt)
+    //   - available:    boolean (default true; false hides from gallery)
+    //   - featured:     boolean (controls Home preview)
+    //   - onHomeSlider: boolean (controls hero carousel)
+    //   - createdAt:    timestamp
+    //   - updatedAt:    timestamp
+    match /gallery/{slug} {
+      allow read: if true;
+      allow create, update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Gallery-wide merchandising flags (carried over from older rules).
+    // Public read for the storefront, admin write from the dashboard.
+    // Collection name is historical; semantically this controls the photo
+    // gallery, not a product catalog.
+    match /catalogSettings/{docId} {
+      allow read: if true;
+      allow create, update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Per-piece merchandising overrides keyed by slug — `featured`,
+    // `onHomeSlider`, `available`, `customImageUrl` override the base
+    // `gallery/{slug}` doc (see `applyCatalogMerchandising`).
+    match /catalogProductSettings/{slug} {
+      allow read: if true;
+      allow create, update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+  }
+}

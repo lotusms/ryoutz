@@ -1,0 +1,59 @@
+{
+  "name": "ryoutz",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@9.15.4",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "browserslist": {
+    "production": [
+      "chrome >= 111",
+      "edge >= 111",
+      "firefox >= 111",
+      "safari >= 16.4"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "dev:clean": "rm -rf .next && pnpm run dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "email:test": "node --env-file=.env.local scripts/send-order-email.mjs",
+    "firebase:databases": "firebase firestore:databases:list",
+    "firebase:deploy:firestore": "firebase deploy --only firestore",
+    "firebase:deploy:firestore:main": "firebase deploy --only firestore:main",
+    "firebase:deploy:storage": "firebase deploy --only storage",
+    "firebase:seed:gallery": "node --env-file=.env.local firebase/seed-gallery-from-storage.mjs",
+    "firebase:seed:gallery:new": "node --env-file=.env.local firebase/seed-gallery-from-storage.mjs --new-only",
+    "backfill:useraccounts": "node --env-file=.env.local scripts/backfill-useraccounts.mjs",
+    "shop:admin": "node --env-file=.env.local scripts/set-shop-admin.mjs"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.9",
+    "@heroicons/react": "^2.2.0",
+    "@paypal/react-paypal-js": "^9.0.2",
+    "firebase": "^12.11.0",
+    "firebase-admin": "^13.7.0",
+    "leaflet": "^1.9.4",
+    "next": "16.2.1",
+    "nodemailer": "^8.0.3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-icons": "^5.6.0",
+    "recharts": "^3.8.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.1",
+    "firebase-tools": "^15",
+    "tailwindcss": "^4"
+  }
+}
