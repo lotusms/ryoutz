@@ -65,19 +65,18 @@ export default function AboutStudioCards({ orgName, principles }) {
           <p className="text-xs font-medium uppercase tracking-[0.32em] text-blue-300/90">
             Who we are
           </p>
-          <p className="mt-6 font-serif text-2xl font-medium leading-snug tracking-[-0.02em] text-amber-100 sm:text-3xl">
+          <p className="mt-6 font-serif text-2xl font-medium leading-snug tracking-[-0.02em] text-neutral-200/90 sm:text-3xl">
             We treat your pavement like it is ours.
           </p>
-          <p className="mt-6 text-base leading-8 text-amber-300/90">
+          <p className="mt-6 text-base leading-8 text-neutral-100/90">
             {orgName} is a Maryland asphalt maintenance company focused on the
-            work property owners actually need — sealcoating, crack repair,
+            work property owners actually need, sealcoating, crack repair,
             patching, and line striping for driveways, parking lots, and private
             roads. We show up prepared, explain the scope in plain language, and
             finish with a surface that looks clean and stands up to traffic and
             weather.
-          </p>
-          <p className="mt-5 text-base leading-8 text-amber-200/90">
-            When you browse our gallery, you are seeing real projects — residential
+            <br/><br/>
+            When you browse our gallery, you are seeing real projects, residential
             driveways, commercial lots, and repair work across the region. If you
             want a crew that respects your property and your schedule, we would
             like to hear about your pavement.
@@ -112,28 +111,28 @@ export default function AboutStudioCards({ orgName, principles }) {
         ))}
       </div>
 
-      <blockquote className="relative border-l-2 border-blue-400/35 pl-8 sm:pl-10">
-        <p className="font-serif text-xl font-medium italic leading-relaxed text-amber-100 sm:text-2xl lg:text-[1.65rem] lg:leading-snug">
+      <blockquote className="relative border-l-2 border-blue-400 pl-8 sm:pl-10">
+        <p className="font-serif text-xl italic leading-relaxed text-neutral-200/90 lg:leading-snug">
           Every lot and driveway is different. The right fix depends on how the
           pavement was built, how it is used, and what the weather has already
           done to it — not a one-size-fits-all package.
         </p>
-        <footer className="mt-5 text-xs uppercase tracking-[0.28em] text-amber-500">
+        <footer className="mt-5 text-xs uppercase tracking-[0.28em] text-neutral-200/90">
           — {orgName}
         </footer>
       </blockquote>
 
       <div>
-        <p className="text-xs font-medium uppercase tracking-[0.32em] text-blue-300/90">
+        <p className="text-xs font-bold font-serif uppercase tracking-[0.32em] text-blue-300/90">
           How we work
         </p>
         <div className="mt-8 grid gap-10 sm:grid-cols-3 sm:gap-8">
           {principles.map((item) => (
             <div key={item.title} className="border-t border-white/10 pt-6">
-              <h3 className="font-serif text-xl font-bold tracking-[-0.02em] text-amber-100">
+              <h3 className="font-serif text-base font-bold tracking-[-0.02em] text-blue-400">
                 {item.title}
               </h3>
-              <p className="mt-3 text-sm leading-7 text-amber-200/90">{item.body}</p>
+              <p className="mt-3 text-sm leading-7 text-neutral-200/90">{item.body}</p>
             </div>
           ))}
         </div>

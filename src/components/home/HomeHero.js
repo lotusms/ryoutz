@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 
 import HeroRoadLineOverlay from "@/components/home/HeroRoadLineOverlay";
 import PrimaryButton from "@/components/ui/PrimaryButton";
+import SecondaryButton from "@/components/ui/SecondaryButton";
 import { orgName } from "@/config";
 
 const DEFAULT_HERO_IMAGE = "/images/home-lens-hero-images/house2.png";
@@ -79,15 +79,9 @@ export default function HomeHero({
 
           <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:gap-4">
             <PrimaryButton href="/contact">Get a free estimate</PrimaryButton>
-            <Link
-              href="/gallery"
-              className="inline-flex min-w-fit items-center justify-center gap-2 rounded-full border-2 border-amber-500/75 bg-transparent px-6 py-3.5 font-serif text-sm font-semibold capitalize tracking-wide text-amber-400 transition duration-300 ease-out hover:-translate-y-0.5 hover:border-amber-400 hover:bg-amber-500/10 hover:text-amber-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 active:translate-y-0"
-            >
+            <SecondaryButton href="/gallery" showChevron>
               See our work
-              <span aria-hidden className="text-base leading-none">
-                ›
-              </span>
-            </Link>
+            </SecondaryButton>
           </div>
         </div>
       </div>

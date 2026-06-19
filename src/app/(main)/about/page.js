@@ -30,13 +30,13 @@ export default function AboutPage() {
     <PageLayout
       eyebrow="About us"
       title={`About ${orgName}`}
-      subtitle={`Family-owned asphalt maintenance serving Maryland and the surrounding region — driveways, parking lots, and private roads. Here is who we are, how we approach the work, and what you can expect from the first walkthrough to the final stripe.`}
+      subtitle={`Family-owned asphalt maintenance serving Maryland and the surrounding region, driveways, parking lots, and private roads. Here is who we are, how we approach the work, and what you can expect from the first walkthrough to the final stripe.`}
       width="full"
     >
       <div className="mx-auto max-w-7xl px-6 pb-16 sm:px-10 lg:px-12">
         <AboutStudioCards orgName={orgName} principles={principles} />
 
-        <p className="mx-auto mt-20 max-w-2xl border-l-2 border-blue-400/25 pl-6 text-sm leading-8 text-amber-300/90 sm:mt-24">
+        <p className="mx-auto mt-20 max-w-2xl border-l-2 border-blue-400 pl-6 text-sm leading-8 text-neutral-200/90 sm:mt-24">
           Same standard you see in our gallery: show up on time, protect what is
           around the work zone, and leave pavement that looks right and holds up
           season after season.
