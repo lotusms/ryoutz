@@ -38,7 +38,7 @@ export default function CheckoutAuthSection({ onApplyPrefill }) {
         <p
           className={
             light
-              ? "mt-4 text-sm leading-relaxed text-stone-800"
+              ? "mt-4 text-sm leading-relaxed text-amber-800"
               : "mt-4 text-sm leading-relaxed text-site-fg/90"
           }
         >
@@ -56,7 +56,7 @@ export default function CheckoutAuthSection({ onApplyPrefill }) {
           <p
             className={
               light
-                ? "mt-4 text-sm leading-relaxed text-stone-800"
+                ? "mt-4 text-sm leading-relaxed text-amber-800"
                 : "mt-4 text-sm leading-relaxed text-site-fg/90"
             }
           >
@@ -70,8 +70,8 @@ export default function CheckoutAuthSection({ onApplyPrefill }) {
             onClick={() => signOut()}
             className={
               light
-                ? "mt-4 rounded-full border border-stone-300/80 px-4 py-2 text-sm font-medium text-site-fg transition hover:border-amber-400/50 hover:text-site-primary"
-                : "mt-4 rounded-full border border-slate-600/50 px-4 py-2 text-sm font-medium text-stone-300 transition hover:border-amber-400/35 hover:text-stone-100"
+                ? "mt-4 rounded-full border border-amber-300/80 px-4 py-2 text-sm font-medium text-site-fg transition hover:border-blue-400/50 hover:text-site-primary"
+                : "mt-4 rounded-full border border-slate-600/50 px-4 py-2 text-sm font-medium text-amber-300 transition hover:border-blue-400/35 hover:text-amber-100"
             }
           >
             Sign out and continue as guest
@@ -87,7 +87,7 @@ export default function CheckoutAuthSection({ onApplyPrefill }) {
         <p
           className={
             light
-              ? "mt-4 text-sm leading-relaxed text-stone-800"
+              ? "mt-4 text-sm leading-relaxed text-amber-800"
               : "mt-4 text-sm text-site-secondary"
           }
         >
@@ -101,8 +101,8 @@ export default function CheckoutAuthSection({ onApplyPrefill }) {
               onClick={() => setCreateOpen(true)}
               className={
                 light
-                  ? "inline-flex h-10 w-48 shrink-0 items-center justify-center rounded-full border border-amber-500/45 bg-amber-400/15 px-3 text-sm font-semibold text-amber-950 transition hover:border-amber-500/60 hover:bg-amber-400/25"
-                  : "inline-flex h-10 w-48 shrink-0 items-center justify-center rounded-full border border-amber-400/40 bg-amber-400/10 px-3 text-sm font-semibold text-amber-100 transition hover:border-amber-300/55 hover:bg-amber-400/15"
+                  ? "inline-flex h-10 w-48 shrink-0 items-center justify-center rounded-full border border-blue-500/45 bg-blue-400/15 px-3 text-sm font-semibold text-blue-950 transition hover:border-blue-500/60 hover:bg-blue-400/25"
+                  : "inline-flex h-10 w-48 shrink-0 items-center justify-center rounded-full border border-blue-400/40 bg-blue-400/10 px-3 text-sm font-semibold text-blue-100 transition hover:border-blue-300/55 hover:bg-blue-400/15"
               }
             >
               Create account
@@ -112,8 +112,8 @@ export default function CheckoutAuthSection({ onApplyPrefill }) {
               onClick={() => setLoginOpen(true)}
               className={
                 light
-                  ? "inline-flex h-10 w-48 shrink-0 items-center justify-center rounded-full border border-stone-300/80 bg-white/70 px-3 text-sm font-semibold text-site-fg transition hover:border-amber-400/45 hover:bg-amber-50/60"
-                  : "inline-flex h-10 w-48 shrink-0 items-center justify-center rounded-full border border-stone-600/50 bg-stone-900/60 px-3 text-sm font-semibold text-stone-200 transition hover:border-amber-400/40 hover:bg-stone-800/80"
+                  ? "inline-flex h-10 w-48 shrink-0 items-center justify-center rounded-full border border-amber-300/80 bg-white/70 px-3 text-sm font-semibold text-site-fg transition hover:border-blue-400/45 hover:bg-blue-50/60"
+                  : "inline-flex h-10 w-48 shrink-0 items-center justify-center rounded-full border border-amber-600/50 bg-amber-900/60 px-3 text-sm font-semibold text-amber-200 transition hover:border-blue-400/40 hover:bg-amber-800/80"
               }
             >
               Log in
@@ -122,14 +122,14 @@ export default function CheckoutAuthSection({ onApplyPrefill }) {
           <div
             className={
               light
-                ? "sm:max-w-sm sm:border-l sm:border-stone-300/70 sm:pl-4 md:max-w-none"
+                ? "sm:max-w-sm sm:border-l sm:border-amber-300/70 sm:pl-4 md:max-w-none"
                 : "sm:max-w-sm sm:border-l sm:border-slate-700/50 sm:pl-4 md:max-w-none"
             }
           >
             <p
               className={
                 light
-                  ? "text-sm leading-snug text-stone-800"
+                  ? "text-sm leading-snug text-amber-800"
                   : "text-sm leading-snug text-site-fg/90"
               }
             >
@@ -145,7 +145,7 @@ export default function CheckoutAuthSection({ onApplyPrefill }) {
             <p
               className={
                 light
-                  ? "mt-2 text-xs leading-relaxed text-stone-600"
+                  ? "mt-2 text-xs leading-relaxed text-amber-600"
                   : "mt-2 text-xs leading-relaxed text-site-fg/85"
               }
             >

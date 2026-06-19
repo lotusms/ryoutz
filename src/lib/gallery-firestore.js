@@ -1,20 +1,20 @@
 /**
- * Server-only reader for the Firestore `gallery` collection.
+ * Server-only gallery reader.
  *
- * Returns objects shaped like the legacy `gallery-local.js` output so
- * existing consumers (home page, gallery list, detail page, dashboard API)
- * keep working without a schema migration. Applies the existing
- * `catalogProductSettings` merchandising overrides on top, so the
- * dashboard's Featured / Hero / hide flags still work.
+ * Primary source is configurable via `GALLERY_SOURCE`:
+ *   - `local`     — `public/images/gallery` only (see `gallery-local.js`)
+ *   - `stock`     — free Pexels placeholders (see `gallery-stock.js`)
+ *   - `firestore` — Firestore `gallery` collection only (requires Admin credentials)
+ *   - `auto`      — Firestore → local → stock (default)
  *
- * **Vercel Preview:** often has no `FIREBASE_SERVICE_ACCOUNT_JSON`; the public
- * site then loads the same data in the browser via `fetchGalleryCatalogInBrowser`
- * (see `catalogClientFetch.js` and `gallery-catalog-browser.js`).
+ * Export names are historical (`getFirestoreGalleryProducts`) so existing pages keep working.
  */
 import {
   applyCatalogMerchandising,
   loadCatalogMerchandisingState,
 } from "@/lib/catalog-merchandising";
+import { getLocalGalleryProducts } from "@/lib/gallery-local";
+import { getStockGalleryProducts } from "@/lib/gallery-stock";
 import { GALLERY_COLLECTION, shapeGalleryDoc, sortRawGalleryProducts } from "@/lib/gallery-shape";
 import { getFirebaseAdminDb } from "@/lib/firebase-admin-server";
 
@@ -30,36 +30,85 @@ function hasAdminCredentials() {
   );
 }
 
-let warnedMissingCreds = false;
+/** @returns {"local" | "stock" | "firestore" | "auto"} */
+function resolveGallerySource() {
+  const raw = String(process.env.GALLERY_SOURCE || "auto").trim().toLowerCase();
+  if (raw === "local") return "local";
+  if (raw === "stock") return "stock";
+  if (raw === "firestore" || raw === "firebase") return "firestore";
+  return "auto";
+}
 
-/**
- * @returns {Promise<Array<Record<string, unknown>>>} merchandising-applied gallery rows.
- */
-export async function getFirestoreGalleryProducts() {
+let warnedMissingCreds = false;
+let loggedLocalFallback = false;
+let loggedStockFallback = false;
+
+async function loadFirestoreGalleryProducts() {
   if (!hasAdminCredentials()) {
     if (!warnedMissingCreds) {
       warnedMissingCreds = true;
       console.info(
-        "[gallery-firestore] Firebase Admin credentials missing — server gallery read is empty; client fallback may still load via Firestore rules.",
+        "[gallery-firestore] Firebase Admin credentials missing — skipping Firestore gallery read.",
       );
     }
     return [];
   }
 
-  let raw = [];
   try {
     const db = getFirebaseAdminDb();
     const snap = await db.collection(GALLERY_COLLECTION).get();
-    raw = snap.docs.map(shapeGalleryDoc);
-    raw = sortRawGalleryProducts(raw);
+    const raw = sortRawGalleryProducts(snap.docs.map(shapeGalleryDoc));
+    const merchState = await loadCatalogMerchandisingState();
+    return applyCatalogMerchandising(raw, merchState);
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     console.warn(`[gallery-firestore] read failed: ${msg}`);
     return [];
   }
+}
 
-  const merchState = await loadCatalogMerchandisingState();
-  return applyCatalogMerchandising(raw, merchState);
+/**
+ * @returns {Promise<Array<Record<string, unknown>>>} merchandising-applied gallery rows.
+ */
+export async function getFirestoreGalleryProducts() {
+  const source = resolveGallerySource();
+
+  if (source === "local") {
+    return getLocalGalleryProducts();
+  }
+
+  if (source === "stock") {
+    return getStockGalleryProducts();
+  }
+
+  const fromFirestore = await loadFirestoreGalleryProducts();
+  if (source === "firestore") {
+    return fromFirestore;
+  }
+
+  if (fromFirestore.length > 0) {
+    return fromFirestore;
+  }
+
+  const fromLocal = await getLocalGalleryProducts();
+  if (fromLocal.length > 0) {
+    if (!loggedLocalFallback) {
+      loggedLocalFallback = true;
+      console.info(
+        `[gallery] Serving ${fromLocal.length} piece(s) from public/images/gallery (Firestore empty or unavailable).`,
+      );
+    }
+    return fromLocal;
+  }
+
+  const fromStock = await getStockGalleryProducts();
+  if (fromStock.length > 0 && !loggedStockFallback) {
+    loggedStockFallback = true;
+    console.info(
+      `[gallery] Serving ${fromStock.length} stock placeholder(s) from Pexels (add real photos to public/images/gallery when ready).`,
+    );
+  }
+  return fromStock;
 }
 
 /** Lookup helper for `/gallery/[slug]` and metadata. */

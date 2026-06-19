@@ -35,7 +35,9 @@ function parseInquiryBody(body) {
   const name = String(record.name ?? "").trim();
   const email = String(record.email ?? "").trim();
   const phone = String(record.phone ?? "").trim();
-  const weddingDate = String(record.weddingDate ?? "").trim();
+  const preferredDate = String(
+    record.preferredDate ?? record.weddingDate ?? "",
+  ).trim();
   const comments = String(record.comments ?? "").trim();
 
   const errors = {};
@@ -46,8 +48,8 @@ function parseInquiryBody(body) {
   if (phone && phoneDigits.length > 0 && phoneDigits.length < 10) {
     errors.phone = "Enter all 10 digits, or leave phone blank.";
   }
-  if (!isValidIsoDate(weddingDate)) {
-    errors.weddingDate = "Choose a valid wedding date.";
+  if (!isValidIsoDate(preferredDate)) {
+    errors.preferredDate = "Choose a valid preferred start date.";
   }
 
   if (Object.keys(errors).length > 0) {
@@ -59,7 +61,7 @@ function parseInquiryBody(body) {
       name,
       email,
       phone: phoneDigits ? phone : "",
-      weddingDate,
+      preferredDate,
       comments,
     },
   };

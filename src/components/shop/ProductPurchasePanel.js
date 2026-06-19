@@ -29,10 +29,10 @@ export default function ProductPurchasePanel({ product }) {
   const themeId = useDocumentThemeId();
   const lightCardSurface = isLightThemeId(themeId);
   /** Theme accent `text-site-secondary` is pastel on light pages — too low-contrast on paper cards. */
-  const labelClass = lightCardSurface ? "text-stone-600" : "text-site-secondary";
-  const valueClass = lightCardSurface ? "text-stone-900" : "text-site-fg";
+  const labelClass = lightCardSurface ? "text-amber-600" : "text-site-secondary";
+  const valueClass = lightCardSurface ? "text-amber-900" : "text-site-fg";
   const sectionBorder = lightCardSurface
-    ? "border-t border-stone-300/55"
+    ? "border-t border-amber-300/55"
     : "border-t border-site-fg/10";
   const variants = useMemo(() => {
     if (Array.isArray(product?.variants) && product.variants.length > 0) {

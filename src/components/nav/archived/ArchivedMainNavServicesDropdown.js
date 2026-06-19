@@ -83,13 +83,13 @@ export function ArchivedMainNavServicesMobileNavItem({
         style={{ animationDelay }}
         className={`mobile-nav-item group relative flex w-full items-center gap-5 py-5 pl-4 pr-2 text-left transition-colors sm:gap-8 sm:py-6 ${
           active
-            ? "bg-white/4 text-amber-50"
-            : "text-stone-50 hover:bg-white/3 hover:text-white"
+            ? "bg-white/4 text-blue-50"
+            : "text-amber-50 hover:bg-white/3 hover:text-white"
         }`}
       >
         <span
           className={`w-8 shrink-0 font-mono text-[0.7rem] tabular-nums tracking-widest sm:w-10 sm:text-xs ${
-            active ? "text-amber-400/90" : "text-slate-500"
+            active ? "text-blue-400/90" : "text-slate-500"
           }`}
         >
           {indexLabel}
@@ -104,8 +104,8 @@ export function ArchivedMainNavServicesMobileNavItem({
           strokeWidth="1.75"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className={`ml-auto h-5 w-5 shrink-0 text-amber-400/60 transition-transform duration-300 ${
-            expanded ? "rotate-180 text-amber-300/90" : ""
+          className={`ml-auto h-5 w-5 shrink-0 text-blue-400/60 transition-transform duration-300 ${
+            expanded ? "rotate-180 text-blue-300/90" : ""
           }`}
           aria-hidden
         >
@@ -113,7 +113,7 @@ export function ArchivedMainNavServicesMobileNavItem({
         </svg>
         {active ? (
           <span
-            className="absolute bottom-5 left-0 top-5 w-0.5 rounded-full bg-linear-to-b from-amber-400 to-amber-600/50 sm:bottom-6 sm:top-6"
+            className="absolute bottom-5 left-0 top-5 w-0.5 rounded-full bg-linear-to-b from-blue-400 to-blue-600/50 sm:bottom-6 sm:top-6"
             aria-hidden
           />
         ) : null}
@@ -137,15 +137,15 @@ export function ArchivedMainNavServicesMobileNavItem({
                     onClick={close}
                     className={`block rounded-lg px-4 py-3 transition-colors ${
                       childActive
-                        ? "bg-amber-400/10 text-amber-50"
-                        : "text-stone-200 hover:bg-white/4 hover:text-white"
+                        ? "bg-blue-400/10 text-blue-50"
+                        : "text-amber-200 hover:bg-white/4 hover:text-white"
                     }`}
                   >
                     <span className="block font-serif text-lg font-medium tracking-[-0.01em]">
                       {child.label}
                     </span>
                     {child.description ? (
-                      <span className="mt-1 block text-xs leading-relaxed text-stone-400">
+                      <span className="mt-1 block text-xs leading-relaxed text-amber-400">
                         {child.description}
                       </span>
                     ) : null}

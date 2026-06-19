@@ -14,7 +14,7 @@ function GalleryCard({ product }) {
     String(product?.medium || "").toLowerCase().includes("tapestry");
   return (
     <Link href={`/gallery/${product.slug}`} className="group block w-full">
-      <div className="relative rounded-4xl shadow-lg shadow-stone-950/35 transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-stone-950/45">
+      <div className="relative rounded-4xl shadow-lg shadow-slate-950/35 transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-slate-950/45">
         <CoverImageFrame
           src={product.image}
           alt={`${product.title} — ${orgName}`}
@@ -25,15 +25,14 @@ function GalleryCard({ product }) {
           imageZoom={false}
           frameClassName={
             showLightImageWell
-              ? "relative w-full overflow-hidden bg-stone-100"
-              : "relative w-full overflow-hidden bg-site-bg"
+              ? "relative w-full overflow-hidden bg-amber-100"
+              : "relative w-full overflow-hidden bg-slate-950"
           }
           scrim="card"
           galleryProtected
-          galleryWatermarkSize="sm"
         />
         <div className="absolute bottom-0 left-0 right-0 z-20 p-5">
-          <p className="font-serif text-xl font-medium tracking-[-0.02em] text-stone-100">
+          <p className="font-serif text-xl font-medium tracking-[-0.02em] text-slate-100">
             {product.title}
           </p>
         </div>
@@ -46,14 +45,14 @@ function GallerySkeleton({ delay = 0 }) {
   const heightClass = delay % 2 === 0 ? "h-[22rem]" : "h-[30rem]";
   return (
     <div
-      className="w-full overflow-hidden rounded-4xl border-2 border-stone-700/35 bg-stone-900/40 shadow-lg shadow-stone-950/35 animate-pulse"
+      className="w-full overflow-hidden rounded-4xl border-2 border-slate-700/35 bg-slate-900/40 shadow-lg shadow-slate-950/35 animate-pulse"
       style={{ animationDelay: `${delay}ms` }}
     >
       <div
-        className={`relative overflow-hidden border-b border-white/5 bg-linear-to-br from-stone-800/60 via-stone-900/40 to-stone-800/60 ${heightClass}`}
+        className={`relative overflow-hidden border-b border-white/5 bg-linear-to-br from-slate-800/60 via-slate-900/40 to-slate-800/60 ${heightClass}`}
       />
       <div className="px-5 py-4">
-        <div className="h-5 w-4/5 rounded-full bg-stone-600/60" />
+        <div className="h-5 w-4/5 rounded-full bg-slate-600/60" />
       </div>
     </div>
   );
@@ -61,28 +60,29 @@ function GallerySkeleton({ delay = 0 }) {
 
 function EmptyState() {
   return (
-    <div className="relative overflow-hidden rounded-4xl border-2 border-stone-700/40 bg-linear-to-br from-stone-900/60 via-stone-950/60 to-stone-900/45 p-10 text-center shadow-2xl shadow-stone-950/40">
-      <div className="pointer-events-none absolute -left-10 -top-20 h-44 w-44 rounded-full bg-amber-300/12 blur-3xl" />
+    <div className="relative overflow-hidden rounded-4xl border-2 border-slate-700/40 bg-linear-to-br from-slate-900/60 via-slate-950/60 to-slate-900/45 p-10 text-center shadow-2xl shadow-slate-950/40">
+      <div className="pointer-events-none absolute -left-10 -top-20 h-44 w-44 rounded-full bg-blue-300/12 blur-3xl" />
       <div className="pointer-events-none absolute -right-12 -bottom-20 h-52 w-52 rounded-full bg-sky-300/10 blur-3xl" />
       <p className="text-xs uppercase tracking-[0.32em] text-slate-400">Gallery</p>
-      <h2 className="mt-3 font-serif text-3xl tracking-[-0.03em] text-stone-100 sm:text-4xl">
+      <h2 className="mt-3 font-serif text-3xl tracking-[-0.03em] text-slate-100 sm:text-4xl">
         New work is on the way
       </h2>
-      <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-stone-300/90">
-        No visible pieces were returned. Confirm the Firestore{" "}
-        <code className="rounded bg-stone-800/80 px-1.5 py-0.5 text-xs">gallery</code>{" "}
-        collection has documents, previews include the same{" "}
-        <code className="rounded bg-stone-800/80 px-1.5 py-0.5 text-xs">NEXT_PUBLIC_FIREBASE_*</code>{" "}
-        and{" "}
-        <code className="rounded bg-stone-800/80 px-1.5 py-0.5 text-xs">NEXT_PUBLIC_FIRESTORE_DATABASE_ID</code>{" "}
-        as production, and nothing is marked unavailable in the dashboard. For a fully
-        server-rendered catalog, add{" "}
-        <code className="rounded bg-stone-800/80 px-1.5 py-0.5 text-xs">FIREBASE_SERVICE_ACCOUNT_JSON</code>{" "}
-        to the deployment environment (including Preview).
+      <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-slate-300/90">
+        No project photos yet. Set{" "}
+        <code className="rounded bg-slate-800/80 px-1.5 py-0.5 text-xs">
+          GALLERY_SOURCE=stock
+        </code>{" "}
+        in{" "}
+        <code className="rounded bg-slate-800/80 px-1.5 py-0.5 text-xs">.env.local</code>{" "}
+        for free Pexels placeholders, add your own files under{" "}
+        <code className="rounded bg-slate-800/80 px-1.5 py-0.5 text-xs">
+          public/images/gallery
+        </code>
+        , or configure Firebase.
       </p>
       <Link
         href="/contact"
-        className="mt-8 flex w-full items-center justify-center rounded-full border border-stone-500/60 bg-stone-900/50 px-6 py-3 text-sm font-semibold text-stone-100 transition hover:border-amber-300/45 hover:text-amber-100"
+        className="mt-8 flex w-full items-center justify-center rounded-full border border-slate-500/60 bg-slate-900/50 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-blue-300/45 hover:text-blue-100"
       >
         Get in touch
       </Link>

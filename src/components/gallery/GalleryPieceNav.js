@@ -70,9 +70,9 @@ export default function GalleryPieceNav({ prev, next }) {
           {prev ? (
             <Link
               href={`/gallery/${prev.slug}`}
-              className="group block min-w-0 text-left text-stone-300/85 transition-colors hover:text-stone-50"
+              className="group block min-w-0 text-left text-amber-300/85 transition-colors hover:text-amber-50"
             >
-              <span className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.32em] text-stone-500">
+              <span className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.32em] text-amber-500">
                 <ArrowHead
                   direction="left"
                   className="transition-transform duration-300 group-hover:-translate-x-0.5"
@@ -90,9 +90,9 @@ export default function GalleryPieceNav({ prev, next }) {
           {next ? (
             <Link
               href={`/gallery/${next.slug}`}
-              className="group block min-w-0 text-right text-stone-300/85 transition-colors hover:text-stone-50"
+              className="group block min-w-0 text-right text-amber-300/85 transition-colors hover:text-amber-50"
             >
-              <span className="flex items-center justify-end gap-2 text-[10px] font-medium uppercase tracking-[0.32em] text-stone-500">
+              <span className="flex items-center justify-end gap-2 text-[10px] font-medium uppercase tracking-[0.32em] text-amber-500">
                 <span>Next</span>
                 <ArrowHead
                   direction="right"
@@ -111,7 +111,7 @@ export default function GalleryPieceNav({ prev, next }) {
       <div className="mt-8 border-t border-white/6 pt-6 text-center sm:hidden">
         <Link
           href="/gallery"
-          className="text-[11px] uppercase tracking-[0.34em] text-stone-400 transition-colors hover:text-amber-100"
+          className="text-[11px] uppercase tracking-[0.34em] text-amber-400 transition-colors hover:text-blue-100"
         >
           Gallery
         </Link>
@@ -123,14 +123,14 @@ export default function GalleryPieceNav({ prev, next }) {
           {prev ? (
             <Link
               href={`/gallery/${prev.slug}`}
-              className="group inline-flex max-w-full items-center gap-4 text-stone-300/85 transition-colors hover:text-stone-50"
+              className="group inline-flex max-w-full items-center gap-4 text-amber-300/85 transition-colors hover:text-amber-50"
             >
               <ArrowLine
                 direction="left"
                 className="transition-transform duration-500 ease-out group-hover:-translate-x-1.5"
               />
               <span className="min-w-0">
-                <span className="block text-[10px] font-medium uppercase tracking-[0.34em] text-stone-500">
+                <span className="block text-[10px] font-medium uppercase tracking-[0.34em] text-amber-500">
                   Previous
                 </span>
                 <span className="mt-1 block truncate font-serif text-lg tracking-[-0.01em]">
@@ -143,7 +143,7 @@ export default function GalleryPieceNav({ prev, next }) {
 
         <Link
           href="/gallery"
-          className="text-xs uppercase tracking-[0.32em] text-stone-400 transition-colors hover:text-amber-100"
+          className="text-xs uppercase tracking-[0.32em] text-amber-400 transition-colors hover:text-blue-100"
         >
           Gallery
         </Link>
@@ -152,10 +152,10 @@ export default function GalleryPieceNav({ prev, next }) {
           {next ? (
             <Link
               href={`/gallery/${next.slug}`}
-              className="group inline-flex max-w-full items-center gap-4 text-stone-300/85 transition-colors hover:text-stone-50"
+              className="group inline-flex max-w-full items-center gap-4 text-amber-300/85 transition-colors hover:text-amber-50"
             >
               <span className="min-w-0 text-right">
-                <span className="block text-[10px] font-medium uppercase tracking-[0.34em] text-stone-500">
+                <span className="block text-[10px] font-medium uppercase tracking-[0.34em] text-amber-500">
                   Next
                 </span>
                 <span className="mt-1 block truncate font-serif text-lg tracking-[-0.01em]">

@@ -1,15 +1,12 @@
 /**
  * Folders under `public/` that are read at runtime via `fs.readdirSync`
- * (`getHomeLensHeroImagePaths` on the home page). Vercel's file tracer
- * only bundles statically imported files into a serverless function;
- * runtime `fs` calls return an empty listing in production unless we
- * explicitly opt those files in here.
- *
- * Gallery images are no longer read from disk — they live in Firebase
- * Storage and are referenced by URLs stored in the Firestore `gallery`
- * collection (see `src/lib/gallery-firestore.js`).
+ * Gallery and hero images under `public/images/` are read at runtime via
+ * `fs.readdirSync` (see `gallery-local.js`, `home-lens-hero-images.js`).
+ * Vercel's file tracer only bundles statically imported files unless we
+ * opt these folders in here.
  */
 const homeHeroAssetsGlob = "./public/images/home-lens-hero-images/**/*";
+const galleryAssetsGlob = "./public/images/gallery/**/*";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -19,7 +16,9 @@ const nextConfig = {
    * `(main)` are NOT part of the key — use the public URL path).
    */
   outputFileTracingIncludes: {
-    "/": [homeHeroAssetsGlob],
+    "/": [homeHeroAssetsGlob, galleryAssetsGlob],
+    "/gallery": [galleryAssetsGlob],
+    "/gallery/[slug]": [galleryAssetsGlob],
   },
   async redirects() {
     return [
@@ -56,7 +55,7 @@ const nextConfig = {
      *   75 — Next/Image implicit default when no `quality` prop is set
      *   80 — `CoverImageFrame` default (catalog tiles, galleries, hero art)
      *   82 — `HomeHeroArtRotator`
-     *   88 — `HomeLensCarouselHero`
+     *   88 — `HomeCarouselHero`
      */
     qualities: [75, 80, 82, 88],
     minimumCacheTTL: 60 * 60 * 24 * 7,
@@ -78,6 +77,11 @@ const nextConfig = {
         protocol: "https",
         hostname: "cdn0.weddingwire.com",
         pathname: "/user/**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+        pathname: "/photos/**",
       },
     ],
   },

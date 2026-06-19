@@ -26,11 +26,11 @@ export default function PageLayout({
         <div className="flex flex-col justify-center items-center md:flex-row md:justify-between gap-2">
             <div>
             {eyebrow ? (
-              <p className="text-xs uppercase tracking-[0.32em] text-slate-400">
+              <p className="text-xs uppercase tracking-[0.32em] font-serif font-bold text-blue-400">
                 {eyebrow}
               </p>
             ) : null}
-            <h1 className="font-serif mt-3 text-4xl font-medium tracking-[-0.03em] text-stone-100 sm:text-5xl lg:text-[3.25rem] lg:leading-[1.08]">
+            <h1 className="font-serif mt-3 text-4xl font-medium tracking-[-0.03em] text-neutral-200/90 sm:text-5xl lg:text-[3.25rem] lg:leading-[1.08]">
               {title}
             </h1>
           </div>
@@ -39,7 +39,7 @@ export default function PageLayout({
           </div>
         </div>
         {subtitle ? (
-          <p className="mt-4 max-w-full text-base leading-relaxed text-stone-300/95">
+          <p className="mt-4 max-w-full text-base leading-relaxed text-neutral-200/90">
             {subtitle}
           </p>
         ) : null}

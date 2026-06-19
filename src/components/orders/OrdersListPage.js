@@ -332,9 +332,9 @@ export default function OrdersListPage({
     <div className="mx-auto max-w-7xl">
       <div className="mb-8">
         <h1 className={dash.dashboardPageTitle(light)}>Orders</h1>
-        <p className={`mt-3 max-w-2xl text-lg leading-relaxed ${light ? "text-stone-700" : "text-stone-300/95"}`}>
+        <p className={`mt-3 max-w-2xl text-lg leading-relaxed ${light ? "text-amber-700" : "text-amber-300/95"}`}>
           Orders placed with{" "}
-          <span className={light ? "text-stone-900" : "text-stone-200"}>{user.email}</span>{" "}
+          <span className={light ? "text-amber-900" : "text-amber-200"}>{user.email}</span>{" "}
           at checkout.
         </p>
       </div>
@@ -375,13 +375,13 @@ export default function OrdersListPage({
           <div className="min-w-0 flex-1 sm:min-w-[min(100%,18rem)]">
             <label
               htmlFor="orders-search"
-              className={`mb-1.5 block text-xs font-medium uppercase tracking-wider ${light ? "text-stone-600" : "text-slate-500"}`}
+              className={`mb-1.5 block text-xs font-medium uppercase tracking-wider ${light ? "text-amber-600" : "text-slate-500"}`}
             >
               Search
             </label>
             <div className="relative">
               <RiSearchLine
-                className={`pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 ${light ? "text-stone-500" : "text-slate-500"}`}
+                className={`pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 ${light ? "text-amber-500" : "text-slate-500"}`}
                 aria-hidden
               />
               <input
@@ -399,7 +399,7 @@ export default function OrdersListPage({
             <div className="w-full sm:w-72">
               <label
                 htmlFor="orders-email-filter"
-                className={`mb-1.5 block text-xs font-medium uppercase tracking-wider ${light ? "text-stone-600" : "text-slate-500"}`}
+                className={`mb-1.5 block text-xs font-medium uppercase tracking-wider ${light ? "text-amber-600" : "text-slate-500"}`}
               >
                 Customer email
               </label>
@@ -500,7 +500,7 @@ export default function OrdersListPage({
                           </div>
                           <div className="shrink-0 text-right">
                             <p
-                              className={`text-lg font-semibold tabular-nums ${light ? "text-stone-900" : "text-stone-100"}`}
+                              className={`text-lg font-semibold tabular-nums ${light ? "text-amber-900" : "text-amber-100"}`}
                             >
                               {formatUsd(o.totalUsd ?? 0)}
                             </p>
@@ -509,25 +509,25 @@ export default function OrdersListPage({
 
                         {!isOpen ? (
                           <p
-                            className={`mt-3 line-clamp-2 text-sm ${light ? "text-stone-600" : "text-stone-400"}`}
+                            className={`mt-3 line-clamp-2 text-sm ${light ? "text-amber-600" : "text-amber-400"}`}
                           >
-                            <span className={light ? "text-stone-500" : "text-slate-600"}>
+                            <span className={light ? "text-amber-500" : "text-slate-600"}>
                               Summary ·{" "}
                             </span>
                             {preview.primary}
                             {preview.extra > 0 ? (
-                              <span className={light ? "text-stone-500" : "text-slate-600"}>
+                              <span className={light ? "text-amber-500" : "text-slate-600"}>
                                 {" "}
                                 (+{preview.extra} more)
                               </span>
                             ) : null}
                             {shipTo ? (
                               <>
-                                <span className={light ? "text-stone-500" : "text-slate-600"}>
+                                <span className={light ? "text-amber-500" : "text-slate-600"}>
                                   {" "}
                                   ·{" "}
                                 </span>
-                                <span className={light ? "text-stone-700" : "text-stone-500"}>
+                                <span className={light ? "text-amber-700" : "text-amber-500"}>
                                   {shipTo}
                                 </span>
                               </>
@@ -542,14 +542,14 @@ export default function OrdersListPage({
                         id={`order-panel-${o.id}`}
                         role="region"
                         aria-labelledby={`order-expand-${o.id}`}
-                        className={`border-t px-4 pb-5 pt-0 sm:px-5 ${light ? "border-stone-300/55" : "border-slate-700/35"}`}
+                        className={`border-t px-4 pb-5 pt-0 sm:px-5 ${light ? "border-amber-300/55" : "border-slate-700/35"}`}
                       >
                         <div className="space-y-4 pt-4">
                           {shipTo ? (
                             <p
-                              className={`text-sm ${light ? "text-stone-800" : "text-stone-300/95"}`}
+                              className={`text-sm ${light ? "text-amber-800" : "text-amber-300/95"}`}
                             >
-                              <span className={light ? "text-stone-500" : "text-slate-500"}>
+                              <span className={light ? "text-amber-500" : "text-slate-500"}>
                                 Ship to{" "}
                               </span>
                               {shipTo}
@@ -557,24 +557,24 @@ export default function OrdersListPage({
                           ) : null}
 
                           <p
-                            className={`mt-0.5 text-xs ${light ? "text-stone-500" : "text-slate-500"}`}
+                            className={`mt-0.5 text-xs ${light ? "text-amber-500" : "text-slate-500"}`}
                           >
                             Placed {formatWhen(o.createdAt)}
                           </p>
 
                           <div>
                             <p
-                              className={`text-xs font-medium uppercase tracking-wider ${light ? "text-stone-600" : "text-slate-500"}`}
+                              className={`text-xs font-medium uppercase tracking-wider ${light ? "text-amber-600" : "text-slate-500"}`}
                             >
                               Items ({lineCount} line{lineCount === 1 ? "" : "s"}{" "}
                               · {qty} unit{qty === 1 ? "" : "s"})
                             </p>
                             <p
-                              className={`mt-1 text-sm leading-snug ${light ? "text-stone-800" : "text-stone-200"}`}
+                              className={`mt-1 text-sm leading-snug ${light ? "text-amber-800" : "text-amber-200"}`}
                             >
                               {preview.primary}
                               {preview.extra > 0 ? (
-                                <span className={light ? "text-stone-500" : "text-slate-500"}>
+                                <span className={light ? "text-amber-500" : "text-slate-500"}>
                                   {" "}
                                   · +{preview.extra} more
                                 </span>
@@ -583,34 +583,34 @@ export default function OrdersListPage({
                           </div>
 
                           <div
-                            className={`flex flex-wrap gap-x-4 gap-y-1 text-xs ${light ? "text-stone-600" : "text-slate-500"}`}
+                            className={`flex flex-wrap gap-x-4 gap-y-1 text-xs ${light ? "text-amber-600" : "text-slate-500"}`}
                           >
                             {fulfill ? (
                               <span>
-                                <span className={light ? "text-stone-500" : "text-slate-600"}>
+                                <span className={light ? "text-amber-500" : "text-slate-600"}>
                                   Fulfillment:{" "}
                                 </span>
-                                <span className={light ? "text-stone-700" : "text-slate-400"}>
+                                <span className={light ? "text-amber-700" : "text-slate-400"}>
                                   {fulfill}
                                 </span>
                               </span>
                             ) : null}
                             {pay ? (
                               <span>
-                                <span className={light ? "text-stone-500" : "text-slate-600"}>
+                                <span className={light ? "text-amber-500" : "text-slate-600"}>
                                   Payment:{" "}
                                 </span>
-                                <span className={light ? "text-stone-700" : "text-slate-400"}>
+                                <span className={light ? "text-amber-700" : "text-slate-400"}>
                                   {pay}
                                 </span>
                               </span>
                             ) : null}
                             {o.phone ? (
                               <span>
-                                <span className={light ? "text-stone-500" : "text-slate-600"}>
+                                <span className={light ? "text-amber-500" : "text-slate-600"}>
                                   Phone:{" "}
                                 </span>
-                                <span className={light ? "text-stone-700" : "text-slate-400"}>
+                                <span className={light ? "text-amber-700" : "text-slate-400"}>
                                   {o.phone}
                                 </span>
                               </span>
@@ -618,17 +618,17 @@ export default function OrdersListPage({
                           </div>
 
                           <div
-                            className={`flex flex-wrap items-end justify-between gap-4 border-t pt-4 ${light ? "border-stone-300/50" : "border-slate-700/30"}`}
+                            className={`flex flex-wrap items-end justify-between gap-4 border-t pt-4 ${light ? "border-amber-300/50" : "border-slate-700/30"}`}
                           >
                             <div
-                              className={`text-xs tabular-nums ${light ? "text-stone-600" : "text-slate-500"}`}
+                              className={`text-xs tabular-nums ${light ? "text-amber-600" : "text-slate-500"}`}
                             >
                               <p>Subtotal {formatUsd(sub)}</p>
                               <p>Shipping {formatUsd(ship)}</p>
                             </div>
                             <Link
                               href={`${ordersBasePath}/${encodeURIComponent(o.id)}`}
-                              className={`text-sm font-medium transition ${light ? "text-amber-900 hover:text-amber-950" : "text-amber-200/90 hover:text-amber-100"}`}
+                              className={`text-sm font-medium transition ${light ? "text-blue-900 hover:text-blue-950" : "text-blue-200/90 hover:text-blue-100"}`}
                             >
                               View full order →
                             </Link>
@@ -638,7 +638,7 @@ export default function OrdersListPage({
                     ) : null}
                   </div>
                   <div
-                    className={`flex shrink-0 flex-col gap-1 border-l p-2 sm:p-3 ${light ? "border-stone-300/55" : "border-slate-700/35"}`}
+                    className={`flex shrink-0 flex-col gap-1 border-l p-2 sm:p-3 ${light ? "border-amber-300/55" : "border-slate-700/35"}`}
                   >
                     {isAdmin ? (
                       <button
@@ -673,21 +673,21 @@ export default function OrdersListPage({
 
         {filteredOrders.length > 0 ? (
         <nav
-          className={`mt-8 flex flex-col items-stretch gap-4 border-t pt-6 sm:flex-row sm:items-center sm:justify-between ${light ? "border-stone-300/55" : "border-slate-700/40"}`}
+          className={`mt-8 flex flex-col items-stretch gap-4 border-t pt-6 sm:flex-row sm:items-center sm:justify-between ${light ? "border-amber-300/55" : "border-slate-700/40"}`}
           aria-label="Orders pagination"
         >
           <p
-            className={`text-center text-sm sm:text-left ${light ? "text-stone-600" : "text-slate-500"}`}
+            className={`text-center text-sm sm:text-left ${light ? "text-amber-600" : "text-slate-500"}`}
           >
             Showing{" "}
             <span
-              className={`tabular-nums ${light ? "text-stone-800" : "text-stone-400"}`}
+              className={`tabular-nums ${light ? "text-amber-800" : "text-amber-400"}`}
             >
               {rangeStart}–{rangeEnd}
             </span>{" "}
             of{" "}
             <span
-              className={`tabular-nums ${light ? "text-stone-800" : "text-stone-400"}`}
+              className={`tabular-nums ${light ? "text-amber-800" : "text-amber-400"}`}
             >
               {filteredOrders.length}
             </span>
@@ -702,7 +702,7 @@ export default function OrdersListPage({
               Previous
             </button>
             <span
-              className={`min-w-28 text-center text-sm ${light ? "text-stone-700" : "text-stone-400"}`}
+              className={`min-w-28 text-center text-sm ${light ? "text-amber-700" : "text-amber-400"}`}
             >
               Page {page} of {totalPages}
             </span>

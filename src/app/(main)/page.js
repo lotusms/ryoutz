@@ -1,38 +1,18 @@
 import { unstable_noStore as noStore } from "next/cache";
+import HomeSectionDivider from "@/components/ui/HomeSectionDivider";
 import HomeBookingCTA from "@/components/home/HomeBookingCTA";
 import HomeCollectionPreview from "@/components/home/HomeCollectionPreview";
-import HomeLensCarouselHero from "@/components/home/HomeLensCarouselHero";
-import HomeAwardsStrip from "@/components/home/HomeAwardsStrip";
+// import HomeCarouselHero from "@/components/home/HomeCarouselHero";
 import { pickPortraitHeroProducts } from "@/lib/catalogSort";
 import { getHomeLensHeroImagePaths } from "@/lib/home-lens-hero-images";
 import {
   getFirestoreGalleryProducts,
   selectHomeCollectionPreviewProducts,
 } from "@/lib/gallery-firestore";
+import { selectHomeBookingCtaImages } from "@/lib/home-booking-cta-images";
 
-function galleryStorageMediaUrl(storageObjectPath) {
-  const bucket =
-    process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET?.trim() ||
-    "ryoutz.firebasestorage.app";
-  const encoded = encodeURIComponent(storageObjectPath);
-  return `https://firebasestorage.googleapis.com/v0/b/${bucket}/o/${encoded}?alt=media`;
-}
-
-/** Curated trio for the booking CTA collage (`src` = full Firebase Storage download URLs). */
-const HOME_BOOKING_CTA_IMAGES = [
-  {
-    src: "https://firebasestorage.googleapis.com/v0/b/ryoutz.firebasestorage.app/o/gallery%2Fkat-jack.png?alt=media&token=ab361c65-a52b-484d-ad87-f9e7ff05560c",
-    alt: "Kat & Jack",
-  },
-  {
-    src: "https://firebasestorage.googleapis.com/v0/b/ryoutz.firebasestorage.app/o/gallery%2Fkatie-and-eric.png?alt=media&token=722e6409-3a3b-4b3e-a3e8-fe9227e07185",
-    alt: "Katie & Eric",
-  },
-  {
-    src: "https://firebasestorage.googleapis.com/v0/b/ryoutz.firebasestorage.app/o/gallery%2Fsean-and-isis.png?alt=media&token=cb25b82b-dc46-412c-991e-e38aa49e3ba8",
-    alt: "Sean & Isis",
-  },
-];
+import HomeHero from "@/components/home/HomeHero";
+import HomeValueBar from "@/components/home/HomeValueBar";
 
 export default async function Home() {
   noStore();
@@ -45,30 +25,40 @@ export default async function Home() {
     catalog,
     6,
   );
+  const bookingCtaImages = selectHomeBookingCtaImages(catalog, 3);
   const lensHeroImages = getHomeLensHeroImagePaths();
   const useLocalHero = lensHeroImages.length > 0;
 
   return (
-    <main className="pt-16">
-      <HomeLensCarouselHero
+    <main>
+      <section className="relative -mt-16 flex min-h-[88dvh] flex-col sm:min-h-dvh">
+        <HomeHero />
+
+        <HomeValueBar />
+      </section>
+
+      {/* Carousel hero — swap back in when ready */}
+      {/* <HomeCarouselHero
         lensHeroImages={lensHeroImages}
         heroProducts={useLocalHero ? [] : heroProducts}
-      />
+      /> */}
 
-      <div className="mx-auto mb-10 h-0.5 max-w-5xl bg-slate-200/20" />
+      {/* <div
+        aria-hidden
+        role="presentation"
+        className="relative z-20 mx-auto mb-10 mt-0 block h-1 w-full shrink-0 rounded-full bg-blue-400 px-6 sm:px-10"
+      /> */}
 
       <HomeCollectionPreview initialProducts={collectionPreviewProducts} />
 
-      <div className="mx-auto h-0.5 max-w-5xl bg-slate-200/20" />
+      <HomeSectionDivider className="my-10" />
 
       {/* Hidden until asphalt customer testimonials and photos are ready. */}
       {/* <HomeTestimonialWheel /> */}
 
-      <HomeAwardsStrip />
-
-      <div className="mx-auto h-0.5 max-w-5xl bg-slate-200/20" />
-
-      <HomeBookingCTA images={HOME_BOOKING_CTA_IMAGES} />
+      {/* Hidden until asphalt industry awards or certifications are ready. */}
+      {/* <HomeAwardsStrip /> */}
+      <HomeBookingCTA images={bookingCtaImages} />
     </main>
   );
 }

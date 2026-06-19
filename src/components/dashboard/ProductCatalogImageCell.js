@@ -17,10 +17,10 @@ export default function ProductCatalogImageCell({ slug, patchProductSettings }) 
   const [msg, setMsg] = useState("");
 
   const btnSecondary =
-    "rounded-full border border-slate-500/60 bg-slate-900/40 px-4 py-1.5 text-xs font-semibold text-stone-100 transition hover:border-amber-300/45 disabled:opacity-50";
+    "rounded-full border border-slate-500/60 bg-slate-900/40 px-4 py-1.5 text-xs font-semibold text-amber-100 transition hover:border-blue-300/45 disabled:opacity-50";
 
   const btnPrimary =
-    "rounded-full bg-linear-to-br from-amber-100 via-stone-100 to-slate-300 px-4 py-1.5 text-xs font-semibold text-slate-900 disabled:opacity-50";
+    "rounded-full bg-linear-to-br from-blue-100 via-amber-100 to-slate-300 px-4 py-1.5 text-xs font-semibold text-slate-900 disabled:opacity-50";
 
   async function onFileChange(e) {
     const file = e.target.files?.[0];
@@ -107,7 +107,7 @@ export default function ProductCatalogImageCell({ slug, patchProductSettings }) 
       </div>
       {msg ? (
         <p
-          className={`text-xs ${msg.includes("fail") || msg.includes("Choose") || msg.includes("Max") || msg.includes("Sign") || msg.includes("Forbidden") || msg.includes("Invalid") ? "text-amber-200/90" : "text-slate-500"}`}
+          className={`text-xs ${msg.includes("fail") || msg.includes("Choose") || msg.includes("Max") || msg.includes("Sign") || msg.includes("Forbidden") || msg.includes("Invalid") ? "text-blue-200/90" : "text-slate-500"}`}
         >
           {msg}
         </p>

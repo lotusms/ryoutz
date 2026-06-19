@@ -96,7 +96,7 @@ export default function DashboardShell({ children }) {
             <button
               type="button"
               onClick={() => signOut()}
-              className="rounded-full bg-linear-to-br from-amber-100 via-stone-100 to-slate-300 px-4 py-2 text-sm font-semibold text-slate-900 shadow-lg shadow-slate-900/35 ring-2 ring-white/30 transition hover:scale-[1.02] hover:shadow-xl"
+              className="rounded-full bg-linear-to-br from-blue-100 via-amber-100 to-slate-300 px-4 py-2 text-sm font-semibold text-slate-900 shadow-lg shadow-slate-900/35 ring-2 ring-white/30 transition hover:scale-[1.02] hover:shadow-xl"
             >
               Logout
             </button>

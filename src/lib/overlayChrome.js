@@ -22,78 +22,78 @@ export function listboxDropdownScrollArea() {
 /** @param {boolean} light */
 export function listboxFloatingPanel(light) {
   return light
-    ? `z-50 w-[var(--button-width)] rounded-xl border border-stone-300/80 bg-white text-sm text-slate-800 shadow-lg shadow-stone-400/20 ring-1 ring-stone-200/60 ${LISTBOX_TRANSITION}`
-    : `z-50 w-[var(--button-width)] rounded-xl border border-stone-600/60 bg-stone-900 text-sm text-stone-100 shadow-lg ${LISTBOX_TRANSITION}`;
+    ? `z-50 w-[var(--button-width)] rounded-xl border border-amber-300/80 bg-white text-sm text-slate-800 shadow-lg shadow-amber-400/20 ring-1 ring-amber-200/60 ${LISTBOX_TRANSITION}`
+    : `z-50 w-[var(--button-width)] rounded-xl border border-amber-600/60 bg-amber-900 text-sm text-amber-100 shadow-lg ${LISTBOX_TRANSITION}`;
 }
 
 /** @param {boolean} light */
 export function listboxInFlowPanel(light) {
   return light
-    ? `absolute z-50 mt-1 w-full rounded-xl border border-stone-300/80 bg-white text-sm text-slate-800 shadow-lg shadow-stone-400/20 ring-1 ring-stone-200/60 ${LISTBOX_TRANSITION}`
-    : `absolute z-50 mt-1 w-full rounded-xl border border-stone-600/60 bg-stone-900 text-sm text-stone-100 shadow-lg ${LISTBOX_TRANSITION}`;
+    ? `absolute z-50 mt-1 w-full rounded-xl border border-amber-300/80 bg-white text-sm text-slate-800 shadow-lg shadow-amber-400/20 ring-1 ring-amber-200/60 ${LISTBOX_TRANSITION}`
+    : `absolute z-50 mt-1 w-full rounded-xl border border-amber-600/60 bg-amber-900 text-sm text-amber-100 shadow-lg ${LISTBOX_TRANSITION}`;
 }
 
 /** @param {boolean} light */
 export function listboxOption(light) {
   return light
-    ? "group relative cursor-default select-none py-2.5 pl-4 pr-10 text-slate-800 data-focus:bg-amber-400/20 data-focus:text-slate-900 data-focus:outline-none data-disabled:cursor-not-allowed data-disabled:opacity-40"
-    : "group relative cursor-default select-none py-2.5 pl-4 pr-10 text-stone-100 data-focus:bg-amber-400/15 data-focus:text-stone-100 data-focus:outline-none data-disabled:cursor-not-allowed data-disabled:opacity-40";
+    ? "group relative cursor-default select-none py-2.5 pl-4 pr-10 text-slate-800 data-focus:bg-blue-400/20 data-focus:text-slate-900 data-focus:outline-none data-disabled:cursor-not-allowed data-disabled:opacity-40"
+    : "group relative cursor-default select-none py-2.5 pl-4 pr-10 text-amber-100 data-focus:bg-blue-400/15 data-focus:text-amber-100 data-focus:outline-none data-disabled:cursor-not-allowed data-disabled:opacity-40";
 }
 
 /** @param {boolean} light */
 export function listboxCheckIcon(light) {
   return light
-    ? "absolute inset-y-0 right-0 flex items-center pr-4 text-amber-700/90 group-[:not([data-selected])]:hidden group-data-focus:text-amber-800"
-    : "absolute inset-y-0 right-0 flex items-center pr-4 text-amber-400/90 group-[:not([data-selected])]:hidden group-data-focus:text-amber-200";
+    ? "absolute inset-y-0 right-0 flex items-center pr-4 text-blue-700/90 group-[:not([data-selected])]:hidden group-data-focus:text-blue-800"
+    : "absolute inset-y-0 right-0 flex items-center pr-4 text-blue-400/90 group-[:not([data-selected])]:hidden group-data-focus:text-blue-200";
 }
 
 /** @param {boolean} light */
 export function checkoutDialogModalPanel(light) {
   return light
-    ? "w-full max-w-md rounded-2xl border border-stone-300/70 bg-white p-6 shadow-2xl shadow-stone-400/25 ring-1 ring-stone-200/50 transition data-closed:scale-95 data-closed:opacity-0"
-    : "w-full max-w-md rounded-2xl border border-stone-700/50 bg-stone-950 p-6 shadow-2xl transition data-closed:scale-95 data-closed:opacity-0";
+    ? "w-full max-w-md rounded-2xl border border-amber-300/70 bg-white p-6 shadow-2xl shadow-amber-400/25 ring-1 ring-amber-200/50 transition data-closed:scale-95 data-closed:opacity-0"
+    : "w-full max-w-md rounded-2xl border border-amber-700/50 bg-amber-950 p-6 shadow-2xl transition data-closed:scale-95 data-closed:opacity-0";
 }
 
 /** @param {boolean} light */
 export function checkoutDialogDrawerPanel(light) {
   return light
-    ? "flex h-full w-full max-w-full flex-col border-l border-stone-300/70 bg-white shadow-2xl shadow-stone-400/20 ring-1 ring-stone-200/40 transition data-closed:translate-x-8 data-closed:opacity-0 min-[400px]:max-w-[min(100vw,28rem)] sm:max-w-[min(100vw,36rem)] lg:max-w-[min(100vw-1rem,56rem)] xl:max-w-[min(100vw-2rem,72rem)]"
-    : "flex h-full w-full max-w-full flex-col border-l border-stone-700/50 bg-stone-950 shadow-2xl transition data-closed:translate-x-8 data-closed:opacity-0 min-[400px]:max-w-[min(100vw,28rem)] sm:max-w-[min(100vw,36rem)] lg:max-w-[min(100vw-1rem,56rem)] xl:max-w-[min(100vw-2rem,72rem)]";
+    ? "flex h-full w-full max-w-full flex-col border-l border-amber-300/70 bg-white shadow-2xl shadow-amber-400/20 ring-1 ring-amber-200/40 transition data-closed:translate-x-8 data-closed:opacity-0 min-[400px]:max-w-[min(100vw,28rem)] sm:max-w-[min(100vw,36rem)] lg:max-w-[min(100vw-1rem,56rem)] xl:max-w-[min(100vw-2rem,72rem)]"
+    : "flex h-full w-full max-w-full flex-col border-l border-amber-700/50 bg-amber-950 shadow-2xl transition data-closed:translate-x-8 data-closed:opacity-0 min-[400px]:max-w-[min(100vw,28rem)] sm:max-w-[min(100vw,36rem)] lg:max-w-[min(100vw-1rem,56rem)] xl:max-w-[min(100vw-2rem,72rem)]";
 }
 
 /** @param {boolean} light */
 export function checkoutDialogDrawerHeaderBorder(light) {
   return light
-    ? "shrink-0 border-b border-stone-200/90 px-4 py-4 sm:px-6 sm:py-5 lg:px-8"
-    : "shrink-0 border-b border-stone-700/40 px-4 py-4 sm:px-6 sm:py-5 lg:px-8";
+    ? "shrink-0 border-b border-amber-200/90 px-4 py-4 sm:px-6 sm:py-5 lg:px-8"
+    : "shrink-0 border-b border-amber-700/40 px-4 py-4 sm:px-6 sm:py-5 lg:px-8";
 }
 
 /** @param {boolean} light */
 export function dialogTitleModal(light) {
   return light
     ? "font-serif text-xl font-medium tracking-[-0.02em] text-slate-900"
-    : "font-serif text-xl font-medium tracking-[-0.02em] text-stone-100";
+    : "font-serif text-xl font-medium tracking-[-0.02em] text-amber-100";
 }
 
 /** @param {boolean} light */
 export function dialogTitleDrawer(light) {
   return light
     ? "font-serif text-xl font-medium tracking-[-0.02em] text-slate-900 sm:text-2xl"
-    : "font-serif text-xl font-medium tracking-[-0.02em] text-stone-100 sm:text-2xl";
+    : "font-serif text-xl font-medium tracking-[-0.02em] text-amber-100 sm:text-2xl";
 }
 
 /** @param {boolean} light */
 export function dialogSubtitle(light) {
   return light
     ? "mt-2 text-sm text-slate-600"
-    : "mt-2 text-sm text-stone-400";
+    : "mt-2 text-sm text-amber-400";
 }
 
 /** @param {boolean} light */
 export function checkoutInputBase(light) {
   return light
-    ? "mt-1.5 w-full rounded-xl border border-stone-300/80 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-500 focus:border-amber-500/45 focus:outline-none focus:ring-1 focus:ring-amber-400/30"
-    : "mt-1.5 w-full rounded-xl border border-stone-600/60 bg-stone-950/60 px-4 py-3 text-sm text-stone-100 placeholder:text-slate-600 focus:border-amber-400/40 focus:outline-none focus:ring-1 focus:ring-amber-400/25";
+    ? "mt-1.5 w-full rounded-xl border border-blue-300/80 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-500 focus:border-blue-500/45 focus:outline-none focus:ring-1 focus:ring-blue-400/30"
+    : "mt-1.5 w-full rounded-xl border border-blue-600/60 bg-slate-950/60 px-4 py-3 text-sm text-amber-100 placeholder:text-slate-600 focus:border-blue-400/40 focus:outline-none focus:ring-1 focus:ring-blue-400/25";
 }
 
 /**
@@ -102,8 +102,8 @@ export function checkoutInputBase(light) {
  */
 export function checkoutPasswordInputClass(light) {
   return light
-    ? "!rounded-xl !border-stone-300/80 !bg-white !px-4 !py-3 !pl-4 !pr-11 !text-sm !text-slate-900 placeholder:!text-slate-500 focus:!border-amber-500/50 focus:!ring-amber-400/30"
-    : "rounded-xl border-stone-600/60 bg-stone-950/60 px-4 py-3 text-sm";
+    ? "!rounded-xl !border-amber-300/80 !bg-white !px-4 !py-3 !pl-4 !pr-11 !text-sm !text-slate-900 placeholder:!text-slate-500 focus:!border-blue-500/50 focus:!ring-blue-400/30"
+    : "rounded-xl border-amber-600/60 bg-amber-950/60 px-4 py-3 text-sm";
 }
 
 /** @param {boolean} light */
@@ -116,15 +116,15 @@ export function checkoutLabelUppercase(light) {
 /** @param {boolean} light */
 export function checkoutCancelButton(light) {
   return light
-    ? "rounded-full border border-stone-400/60 bg-white px-6 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition hover:border-amber-500/40 hover:bg-stone-50 hover:text-slate-900"
-    : "rounded-full border border-stone-600/50 bg-transparent px-6 py-2.5 text-sm font-medium text-stone-300 transition hover:border-amber-400/35 hover:text-stone-100";
+    ? "rounded-full border border-amber-400/60 bg-white px-6 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition hover:border-blue-500/40 hover:bg-amber-50 hover:text-slate-900"
+    : "rounded-full border border-amber-600/50 bg-transparent px-6 py-2.5 text-sm font-medium text-amber-300 transition hover:border-blue-400/35 hover:text-amber-100";
 }
 
 /** @param {boolean} light */
 export function registerFormFooter(light) {
   return light
-    ? "shrink-0 border-t border-stone-200/90 bg-stone-50/95 px-4 py-4 sm:px-6 lg:px-8"
-    : "shrink-0 border-t border-stone-700/40 bg-stone-950/95 px-4 py-4 sm:px-6 lg:px-8";
+    ? "shrink-0 border-t border-amber-200/90 bg-amber-50/95 px-4 py-4 sm:px-6 lg:px-8"
+    : "shrink-0 border-t border-amber-700/40 bg-amber-950/95 px-4 py-4 sm:px-6 lg:px-8";
 }
 
 /** @param {boolean} light */
@@ -150,8 +150,8 @@ export function selectChevron(light) {
 /** @param {boolean} light */
 export function formSectionColumnBorder(light) {
   return light
-    ? "min-w-0 lg:border-l lg:border-stone-300/80 lg:pl-8 xl:pl-10"
-    : "min-w-0 lg:border-l lg:border-stone-800/80 lg:pl-8 xl:pl-10";
+    ? "min-w-0 lg:border-l lg:border-amber-300/80 lg:pl-8 xl:pl-10"
+    : "min-w-0 lg:border-l lg:border-amber-800/80 lg:pl-8 xl:pl-10";
 }
 
 /** @param {boolean} light */
@@ -162,8 +162,8 @@ export function registerErrorText(light) {
 /** @param {boolean} light */
 export function addressSuggestPanel(light) {
   return light
-    ? "mt-2 rounded-xl border border-stone-300/80 bg-white p-2 shadow-md shadow-stone-400/15 ring-1 ring-stone-200/50"
-    : "mt-2 rounded-xl border border-stone-700/70 bg-stone-950/95 p-2";
+    ? "mt-2 rounded-xl border border-amber-300/80 bg-white p-2 shadow-md shadow-amber-400/15 ring-1 ring-amber-200/50"
+    : "mt-2 rounded-xl border border-amber-700/70 bg-amber-950/95 p-2";
 }
 
 /** @param {boolean} light */
@@ -179,22 +179,22 @@ export function addressSuggestEmpty(light) {
 /** @param {boolean} light */
 export function addressSuggestItem(light) {
   return light
-    ? "w-full rounded-lg px-3 py-2 text-left text-xs text-slate-800 transition hover:bg-amber-100/60"
-    : "w-full rounded-lg px-3 py-2 text-left text-xs text-stone-200 transition hover:bg-stone-800/80";
+    ? "w-full rounded-lg px-3 py-2 text-left text-xs text-slate-800 transition hover:bg-blue-100/60"
+    : "w-full rounded-lg px-3 py-2 text-left text-xs text-amber-200 transition hover:bg-amber-800/80";
 }
 
 /** @param {boolean} light */
 export function cartPreviewPanel(light) {
   return light
-    ? "pointer-events-none invisible absolute right-0 top-full z-130 mt-2 w-80 translate-y-1 rounded-2xl border border-stone-300/70 bg-white/95 p-4 opacity-0 shadow-2xl shadow-stone-400/30 ring-1 ring-stone-200/60 backdrop-blur-md transition-all duration-200 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
-    : "pointer-events-none invisible absolute right-0 top-full z-130 mt-2 w-80 translate-y-1 rounded-2xl border border-white/10 bg-stone-950/95 p-4 opacity-0 shadow-2xl shadow-stone-950/60 ring-1 ring-white/5 backdrop-blur-md transition-all duration-200 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100";
+    ? "pointer-events-none invisible absolute right-0 top-full z-130 mt-2 w-80 translate-y-1 rounded-2xl border border-amber-300/70 bg-white/95 p-4 opacity-0 shadow-2xl shadow-amber-400/30 ring-1 ring-amber-200/60 backdrop-blur-md transition-all duration-200 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
+    : "pointer-events-none invisible absolute right-0 top-full z-130 mt-2 w-80 translate-y-1 rounded-2xl border border-white/10 bg-amber-950/95 p-4 opacity-0 shadow-2xl shadow-amber-950/60 ring-1 ring-white/5 backdrop-blur-md transition-all duration-200 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100";
 }
 
 /** @param {boolean} light */
 export function cartPreviewTitle(light) {
   return light
-    ? "text-xs uppercase tracking-[0.25em] text-amber-800"
-    : "text-xs uppercase tracking-[0.25em] text-amber-400";
+    ? "text-xs uppercase tracking-[0.25em] text-blue-800"
+    : "text-xs uppercase tracking-[0.25em] text-blue-400";
 }
 
 /** @param {boolean} light */
@@ -205,13 +205,13 @@ export function cartPreviewEmptyText(light) {
 /** @param {boolean} light */
 export function cartPreviewLineRow(light) {
   return light
-    ? "flex items-start justify-between gap-3 rounded-xl border border-stone-200/90 bg-stone-50/90 px-3 py-2"
+    ? "flex items-start justify-between gap-3 rounded-xl border border-amber-200/90 bg-amber-50/90 px-3 py-2"
     : "flex items-start justify-between gap-3 rounded-xl border border-white/5 bg-white/2 px-3 py-2";
 }
 
 /** @param {boolean} light */
 export function cartPreviewLineTitle(light) {
-  return light ? "truncate text-sm text-slate-800" : "truncate text-sm text-stone-200";
+  return light ? "truncate text-sm text-slate-800" : "truncate text-sm text-amber-200";
 }
 
 /** @param {boolean} light */
@@ -223,7 +223,7 @@ export function cartPreviewLineQty(light) {
 export function cartPreviewLinePrice(light) {
   return light
     ? "shrink-0 text-sm tabular-nums text-slate-800"
-    : "shrink-0 text-sm tabular-nums text-stone-300";
+    : "shrink-0 text-sm tabular-nums text-amber-300";
 }
 
 /** @param {boolean} light */
@@ -239,14 +239,14 @@ export function cartPreviewSubtotalLabel(light) {
 /** @param {boolean} light */
 export function cartPreviewSubtotalValue(light) {
   return light
-    ? "text-sm font-semibold tabular-nums text-amber-800"
-    : "text-sm font-semibold tabular-nums text-amber-200";
+    ? "text-sm font-semibold tabular-nums text-blue-800"
+    : "text-sm font-semibold tabular-nums text-blue-200";
 }
 
 /** @param {boolean} light */
 export function secondaryButtonLightOutline(light) {
   return light
-    ? "!border-stone-400/70 !bg-white !text-slate-800 !shadow-stone-400/20 hover:!border-amber-500/45 hover:!bg-amber-50/80 hover:!text-slate-900"
+    ? "!border-amber-400/70 !bg-white !text-slate-800 !shadow-amber-400/20 hover:!border-blue-500/45 hover:!bg-blue-50/80 hover:!text-slate-900"
     : "";
 }
 
@@ -255,104 +255,104 @@ export function secondaryButtonLightOutline(light) {
 /** @param {boolean} light */
 export function cartLineCard(light) {
   return light
-    ? "flex gap-5 rounded-3xl border-2 border-stone-300/50 bg-white/90 p-4 shadow-lg shadow-stone-400/18 backdrop-blur-md sm:p-5"
-    : "flex gap-5 rounded-3xl border-2 border-stone-700/40 bg-stone-900/45 p-4 shadow-lg shadow-stone-950/25 sm:p-5";
+    ? "flex gap-5 rounded-3xl border-2 border-amber-300/50 bg-white/90 p-4 shadow-lg shadow-amber-400/18 backdrop-blur-md sm:p-5"
+    : "flex gap-5 rounded-3xl border-2 border-amber-700/40 bg-amber-900/45 p-4 shadow-lg shadow-amber-950/25 sm:p-5";
 }
 
 /** @param {boolean} light */
 export function cartThumbBorder(light) {
   return light
-    ? "relative h-28 w-24 shrink-0 overflow-hidden rounded-2xl border border-stone-200/90 sm:h-32 sm:w-28"
+    ? "relative h-28 w-24 shrink-0 overflow-hidden rounded-2xl border border-amber-200/90 sm:h-32 sm:w-28"
     : "relative h-28 w-24 shrink-0 overflow-hidden rounded-2xl border border-white/10 sm:h-32 sm:w-28";
 }
 
 /** @param {boolean} light */
 export function cartTitleLink(light) {
   return light
-    ? "font-serif text-lg font-medium tracking-[-0.02em] text-stone-900 transition hover:text-amber-800 sm:text-xl"
-    : "font-serif text-lg font-medium tracking-[-0.02em] text-stone-100 transition hover:text-amber-100 sm:text-xl";
+    ? "font-serif text-lg font-medium tracking-[-0.02em] text-amber-900 transition hover:text-blue-800 sm:text-xl"
+    : "font-serif text-lg font-medium tracking-[-0.02em] text-amber-100 transition hover:text-blue-100 sm:text-xl";
 }
 
 /** @param {boolean} light */
 export function cartPriceEach(light) {
   return light
-    ? "mt-3 text-sm tabular-nums text-amber-800/95"
-    : "mt-3 text-sm tabular-nums text-amber-200/90";
+    ? "mt-3 text-sm tabular-nums text-blue-800/95"
+    : "mt-3 text-sm tabular-nums text-blue-200/90";
 }
 
 /** @param {boolean} light */
 export function cartQtyLabel(light) {
   return light
-    ? "flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-stone-600"
+    ? "flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-amber-600"
     : "flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-slate-500";
 }
 
 /** @param {boolean} light */
 export function cartQtyInput(light) {
   return light
-    ? "w-16 rounded-lg border border-stone-300/80 bg-white px-2 py-1.5 text-center text-sm text-stone-900 tabular-nums shadow-sm focus:border-amber-500/50 focus:outline-none focus:ring-1 focus:ring-amber-400/35"
-    : "w-16 rounded-lg border border-stone-600 bg-stone-950/80 px-2 py-1.5 text-center text-sm text-stone-200 tabular-nums focus:border-amber-400/50 focus:outline-none focus:ring-1 focus:ring-amber-400/30";
+    ? "w-16 rounded-lg border border-amber-300/80 bg-white px-2 py-1.5 text-center text-sm text-amber-900 tabular-nums shadow-sm focus:border-blue-500/50 focus:outline-none focus:ring-1 focus:ring-blue-400/35"
+    : "w-16 rounded-lg border border-amber-600 bg-amber-950/80 px-2 py-1.5 text-center text-sm text-amber-200 tabular-nums focus:border-blue-400/50 focus:outline-none focus:ring-1 focus:ring-blue-400/30";
 }
 
 /** @param {boolean} light */
 export function cartRemoveLink(light) {
   return light
-    ? "text-xs uppercase tracking-[0.2em] text-stone-600 underline decoration-stone-400/80 underline-offset-4 transition hover:text-amber-800"
-    : "text-xs uppercase tracking-[0.2em] text-slate-500 underline decoration-stone-600 underline-offset-4 transition hover:text-amber-200/90";
+    ? "text-xs uppercase tracking-[0.2em] text-amber-600 underline decoration-amber-400/80 underline-offset-4 transition hover:text-blue-800"
+    : "text-xs uppercase tracking-[0.2em] text-slate-500 underline decoration-amber-600 underline-offset-4 transition hover:text-blue-200/90";
 }
 
 /** @param {boolean} light */
 export function cartLineTotal(light) {
   return light
-    ? "hidden text-right text-sm font-semibold tabular-nums text-stone-900 sm:block"
-    : "hidden text-right text-sm font-semibold tabular-nums text-stone-100 sm:block";
+    ? "hidden text-right text-sm font-semibold tabular-nums text-amber-900 sm:block"
+    : "hidden text-right text-sm font-semibold tabular-nums text-amber-100 sm:block";
 }
 
 /** @param {boolean} light */
 export function cartSummaryAside(light) {
   return light
-    ? "h-fit rounded-4xl border-2 border-stone-300/50 bg-white/92 p-8 shadow-xl shadow-stone-400/20 ring-1 ring-stone-200/55 backdrop-blur-md"
-    : "h-fit rounded-4xl border-2 border-stone-600/35 bg-linear-to-br from-stone-800/40 to-stone-950/50 p-8 shadow-xl shadow-stone-950/35 ring-2 ring-stone-500/20 backdrop-blur-md";
+    ? "h-fit rounded-4xl border-2 border-amber-300/50 bg-white/92 p-8 shadow-xl shadow-amber-400/20 ring-1 ring-amber-200/55 backdrop-blur-md"
+    : "h-fit rounded-4xl border-2 border-amber-600/35 bg-linear-to-br from-amber-800/40 to-amber-950/50 p-8 shadow-xl shadow-amber-950/35 ring-2 ring-amber-500/20 backdrop-blur-md";
 }
 
 /** @param {boolean} light */
 export function cartSummaryHeading(light) {
   return light
-    ? "text-xs uppercase tracking-[0.32em] text-amber-900/90"
-    : "text-xs uppercase tracking-[0.32em] text-amber-300";
+    ? "text-xs uppercase tracking-[0.32em] text-blue-900/90"
+    : "text-xs uppercase tracking-[0.32em] text-blue-300";
 }
 
 /** @param {boolean} light */
 export function cartSummaryDt(light) {
-  return light ? "text-stone-600" : "text-slate-400";
+  return light ? "text-amber-600" : "text-slate-400";
 }
 
 /** @param {boolean} light */
 export function cartSummaryDd(light) {
-  return light ? "tabular-nums text-stone-900" : "tabular-nums text-stone-200";
+  return light ? "tabular-nums text-amber-900" : "tabular-nums text-amber-200";
 }
 
 /** @param {boolean} light */
 export function cartSummaryTotalRow(light) {
   return light
-    ? "flex justify-between gap-4 border-t border-stone-200/90 pt-4 text-base font-semibold"
+    ? "flex justify-between gap-4 border-t border-amber-200/90 pt-4 text-base font-semibold"
     : "flex justify-between gap-4 border-t border-white/10 pt-4 text-base font-semibold";
 }
 
 /** @param {boolean} light */
 export function cartSummaryTotalLabel(light) {
-  return light ? "text-stone-900" : "text-stone-200";
+  return light ? "text-amber-900" : "text-amber-200";
 }
 
 /** @param {boolean} light */
 export function cartSummaryTotalValue(light) {
-  return light ? "tabular-nums text-amber-800" : "tabular-nums text-amber-200";
+  return light ? "tabular-nums text-blue-800" : "tabular-nums text-blue-200";
 }
 
 /** @param {boolean} light */
 export function cartSummaryShippingNote(light) {
   return light
-    ? "border-t border-stone-200/90 pt-3 text-xs leading-relaxed text-stone-600"
+    ? "border-t border-amber-200/90 pt-3 text-xs leading-relaxed text-amber-600"
     : "border-t border-white/5 pt-3 text-xs leading-relaxed text-slate-500";
 }
 
@@ -365,29 +365,29 @@ export function cartShippingComplimentary(light) {
 /** @param {boolean} light */
 export function checkoutOrderLine(light) {
   return light
-    ? "flex justify-between gap-3 text-stone-800"
+    ? "flex justify-between gap-3 text-amber-800"
     : "flex justify-between gap-3 text-site-fg/90";
 }
 
 /** @param {boolean} light */
 export function checkoutOrderQty(light) {
-  return light ? "text-stone-600" : "text-site-secondary";
+  return light ? "text-amber-600" : "text-site-secondary";
 }
 
 /** @param {boolean} light */
 export function checkoutSummaryBorder(light) {
-  return light ? "border-t border-stone-300/55" : "border-t border-site-fg/10";
+  return light ? "border-t border-amber-300/55" : "border-t border-site-fg/10";
 }
 
 /** @param {boolean} light */
 export function checkoutSummaryTotalBorder(light) {
-  return light ? "border-t border-stone-300/60" : "border-t border-site-fg/15";
+  return light ? "border-t border-amber-300/60" : "border-t border-site-fg/15";
 }
 
 /** Muted helper text in checkout summary card. */
 /** @param {boolean} light */
 export function checkoutSummaryMuted(light) {
-  return light ? "text-stone-600" : "text-site-secondary";
+  return light ? "text-amber-600" : "text-site-secondary";
 }
 
 /** @param {boolean} light */
@@ -414,15 +414,15 @@ export function checkoutSubmitError(light) {
 /** Empty / loading caption on cart & checkout. */
 /** @param {boolean} light */
 export function pageMutedText(light) {
-  return light ? "text-stone-600" : "text-stone-400";
+  return light ? "text-amber-600" : "text-amber-400";
 }
 
 /** CTA link pill (e.g. Browse shop) on empty checkout. */
 /** @param {boolean} light */
 export function emptyStateCtaLink(light) {
   return light
-    ? "inline-flex w-fit rounded-full border-2 border-stone-400/60 bg-white/90 px-8 py-3.5 text-sm font-semibold text-stone-900 shadow-sm transition hover:border-amber-500/45 hover:bg-amber-50/80"
-    : "inline-flex w-fit rounded-full border-2 border-stone-500/50 bg-stone-900/55 px-8 py-3.5 text-sm font-semibold text-stone-100 transition hover:border-amber-400/45";
+    ? "inline-flex w-fit rounded-full border-2 border-amber-400/60 bg-white/90 px-8 py-3.5 text-sm font-semibold text-amber-900 shadow-sm transition hover:border-blue-500/45 hover:bg-blue-50/80"
+    : "inline-flex w-fit rounded-full border-2 border-amber-500/50 bg-amber-900/55 px-8 py-3.5 text-sm font-semibold text-amber-100 transition hover:border-blue-400/45";
 }
 
 /* --- Auth pages (login / register shell / forgot password) — body `bg-site-bg` shows through --- */
@@ -430,28 +430,28 @@ export function emptyStateCtaLink(light) {
 /** @param {boolean} light */
 export function authCardPanel(light) {
   return light
-    ? "w-full max-w-md rounded-3xl border-2 border-stone-300/50 bg-white/92 p-8 shadow-2xl shadow-stone-400/20 backdrop-blur-md ring-1 ring-stone-200/55"
-    : "w-full max-w-md rounded-3xl border-2 border-stone-700/40 bg-stone-900/45 p-8 shadow-2xl shadow-stone-950/50 backdrop-blur-md ring-1 ring-stone-500/15";
+    ? "w-full max-w-md rounded-3xl border-2 border-amber-300/50 bg-white/92 p-8 shadow-2xl shadow-amber-400/20 backdrop-blur-md ring-1 ring-amber-200/55"
+    : "w-full max-w-md rounded-3xl border-2 border-amber-700/40 bg-amber-900/45 p-8 shadow-2xl shadow-amber-950/50 backdrop-blur-md ring-1 ring-amber-500/15";
 }
 
 /** @param {boolean} light */
 export function authTitle(light) {
   return light
-    ? "font-serif text-3xl font-medium tracking-[-0.03em] text-stone-900"
-    : "font-serif text-3xl font-medium tracking-[-0.03em] text-stone-100";
+    ? "font-serif text-3xl font-medium tracking-[-0.03em] text-amber-900"
+    : "font-serif text-3xl font-medium tracking-[-0.03em] text-amber-100";
 }
 
 /** @param {boolean} light */
 export function authSubtitle(light) {
   return light
-    ? "mt-2 text-sm leading-relaxed text-stone-600"
-    : "mt-2 text-sm leading-relaxed text-stone-300/95";
+    ? "mt-2 text-sm leading-relaxed text-amber-600"
+    : "mt-2 text-sm leading-relaxed text-amber-300/95";
 }
 
 /** @param {boolean} light */
 export function authLabelUppercase(light) {
   return light
-    ? "block text-xs font-medium uppercase tracking-wider text-stone-600"
+    ? "block text-xs font-medium uppercase tracking-wider text-amber-600"
     : "block text-xs font-medium uppercase tracking-wider text-slate-500";
 }
 
@@ -459,8 +459,8 @@ export function authLabelUppercase(light) {
 /** @param {boolean} light */
 export function authEmailInput(light) {
   return light
-    ? "mt-1.5 w-full rounded-lg border border-stone-300/80 bg-white px-3 py-2.5 text-stone-900 outline-none ring-amber-400/25 placeholder:text-stone-500 focus:border-amber-500/50 focus:ring-2"
-    : "mt-1.5 w-full rounded-lg border border-stone-600/40 bg-stone-950/80 px-3 py-2.5 text-stone-100 outline-none ring-amber-400/25 placeholder:text-stone-600 focus:border-amber-400/45 focus:ring-2";
+    ? "mt-1.5 w-full rounded-lg border border-amber-300/80 bg-white px-3 py-2.5 text-amber-900 outline-none ring-blue-400/25 placeholder:text-amber-500 focus:border-blue-500/50 focus:ring-2"
+    : "mt-1.5 w-full rounded-lg border border-amber-600/40 bg-amber-950/80 px-3 py-2.5 text-amber-100 outline-none ring-blue-400/25 placeholder:text-amber-600 focus:border-blue-400/45 focus:ring-2";
 }
 
 /**
@@ -469,20 +469,20 @@ export function authEmailInput(light) {
  */
 export function authPasswordInputOverride(light) {
   return light
-    ? "!rounded-lg !border-stone-300/80 !bg-white !px-3 !py-2.5 !pl-3 !pr-11 !text-stone-900 placeholder:!text-stone-500 focus:!border-amber-500/50 focus:!ring-amber-400/35"
+    ? "!rounded-lg !border-amber-300/80 !bg-white !px-3 !py-2.5 !pl-3 !pr-11 !text-amber-900 placeholder:!text-amber-500 focus:!border-blue-500/50 focus:!ring-blue-400/35"
     : "";
 }
 
 /** @param {boolean} light */
 export function authLinkAccent(light) {
   return light
-    ? "font-medium text-amber-900 underline decoration-amber-600/40 underline-offset-4 transition hover:text-amber-800"
-    : "font-medium text-amber-200/95 underline decoration-amber-400/35 underline-offset-4 transition hover:text-amber-100";
+    ? "font-medium text-blue-900 underline decoration-blue-600/40 underline-offset-4 transition hover:text-blue-800"
+    : "font-medium text-blue-200/95 underline decoration-blue-400/35 underline-offset-4 transition hover:text-blue-100";
 }
 
 /** @param {boolean} light */
 export function authFooterMuted(light) {
-  return light ? "text-stone-600" : "text-stone-500";
+  return light ? "text-amber-600" : "text-amber-500";
 }
 
 /** @param {boolean} light */
@@ -493,27 +493,27 @@ export function authInlineError(light) {
 /** @param {boolean} light */
 export function registerHeroTitle(light) {
   return light
-    ? "font-serif text-3xl font-medium tracking-[-0.03em] text-stone-900 sm:text-4xl"
-    : "font-serif text-3xl font-medium tracking-[-0.03em] text-stone-100 sm:text-4xl";
+    ? "font-serif text-3xl font-medium tracking-[-0.03em] text-amber-900 sm:text-4xl"
+    : "font-serif text-3xl font-medium tracking-[-0.03em] text-amber-100 sm:text-4xl";
 }
 
 /** @param {boolean} light */
 export function registerHeroBody(light) {
   return light
-    ? "mt-2 max-w-2xl text-sm leading-relaxed text-stone-700"
-    : "mt-2 max-w-2xl text-sm leading-relaxed text-stone-400";
+    ? "mt-2 max-w-2xl text-sm leading-relaxed text-amber-700"
+    : "mt-2 max-w-2xl text-sm leading-relaxed text-amber-400";
 }
 
 /** @param {boolean} light */
 export function registerHeroMeta(light) {
-  return light ? "mt-4 text-sm text-stone-600" : "mt-4 text-sm text-stone-500";
+  return light ? "mt-4 text-sm text-amber-600" : "mt-4 text-sm text-amber-500";
 }
 
 /** @param {boolean} light */
 export function registerFormShell(light) {
   return light
-    ? "mt-8 flex min-h-0 flex-1 flex-col overflow-hidden rounded-3xl border-2 border-stone-300/50 bg-white/92 shadow-2xl shadow-stone-400/20 ring-1 ring-stone-200/55"
-    : "mt-8 flex min-h-0 flex-1 flex-col overflow-hidden rounded-3xl border-2 border-stone-700/40 bg-stone-900/45 shadow-2xl shadow-stone-950/50 ring-1 ring-stone-500/15";
+    ? "mt-8 flex min-h-0 flex-1 flex-col overflow-hidden rounded-3xl border-2 border-amber-300/50 bg-white/92 shadow-2xl shadow-amber-400/20 ring-1 ring-amber-200/55"
+    : "mt-8 flex min-h-0 flex-1 flex-col overflow-hidden rounded-3xl border-2 border-amber-700/40 bg-amber-900/45 shadow-2xl shadow-amber-950/50 ring-1 ring-amber-500/15";
 }
 
 /** @param {boolean} light */
@@ -526,6 +526,6 @@ export function forgotSuccessBanner(light) {
 /** @param {boolean} light */
 export function forgotSuccessBannerLink(light) {
   return light
-    ? "font-medium text-amber-900 underline decoration-amber-600/40 underline-offset-4"
-    : "font-medium text-amber-200/95 underline decoration-amber-400/40 underline-offset-4";
+    ? "font-medium text-blue-900 underline decoration-blue-600/40 underline-offset-4"
+    : "font-medium text-blue-200/95 underline decoration-blue-400/40 underline-offset-4";
 }

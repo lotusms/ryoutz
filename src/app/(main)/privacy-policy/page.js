@@ -22,7 +22,7 @@ export default function PrivacyPolicyPage() {
           this policy.
         </p>
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">
+          <h2 className="font-serif text-2xl text-amber-100">
             What information do we collect?
           </h2>
           <p className="mt-3">We collect information from you when you respond to a survey.</p>
@@ -33,7 +33,7 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">
+          <h2 className="font-serif text-2xl text-amber-100">
             What do we use your information for?
           </h2>
           <p className="mt-3">
@@ -55,7 +55,7 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">
+          <h2 className="font-serif text-2xl text-amber-100">
             How do we protect your information?
           </h2>
           <p className="mt-3">
@@ -78,13 +78,13 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">
+          <h2 className="font-serif text-2xl text-amber-100">
             Do we use cookies?
           </h2>
           <p className="mt-3">We do not use cookies.</p>
         </section>
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">
+          <h2 className="font-serif text-2xl text-amber-100">
             Do we disclose any information to outside parties?
           </h2>
           <p className="mt-3">
@@ -102,14 +102,14 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">Third party links</h2>
+          <h2 className="font-serif text-2xl text-amber-100">Third party links</h2>
           <p className="mt-3">
             Occasionally, at our discretion, we may include or offer third
             party products or services on our website.
           </p>
         </section>
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">
+          <h2 className="font-serif text-2xl text-amber-100">
             California Online Privacy Protection Act Compliance
           </h2>
           <p className="mt-3">
@@ -119,7 +119,7 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">
+          <h2 className="font-serif text-2xl text-amber-100">
             Childrens Online Privacy Protection Act Compliance
           </h2>
           <p className="mt-3">
@@ -128,7 +128,7 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">
+          <h2 className="font-serif text-2xl text-amber-100">
             Online Privacy Policy Only
           </h2>
           <p className="mt-3">
@@ -137,7 +137,7 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">
+          <h2 className="font-serif text-2xl text-amber-100">
             Terms and Conditions
           </h2>
           <p className="mt-3">
@@ -147,13 +147,13 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">Your Consent</h2>
+          <h2 className="font-serif text-2xl text-amber-100">Your Consent</h2>
           <p className="mt-3">
             By using our site, you consent to our website privacy policy.
           </p>
         </section>
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">
+          <h2 className="font-serif text-2xl text-amber-100">
             Changes to our Privacy Policy
           </h2>
           <p className="mt-3">
@@ -163,7 +163,7 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">Contacting Us</h2>
+          <h2 className="font-serif text-2xl text-amber-100">Contacting Us</h2>
           <p className="mt-3">
             If there are any questions regarding this privacy policy you may
             contact us using the information below.

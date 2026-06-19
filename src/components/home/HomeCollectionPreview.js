@@ -15,6 +15,9 @@ const SKELETON_CARD_COUNT = 6;
 /** Per-card cascade step (ms) and cap so long galleries don't introduce awkward waits. */
 const CARD_CASCADE_STEP_MS = 60;
 const CARD_CASCADE_MAX_MS = 600;
+
+const SECTION_SHELL =
+  "relative z-10 mx-auto w-full max-w-7xl px-6 pb-10 pt-16 sm:px-10 sm:pt-20 lg:px-12 lg:pt-24";
 import { linkButtonClasses, linkButtonClassesLight } from "@/components/ui/LinkButton";
 import { useDocumentThemeId } from "@/hooks/useDocumentThemeId";
 import { isLightThemeId } from "@/theme";
@@ -62,7 +65,7 @@ function CollectionSkeletonCard({ delay = 0 }) {
   const h = delay % 2 === 0 ? "min-h-[18rem]" : "min-h-[24rem]";
   return (
     <div
-      className="w-full overflow-hidden rounded-4xl border-2 border-stone-700/35 bg-stone-900/40 shadow-lg shadow-stone-950/35 animate-pulse"
+      className="w-full overflow-hidden rounded-4xl border-2 border-slate-700/35 bg-slate-900/40 shadow-lg shadow-slate-950/35 animate-pulse"
       style={{ animationDelay: `${delay}ms` }}
     >
       <div
@@ -85,7 +88,7 @@ function CollectionProductCard({ product }) {
   return (
     <Link
       href={`/gallery/${product.slug}`}
-      className="group block w-full overflow-hidden rounded-4xl border-2 border-stone-700/35 bg-stone-950/45 shadow-lg shadow-stone-950/35 backdrop-blur transition duration-500 hover:-translate-y-1 hover:border-amber-400/30 hover:shadow-2xl hover:shadow-stone-950/45"
+      className="group block w-full overflow-hidden rounded-4xl border-2 border-slate-700/35 bg-slate-950/45 shadow-lg shadow-slate-950/35 backdrop-blur transition duration-500 hover:-translate-y-1 hover:border-blue-400/30 hover:shadow-2xl hover:shadow-slate-950/45"
     >
       <div className="relative">
         <CoverImageFrame
@@ -98,15 +101,14 @@ function CollectionProductCard({ product }) {
           imageZoom={false}
           frameClassName={
             showLightImageWell
-              ? "relative w-full overflow-hidden bg-stone-100"
-              : "relative w-full overflow-hidden bg-site-bg"
+              ? "relative w-full overflow-hidden bg-amber-100"
+              : "relative w-full overflow-hidden bg-slate-950"
           }
           scrim="card"
           galleryProtected
-          galleryWatermarkSize="md"
         />
         <div className="absolute bottom-0 left-0 right-0 z-20 p-5 sm:p-6">
-          <h3 className="font-serif text-xl font-medium tracking-[-0.02em] text-stone-100">
+          <h3 className="font-serif text-xl font-medium tracking-[-0.02em] text-slate-100">
             {product.title}
           </h3>
           <div className="flex items-end justify-between gap-4">
@@ -223,26 +225,28 @@ export default function HomeCollectionPreview({ initialProducts = [] }) {
           <ScrollSlideIn
             as="p"
             direction="left"
-            className="text-xs uppercase tracking-[0.32em] text-slate-400"
+            className="text-xs font-serif font-bold uppercase tracking-[0.32em] text-blue-400"
           >
-            Heart-led work
+            Recent projects
           </ScrollSlideIn>
           <ScrollSlideIn
             as="h2"
             direction="left"
             delay={120}
-            className="font-serif mt-4 max-w-3xl text-3xl font-medium tracking-[-0.02em] text-stone-100 sm:text-5xl leading-[1.1]"
+            className="font-serif mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.02em] text-slate-100 sm:text-5xl leading-[1.1] capitalize"
           >
-            For the moments you&apos;ll already miss
+            Work that holds up
           </ScrollSlideIn>
         </div>
         <ScrollSlideIn
           as="p"
           direction="right"
           delay={250}
-          className="text-sm leading-7 text-stone-200/85"
+          className="text-sm leading-7 text-neutral-200/90"
         >
-          The celebrations here belong to couples who trusted {orgName} {" "}with what they already knew they&apos;d want to hold onto, the breath before the aisle, a parent&apos;s grip, the seconds no one rehearses. Wedding and portrait photography, offered with patience instead of staging, for people who feel the weight of a day long before the last dance. When you&apos;re ready, the full gallery carries more of those stories, each frame another invitation to imagine yours beside them.
+          Driveways, parking lots, crack sealing, and full resurfacing — the kind
+          of jobs where prep, materials, and finish matter. Browse recent projects
+          from {orgName}, then tap any image to see the scope and results up close.
         </ScrollSlideIn>
       </div>
     </>
@@ -253,7 +257,7 @@ export default function HomeCollectionPreview({ initialProducts = [] }) {
     return (
       <section
         id="collection"
-        className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-10 sm:px-10 lg:px-12"
+        className={SECTION_SHELL}
       >
         {headerBlock}
         <div className={`grid gap-6 ${gridClass}`}>
@@ -275,27 +279,31 @@ export default function HomeCollectionPreview({ initialProducts = [] }) {
     return (
       <section
         id="collection"
-        className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-10 sm:px-10 lg:px-12"
+        className={SECTION_SHELL}
       >
         {headerBlock}
-        <div className="rounded-3xl border border-stone-700/45 bg-stone-900/35 px-6 py-12 text-center text-stone-300/90">
+        <div className="rounded-3xl border border-slate-700/45 bg-slate-900/35 px-6 py-12 text-center text-slate-300/90">
           <p className="text-xs uppercase tracking-[0.28em] text-slate-400">
             Gallery
           </p>
           <p className="mx-auto mt-3 max-w-lg text-sm leading-7">
-            No images are in the Firestore{" "}
-            <code className="rounded bg-stone-800/80 px-1.5 py-0.5 text-xs">gallery</code>{" "}
-            collection yet, or they are hidden. Upload images under the{" "}
-            <code className="rounded bg-stone-800/80 px-1.5 py-0.5 text-xs">gallery/</code>{" "}
-            prefix in Firebase Storage, then run{" "}
-            <code className="rounded bg-stone-800/80 px-1.5 py-0.5 text-xs">pnpm firebase:seed:gallery</code>{" "}
-            locally (with Admin credentials in{" "}
-            <code className="rounded bg-stone-800/80 px-1.5 py-0.5 text-xs">.env.local</code>
-            ).
+            No project photos yet. Add images to{" "}
+            <code className="rounded bg-slate-800/80 px-1.5 py-0.5 text-xs">
+              public/images/gallery
+            </code>
+            , set{" "}
+            <code className="rounded bg-slate-800/80 px-1.5 py-0.5 text-xs">
+              GALLERY_SOURCE=stock
+            </code>{" "}
+            for Pexels placeholders, or add a free{" "}
+            <code className="rounded bg-slate-800/80 px-1.5 py-0.5 text-xs">
+              PEXELS_API_KEY
+            </code>
+            .
           </p>
           <Link
             href="/gallery"
-            className="mt-6 inline-flex rounded-full border border-stone-500/60 bg-stone-900/50 px-6 py-3 text-sm font-semibold text-stone-100 transition hover:border-amber-300/45 hover:text-amber-100"
+            className="mt-6 inline-flex rounded-full border border-slate-500/60 bg-slate-900/50 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-blue-300/45 hover:text-blue-100"
           >
             View gallery
           </Link>
@@ -307,7 +315,7 @@ export default function HomeCollectionPreview({ initialProducts = [] }) {
   return (
     <section
       id="collection"
-      className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-10 sm:px-10 lg:px-12"
+      className={SECTION_SHELL}
     >
       {headerBlock}
       <div className={`grid gap-6 ${gridClass}`}>

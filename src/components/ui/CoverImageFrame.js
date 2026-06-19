@@ -48,7 +48,7 @@ export default function CoverImageFrame({
   imageZoom = true,
   zoomClass = "scale-[1.14]",
   hoverZoomClass = "group-hover:scale-[1.2]",
-  frameClassName = "relative w-full overflow-hidden bg-site-bg",
+  frameClassName = "relative w-full overflow-hidden bg-slate-950",
   secondaryMat = true,
   /**
    * Scrim inside the image well only (never over mat rings).
@@ -61,10 +61,8 @@ export default function CoverImageFrame({
   quality = 80,
   matOuterClassName = "",
   matInnerClassName = "",
-  /** Centered logo watermark + right-click / drag discouragement for gallery surfaces */
+  /** Right-click / drag discouragement for gallery surfaces */
   galleryProtected = false,
-  /** @type {"sm" | "md" | "lg"} */
-  galleryWatermarkSize = "md",
 }) {
   const zoomActive = imageZoom ? `${zoomClass} ${hoverZoomClass}` : "scale-100 group-hover:scale-100";
   const objectClass =
@@ -133,7 +131,7 @@ export default function CoverImageFrame({
     );
 
   const core = galleryProtected ? (
-    <GalleryImageWell watermarkSize={galleryWatermarkSize}>{imageWellInner}</GalleryImageWell>
+    <GalleryImageWell>{imageWellInner}</GalleryImageWell>
   ) : (
     imageWellInner
   );

@@ -31,7 +31,7 @@ function renderDescription(text) {
       blocks.push(
         <ul
           key={`list-${blocks.length}`}
-          className="ml-1 list-disc space-y-2 pl-5 marker:text-amber-300/60"
+          className="ml-1 list-disc space-y-2 pl-5 marker:text-blue-300/60"
         >
           {items.map((item, idx) => (
             <li key={`item-${idx}`}>{item}</li>
@@ -44,7 +44,7 @@ function renderDescription(text) {
     blocks.push(
       <p
         key={`p-${blocks.length}`}
-        className="text-[1.05rem] leading-9 text-stone-200/90 first:text-xl first:leading-9 first:text-stone-100 first:font-light first:tracking-[-0.005em]"
+        className="text-[1.05rem] leading-9 text-amber-200/90 first:text-xl first:leading-9 first:text-amber-100 first:font-light first:tracking-[-0.005em]"
       >
         {line}
       </p>,
@@ -66,16 +66,16 @@ export default function GalleryPieceStory({ description, title }) {
   if (blocks.length === 0) {
     return (
       <div className="space-y-6">
-        <p className="text-[1.05rem] leading-9 text-stone-200/85">
+        <p className="text-[1.05rem] leading-9 text-amber-200/85">
           A quiet frame from {title || "a recent session"}, photographed by{" "}
           {orgName}. The full story behind this image is being written —
           for now, let the picture speak.
         </p>
-        <p className="text-sm leading-8 text-stone-400">
+        <p className="text-sm leading-8 text-amber-400">
           Curious about a similar session?{" "}
           <Link
             href="/contact"
-            className="text-amber-200/90 underline-offset-4 transition hover:text-amber-100 hover:underline"
+            className="text-blue-200/90 underline-offset-4 transition hover:text-blue-100 hover:underline"
           >
             Reach out
           </Link>

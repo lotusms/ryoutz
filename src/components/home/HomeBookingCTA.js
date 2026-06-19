@@ -7,14 +7,7 @@ import PrimaryButton from "@/components/ui/PrimaryButton";
 import SecondaryButton from "@/components/ui/SecondaryButton";
 import ScrollSlideIn from "@/components/ui/ScrollSlideIn";
 import { orgName } from "@/config";
-import { useDocumentThemeId } from "@/hooks/useDocumentThemeId";
-import { isLightThemeId } from "@/theme";
 
-/**
- * Three frames are stacked behind a slight rotation each — like prints fanned
- * on a table. Sizes/positions are tuned so the trio reads as a single
- * composition without a single image dominating.
- */
 const FRAME_LAYOUT = [
   {
     rotate: "lg:-rotate-[7deg] -rotate-[5deg]",
@@ -39,28 +32,25 @@ const FRAME_LAYOUT = [
   },
 ];
 
-function FrameImage({ image, frame, light }) {
+function FrameImage({ image, frame }) {
   const [failed, setFailed] = useState(false);
-  const matteClass = light
-    ? "bg-white ring-1 ring-stone-300/60"
-    : "bg-stone-100 ring-1 ring-stone-200/40";
 
   return (
     <div
-      className={`absolute ${frame.position} ${frame.rotate} ${frame.z} ${frame.elevation} ${matteClass} rounded-sm p-2.5 transition-transform duration-700 ease-out hover:rotate-0 hover:scale-[1.03]`}
+      className={`absolute ${frame.position} ${frame.rotate} ${frame.z} ${frame.elevation} rounded-sm bg-slate-100 p-2.5 ring-1 ring-white/20 transition-transform duration-700 ease-out hover:rotate-0 hover:scale-[1.03]`}
     >
-      <div className="relative h-full w-full overflow-hidden bg-stone-200">
+      <div className="relative h-full w-full overflow-hidden bg-slate-800">
         {image?.src && !failed ? (
           <Image
             src={image.src}
-            alt={image.alt || `Photograph by ${orgName}`}
+            alt={image.alt || `Asphalt project by ${orgName}`}
             fill
             sizes="(max-width: 1024px) 60vw, 28vw"
             className="object-cover"
             onError={() => setFailed(true)}
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center text-[10px] uppercase tracking-[0.28em] text-stone-500">
+          <div className="flex h-full w-full items-center justify-center text-[10px] uppercase tracking-[0.28em] text-slate-500">
             {orgName}
           </div>
         )}
@@ -70,45 +60,16 @@ function FrameImage({ image, frame, light }) {
 }
 
 /**
- * Editorial booking CTA. Pairs a conversational headline + two CTAs with a
- * small photo collage (passed in via `images`). Theme-aware so it sits
- * naturally between the gold testimonial section and the page footer.
- *
  * @param {{
  *   images?: Array<{ src: string; alt?: string }>;
  * }} props
  */
 export default function HomeBookingCTA({ images = [] }) {
-  const themeId = useDocumentThemeId();
-  const light = isLightThemeId(themeId);
-
   const frameImages = [
     images[0] ?? null,
     images[1] ?? images[0] ?? null,
     images[2] ?? images[1] ?? images[0] ?? null,
   ];
-
-  const eyebrow = light
-    ? "text-[11px] font-medium uppercase tracking-[0.34em] text-amber-800"
-    : "text-[11px] font-medium uppercase tracking-[0.34em] text-amber-300";
-
-  const heading = light
-    ? "font-serif text-stone-900"
-    : "font-serif text-stone-50";
-
-  const headingAccent = light
-    ? "italic text-amber-700"
-    : "italic text-amber-300";
-
-  const lead = light
-    ? "mt-7 max-w-xl text-base leading-8 text-stone-700"
-    : "mt-7 max-w-xl text-base leading-8 text-stone-200/85";
-
-  const micro = light
-    ? "mt-8 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-stone-500"
-    : "mt-8 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-stone-400";
-
-  const dotClass = light ? "text-stone-300" : "text-stone-600";
 
   return (
     <section
@@ -116,46 +77,42 @@ export default function HomeBookingCTA({ images = [] }) {
       aria-labelledby="booking-heading"
       className="relative z-10 w-full overflow-hidden py-20 sm:py-24 lg:py-32"
     >
-      {/* Soft warm vignette so this section feels distinct without a card boundary */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-0 ${
-          light
-            ? "bg-[radial-gradient(ellipse_70%_55%_at_85%_15%,rgba(254,243,199,0.55),transparent_60%),radial-gradient(ellipse_60%_50%_at_10%_90%,rgba(120,53,15,0.06),transparent_60%)]"
-            : "bg-[radial-gradient(ellipse_70%_55%_at_85%_15%,rgba(120,53,15,0.18),transparent_60%),radial-gradient(ellipse_60%_50%_at_10%_90%,rgba(28,25,23,0.5),transparent_55%)]"
-        }`}
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_85%_15%,rgba(29,78,216,0.18),transparent_60%),radial-gradient(ellipse_60%_50%_at_10%_90%,rgba(28,25,23,0.5),transparent_55%)]"
       />
 
       <div className="relative mx-auto grid w-full max-w-7xl items-center gap-16 overflow-x-clip px-6 sm:px-10 lg:grid-cols-[1.05fr_1fr] lg:gap-24 lg:px-12">
         <ScrollSlideIn direction="left" className="relative">
-          <p className={eyebrow}>Now booking · 2026 / 2027</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.34em] text-blue-300">
+            Free estimates · Residential &amp; commercial
+          </p>
 
           <h2
             id="booking-heading"
-            className={`${heading} mt-6 text-4xl font-medium leading-[1.05] tracking-[-0.02em] sm:text-5xl lg:text-6xl`}
+            className="mt-6 font-serif text-4xl font-medium leading-[1.05] tracking-[-0.02em] text-amber-50 sm:text-5xl lg:text-6xl"
           >
-            Let&apos;s tell{" "}
-            <span className={headingAccent}>yours</span>{" "}
-            next.
+            Ready to protect{" "}
+            <span className="italic text-blue-300">your pavement</span>?
           </h2>
 
-          <p className={lead}>
-            A handful of weddings, elopements, and portrait sessions each
-            year, held with patience, photographed without performance. For
-            people who want to remember the day, not perform it.
+          <p className="mt-7 max-w-xl text-base leading-8 text-neutral-200/90">
+            Sealcoating, crack repair, patching, and line striping — scheduled
+            around your property, explained clearly, and finished with a surface
+            you can count on season after season.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
-            <PrimaryButton href="/contact">Start the conversation</PrimaryButton>
-            <SecondaryButton href="/gallery">See more work</SecondaryButton>
+            <PrimaryButton href="/contact">Request an estimate</PrimaryButton>
+            <SecondaryButton href="/gallery">View projects</SecondaryButton>
           </div>
 
-          <p className={micro}>
+          <p className="mt-8 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-neutral-200/90">
             <span>Replies within 24 hours</span>
-            <span className={dotClass} aria-hidden="true">·</span>
-            <span>Harrisburg, York, and Lancaster Counties</span>
-            <span className={dotClass} aria-hidden="true">·</span>
-            <span>Limited dates each season</span>
+            <span className="text-amber-600" aria-hidden="true">·</span>
+            <span>Maryland &amp; the surrounding region</span>
+            <span className="text-amber-600" aria-hidden="true">·</span>
+            <span>Residential &amp; commercial</span>
           </p>
         </ScrollSlideIn>
 
@@ -165,22 +122,12 @@ export default function HomeBookingCTA({ images = [] }) {
           className="relative mx-auto aspect-square w-full max-w-[420px] sm:max-w-[480px] lg:max-w-none"
         >
           {FRAME_LAYOUT.map((frame, idx) => (
-            <FrameImage
-              key={idx}
-              image={frameImages[idx]}
-              frame={frame}
-              light={light}
-            />
+            <FrameImage key={idx} image={frameImages[idx]} frame={frame} />
           ))}
 
-          {/* Hand-written feeling tag tucked into the collage */}
           <div
             aria-hidden="true"
-            className={`absolute -top-2 right-2 z-40 rotate-[8deg] rounded-full px-3 py-1 text-[10px] font-medium uppercase tracking-[0.28em] ${
-              light
-                ? "bg-stone-900 text-amber-100 shadow-md shadow-stone-900/30"
-                : "bg-amber-300 text-stone-900 shadow-md shadow-stone-950/40"
-            }`}
+            className="absolute -top-2 right-2 z-40 rotate-[8deg] rounded-full bg-blue-300 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.28em] text-amber-900 shadow-md shadow-amber-950/40"
           >
             est. {orgName.split(" ")[0].toLowerCase()}
           </div>

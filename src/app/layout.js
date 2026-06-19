@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import CartProvider from "@/components/CartProvider";
 import ScrollToTopOnLoad from "@/components/ScrollToTopOnLoad";
 import { AuthProvider } from "@/context/AuthContext";
@@ -6,16 +6,6 @@ import { orgName } from "@/config";
 import { ACTIVE_THEME_ID } from "@/theme";
 import "./globals.css";
 import "@/theme/themes.css";
-
-/** Display serif for bold, editorial brand headings */
-const cormorant = Cormorant_Garamond({
-  variable: "--font-display",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-  // Avoid unused `<link rel="preload">` warnings when body text uses Geist first.
-  preload: false,
-});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -52,7 +42,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       data-theme={ACTIVE_THEME_ID}
-      className={`${cormorant.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
       <body
         className="flex min-h-dvh flex-col overflow-x-clip bg-site-bg font-sans text-site-fg"

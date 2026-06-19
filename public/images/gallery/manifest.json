@@ -1,0 +1,20 @@
+{
+  "order": ["parkinglot.png", "homedriveway.png", "crackfilling.png"],
+  "meta": {
+    "parkinglot.png": {
+      "title": "Commercial parking lot",
+      "description": "Fresh striping and surface maintenance for a retail plaza.",
+      "medium": "Parking lot"
+    },
+    "homedriveway.png": {
+      "title": "Residential driveway",
+      "description": "Sealcoating and edge work for a home driveway.",
+      "medium": "Driveway"
+    },
+    "crackfilling.png": {
+      "title": "Crack filling",
+      "description": "Hot rubberized crack seal before sealcoating.",
+      "medium": "Crack repair"
+    }
+  }
+}

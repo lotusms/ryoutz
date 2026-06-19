@@ -27,7 +27,7 @@ export default function HeaderAuth({ onNavigate }) {
       <Link
         href="/login"
         onClick={onNavigate}
-        className="rounded-full border border-white/12 bg-white/[0.06] px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-stone-200 transition hover:border-amber-400/40 hover:bg-white/[0.1] hover:text-amber-100 sm:px-4"
+        className="rounded-full border border-white/12 bg-white/[0.06] px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-amber-200 transition hover:border-blue-400/40 hover:bg-white/[0.1] hover:text-blue-100 sm:px-4"
       >
         Sign in
       </Link>
@@ -47,7 +47,7 @@ export default function HeaderAuth({ onNavigate }) {
       <Link
         href="/dashboard"
         onClick={onNavigate}
-        className="rounded-full border border-amber-400/35 bg-amber-400/10 px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-amber-100 transition hover:border-amber-300/50 hover:bg-amber-400/15 sm:px-4"
+        className="rounded-full border border-blue-400/35 bg-blue-400/10 px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-blue-100 transition hover:border-blue-300/50 hover:bg-blue-400/15 sm:px-4"
       >
         Portal
       </Link>
@@ -58,7 +58,7 @@ export default function HeaderAuth({ onNavigate }) {
     <Link
       href="/account"
       onClick={onNavigate}
-      className="rounded-full border border-white/12 bg-white/[0.06] px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-stone-200 transition hover:border-amber-400/40 hover:bg-white/[0.1] hover:text-amber-100 sm:px-4"
+      className="rounded-full border border-white/12 bg-white/[0.06] px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-amber-200 transition hover:border-blue-400/40 hover:bg-white/[0.1] hover:text-blue-100 sm:px-4"
     >
       My Account
     </Link>

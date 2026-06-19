@@ -4,41 +4,42 @@ import { orgLegalName, orgName, sitePageTitle } from "@/config";
 
 export const metadata = {
   title: sitePageTitle("About"),
-  description: `Meet ${orgLegalName} — wedding and portrait photographer focused on real moments, soft light, and heirloom images for couples who want to feel present on their day.`,
+  description: `Meet ${orgLegalName} — Maryland asphalt maintenance for driveways, parking lots, and private roads. Sealcoating, crack repair, patching, and striping done cleanly and on schedule.`,
 };
 
 const principles = [
   {
-    title: "Patience over Posing",
+    title: "Prep Before Product",
     body:
-      "The best photographs often live in the seconds between plans, a hand on a shoulder, laughter you did not rehearse. I give you room to breathe so those moments have somewhere to land.",
+      "Clean surfaces, routed cracks, and solid adhesion matter as much as the sealcoat or patch itself. We do not skip the unglamorous steps that keep repairs from peeling off next season.",
   },
   {
-    title: "Light that Flatters, Never Flat",
+    title: "Straight Answers",
     body:
-      "Whether it is sun through a window or candles at the end of the night, I work with what the day gives us so your skin, your dress, and the mood of the room all read true in the frame.",
+      "We tell you what needs work now and what can wait. No pressure to replace pavement that still has life left — just a clear plan and a fair estimate you can compare.",
   },
   {
-    title: "Images You Will Still Open",
+    title: "Built for Traffic & Weather",
     body:
-      "Years from now, you should not have to squint and remember what it felt like. The picture should carry some of the weight for you. That is the standard every gallery on this site is held to.",
+      "Maryland freeze-thaw cycles, sun, oil, and daily wear are part of the job. Every mix, repair, and application is chosen so your surface holds up through the seasons ahead.",
   },
 ];
 
 export default function AboutPage() {
   return (
     <PageLayout
-      eyebrow="Hello"
+      eyebrow="About us"
       title={`About ${orgName}`}
-      subtitle={`I photograph weddings, elopements, and the people you love, the unscripted parts as much as the ones you have been imagining since you said yes. This page is a little about who I am when I am not hiding behind a camera, and how I show up for you on the day itself.`}
+      subtitle={`Family-owned asphalt maintenance serving Maryland and the surrounding region — driveways, parking lots, and private roads. Here is who we are, how we approach the work, and what you can expect from the first walkthrough to the final stripe.`}
       width="full"
     >
       <div className="mx-auto max-w-7xl px-6 pb-16 sm:px-10 lg:px-12">
         <AboutStudioCards orgName={orgName} principles={principles} />
 
-        <p className="mx-auto mt-20 max-w-2xl border-l-2 border-amber-400/25 pl-6 text-sm leading-8 text-stone-300/90 sm:mt-24">
-          Based in the same care you see in the gallery: show up early, stay kind, and leave you
-          with photographs that feel like proof, not performance, of how the day really was.
+        <p className="mx-auto mt-20 max-w-2xl border-l-2 border-blue-400/25 pl-6 text-sm leading-8 text-amber-300/90 sm:mt-24">
+          Same standard you see in our gallery: show up on time, protect what is
+          around the work zone, and leave pavement that looks right and holds up
+          season after season.
         </p>
       </div>
     </PageLayout>

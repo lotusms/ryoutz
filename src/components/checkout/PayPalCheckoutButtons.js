@@ -145,7 +145,7 @@ export default function PayPalCheckoutButtons({
   return (
     <div className="mt-6 space-y-2">
       <div>
-        <p className="mb-3 text-xs font-medium uppercase tracking-[0.28em] text-amber-300/90">
+        <p className="mb-3 text-xs font-medium uppercase tracking-[0.28em] text-blue-300/90">
           Pay with PayPal
         </p>
         <div className="flex flex-col gap-3">
@@ -173,15 +173,15 @@ export default function PayPalCheckoutButtons({
       </div>
 
       <div className="flex items-center gap-3">
-        <div className="h-px flex-1 bg-amber-300/25" />
-        <p className="text-center text-xs font-medium uppercase tracking-[0.28em] text-amber-300/90">
+        <div className="h-px flex-1 bg-blue-300/25" />
+        <p className="text-center text-xs font-medium uppercase tracking-[0.28em] text-blue-300/90">
           OR
         </p>
-        <div className="h-px flex-1 bg-amber-300/25" />
+        <div className="h-px flex-1 bg-blue-300/25" />
       </div>
 
       <div className="pt-2">
-        <p className="mb-4 text-xs font-medium uppercase tracking-[0.28em] text-amber-300/90">
+        <p className="mb-4 text-xs font-medium uppercase tracking-[0.28em] text-blue-300/90">
           Pay with card
         </p>
         <p className="mb-4 text-xs leading-relaxed text-slate-400">
@@ -199,7 +199,7 @@ export default function PayPalCheckoutButtons({
           }}
           style={CARD_FIELDS_STYLE}
         >
-          <div className="rounded-2xl border border-amber-400/20 bg-[#0b0e14]/80 p-4 sm:p-5 ring-1 ring-white/5">
+          <div className="rounded-2xl border border-blue-400/20 bg-[#0b0e14]/80 p-4 sm:p-5 ring-1 ring-white/5">
             <PayPalCardFieldsForm className="flex flex-col" />
             <PayPalCardFieldsSubmit disabled={disabled} onError={onError} />
           </div>

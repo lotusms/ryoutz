@@ -342,8 +342,8 @@ export default function CheckoutPage() {
   const inputClass = useMemo(
     () =>
       checkoutLightSurface
-        ? "mt-1.5 w-full rounded-xl border border-stone-300/70 bg-white/95 px-4 py-3 text-sm text-stone-900 placeholder:text-slate-500 focus:border-amber-500/45 focus:outline-none focus:ring-1 focus:ring-amber-400/30"
-        : "mt-1.5 w-full rounded-xl border border-stone-600/60 bg-stone-950/60 px-4 py-3 text-sm text-stone-100 placeholder:text-stone-600 focus:border-amber-400/40 focus:outline-none focus:ring-1 focus:ring-amber-400/25",
+        ? "mt-1.5 w-full rounded-xl border border-amber-300/70 bg-white/95 px-4 py-3 text-sm text-amber-900 placeholder:text-slate-500 focus:border-blue-500/45 focus:outline-none focus:ring-1 focus:ring-blue-400/30"
+        : "mt-1.5 w-full rounded-xl border border-amber-600/60 bg-amber-950/60 px-4 py-3 text-sm text-amber-100 placeholder:text-amber-600 focus:border-blue-400/40 focus:outline-none focus:ring-1 focus:ring-blue-400/25",
     [checkoutLightSurface],
   );
 
@@ -967,7 +967,7 @@ export default function CheckoutPage() {
                     </span>
                   </span>
                   <span
-                    className={`shrink-0 tabular-nums ${checkoutLightSurface ? "text-stone-900" : "text-site-fg"}`}
+                    className={`shrink-0 tabular-nums ${checkoutLightSurface ? "text-amber-900" : "text-site-fg"}`}
                   >
                     {formatUsd(l.priceUsd * l.quantity)}
                   </span>
@@ -982,7 +982,7 @@ export default function CheckoutPage() {
                   Subtotal
                 </dt>
                 <dd
-                  className={`tabular-nums ${checkoutLightSurface ? "text-stone-900" : "text-site-fg"}`}
+                  className={`tabular-nums ${checkoutLightSurface ? "text-amber-900" : "text-site-fg"}`}
                 >
                   {formatUsd(subtotalUsd)}
                 </dd>
@@ -992,7 +992,7 @@ export default function CheckoutPage() {
                   Shipping
                 </dt>
                 <dd
-                  className={`tabular-nums ${checkoutLightSurface ? "text-stone-900" : "text-site-fg"}`}
+                  className={`tabular-nums ${checkoutLightSurface ? "text-amber-900" : "text-site-fg"}`}
                 >
                   {shippingIncluded ? (
                     <span className={overlayChrome.cartShippingComplimentary(checkoutLightSurface)}>
@@ -1017,7 +1017,7 @@ export default function CheckoutPage() {
                 </p>
               )}
               <div
-                className={`flex justify-between pt-4 text-lg font-semibold ${overlayChrome.checkoutSummaryTotalBorder(checkoutLightSurface)} ${checkoutLightSurface ? "text-stone-900" : "text-site-fg"}`}
+                className={`flex justify-between pt-4 text-lg font-semibold ${overlayChrome.checkoutSummaryTotalBorder(checkoutLightSurface)} ${checkoutLightSurface ? "text-amber-900" : "text-site-fg"}`}
               >
                 <dt>Total</dt>
                 <dd className="tabular-nums text-site-primary">

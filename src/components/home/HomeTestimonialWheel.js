@@ -93,12 +93,12 @@ function Avatar({ testimonial, isActive }) {
   const [failed, setFailed] = useState(false);
   const showImage = mounted && Boolean(testimonial.image) && !failed;
 
-  const wellClass = "bg-stone-900/90 text-amber-100";
+  const wellClass = "bg-amber-900/90 text-blue-100";
 
   const ringActive =
-    "border-stone-900 shadow-lg shadow-stone-900/25 ring-2 ring-stone-900/20";
+    "border-amber-900 shadow-lg shadow-amber-900/25 ring-2 ring-amber-900/20";
 
-  const ringIdle = "border-stone-900/35 shadow-sm shadow-stone-900/10";
+  const ringIdle = "border-amber-900/35 shadow-sm shadow-amber-900/10";
 
   return (
     <div
@@ -185,16 +185,16 @@ export default function HomeTestimonialWheel({ testimonials = TESTIMONIALS }) {
   }
 
   const eyebrow =
-    "text-xs uppercase tracking-[0.32em] text-stone-800/90";
+    "text-xs uppercase tracking-[0.32em] text-amber-800/90";
 
   const heading =
-    "font-serif text-3xl font-medium tracking-[-0.02em] text-stone-950 sm:text-4xl";
+    "font-serif text-3xl font-medium tracking-[-0.02em] text-amber-950 sm:text-4xl";
 
-  const role = "mt-1 text-sm text-stone-800/80";
+  const role = "mt-1 text-sm text-amber-800/80";
 
-  const quote = "mt-6 text-base leading-8 text-stone-900";
+  const quote = "mt-6 text-base leading-8 text-amber-900";
 
-  const quoteMark = "text-stone-700/70";
+  const quoteMark = "text-amber-700/70";
 
   return (
     <section
@@ -228,7 +228,7 @@ export default function HomeTestimonialWheel({ testimonials = TESTIMONIALS }) {
                   onClick={() => jumpTo(i)}
                   aria-label={`Show testimonial from ${t.name}`}
                   aria-pressed={isActive}
-                  className="group absolute left-1/2 top-1/2 rounded-[28%] focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-900/50 focus-visible:ring-offset-2 focus-visible:ring-offset-amber-100/80"
+                  className="group absolute left-1/2 top-1/2 rounded-[28%] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-900/50 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-100/80"
                   style={{
                     width: "var(--avatar)",
                     height: "var(--avatar)",
@@ -292,8 +292,8 @@ export default function HomeTestimonialWheel({ testimonials = TESTIMONIALS }) {
                     onClick={() => jumpTo(i)}
                     className={`h-1.5 rounded-full transition-all duration-500 ${
                       isActive
-                        ? "w-8 bg-stone-900"
-                        : "w-3 bg-stone-900/30 hover:bg-stone-900/50"
+                        ? "w-8 bg-amber-900"
+                        : "w-3 bg-amber-900/30 hover:bg-amber-900/50"
                     }`}
                   />
                 );
@@ -305,7 +305,7 @@ export default function HomeTestimonialWheel({ testimonials = TESTIMONIALS }) {
                 type="button"
                 onClick={prev}
                 aria-label="Previous testimonial"
-                className="group inline-flex items-center gap-3 py-1 text-[11px] font-medium uppercase tracking-[0.32em] text-stone-900/70 transition-colors duration-300 hover:text-stone-950 focus:outline-none focus-visible:text-stone-950"
+                className="group inline-flex items-center gap-3 py-1 text-[11px] font-medium uppercase tracking-[0.32em] text-amber-900/70 transition-colors duration-300 hover:text-amber-950 focus:outline-none focus-visible:text-amber-950"
               >
                 <svg
                   viewBox="0 0 40 12"
@@ -325,7 +325,7 @@ export default function HomeTestimonialWheel({ testimonials = TESTIMONIALS }) {
                 type="button"
                 onClick={next}
                 aria-label="Next testimonial"
-                className="group inline-flex items-center gap-3 py-1 text-[11px] font-medium uppercase tracking-[0.32em] text-stone-900/70 transition-colors duration-300 hover:text-stone-950 focus:outline-none focus-visible:text-stone-950"
+                className="group inline-flex items-center gap-3 py-1 text-[11px] font-medium uppercase tracking-[0.32em] text-amber-900/70 transition-colors duration-300 hover:text-amber-950 focus:outline-none focus-visible:text-amber-950"
               >
                 <svg
                   viewBox="0 0 40 12"

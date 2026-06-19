@@ -27,7 +27,7 @@ export async function generateMetadata({ params }) {
     title: sitePageTitle(`${product.title} | Gallery`),
     description:
       desc.slice(0, 160) ||
-      `${product.title} — a wedding photograph by ${orgLegalName}.`,
+      `${product.title} — asphalt project gallery, ${orgLegalName}.`,
   };
 }
 
@@ -51,7 +51,7 @@ export default async function GalleryPiecePage({ params }) {
   return (
     <main className="relative z-10 w-full">
       <article className="relative mx-auto w-full max-w-6xl px-6 pb-24 pt-28 sm:px-10 sm:pt-32 lg:px-12">
-        {/* Hero image — full bleed within the reading column, watermark + download discouragement */}
+        {/* Hero image — full bleed within the reading column */}
         {product.image ? (
           <GalleryPieceHeroImage
             src={product.image}
@@ -61,7 +61,7 @@ export default async function GalleryPiecePage({ params }) {
         ) : (
           <figure className="relative">
             <div
-              className="relative flex aspect-3/4 w-full items-center justify-center overflow-hidden bg-stone-950/60 text-sm uppercase tracking-[0.28em] text-stone-500"
+              className="relative flex aspect-3/4 w-full items-center justify-center overflow-hidden bg-amber-950/60 text-sm uppercase tracking-[0.28em] text-amber-500"
             >
               No preview image
             </div>
@@ -70,19 +70,19 @@ export default async function GalleryPiecePage({ params }) {
 
         {/* Editorial intro: piece title + a quiet site/index breadcrumb */}
         <header className="mt-12 max-w-2xl sm:mt-14">
-          <p className="text-[11px] font-medium uppercase tracking-[0.34em] text-amber-300/85">
+          <p className="text-[11px] font-medium uppercase tracking-[0.34em] text-blue-300/85">
             <Link
               href="/gallery"
-              className="transition-colors hover:text-amber-100"
+              className="transition-colors hover:text-blue-100"
             >
               The Gallery
             </Link>
-            <span className="mx-2 text-stone-600" aria-hidden="true">
+            <span className="mx-2 text-amber-600" aria-hidden="true">
               /
             </span>
-            <span className="text-stone-400">{prev || next ? "A Story" : "Featured"}</span>
+            <span className="text-amber-400">{prev || next ? "A Story" : "Featured"}</span>
           </p>
-          <h1 className="font-serif mt-5 text-4xl font-medium leading-[1.05] tracking-[-0.025em] text-stone-100 sm:text-5xl lg:text-6xl">
+          <h1 className="font-serif mt-5 text-4xl font-medium leading-[1.05] tracking-[-0.025em] text-amber-100 sm:text-5xl lg:text-6xl">
             {product.title}
           </h1>
         </header>

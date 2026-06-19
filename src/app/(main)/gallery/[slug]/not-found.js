@@ -11,7 +11,7 @@ export default function NotFound() {
     >
       <Link
         href="/gallery"
-        className="inline-flex w-fit rounded-full border-2 border-slate-500/50 bg-slate-900/55 px-8 py-3.5 text-sm font-semibold text-stone-100 transition hover:border-amber-400/45"
+        className="inline-flex w-fit rounded-full border-2 border-slate-500/50 bg-slate-900/55 px-8 py-3.5 text-sm font-semibold text-amber-100 transition hover:border-blue-400/45"
       >
         Back to gallery
       </Link>

@@ -22,7 +22,7 @@ export default function TermsOfUsePage() {
         </p>
 
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">Age</h2>
+          <h2 className="font-serif text-2xl text-amber-100">Age</h2>
           <p className="mt-3">
             You must be at least 18 years of age to use this website for
             business operations. Visitors under 18 years of age may use this
@@ -31,7 +31,7 @@ export default function TermsOfUsePage() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">
+          <h2 className="font-serif text-2xl text-amber-100">
             License to Use This Website
           </h2>
           <p className="mt-3">
@@ -49,7 +49,7 @@ export default function TermsOfUsePage() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">Acceptable Use</h2>
+          <h2 className="font-serif text-2xl text-amber-100">Acceptable Use</h2>
           <p className="mt-3">
             You must not use this website in any way that causes, or may cause,
             damage to the website or impairment of the availability or
@@ -59,7 +59,7 @@ export default function TermsOfUsePage() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">No Warranties</h2>
+          <h2 className="font-serif text-2xl text-amber-100">No Warranties</h2>
           <p className="mt-3">
             This website is provided &quot;as is&quot; without any representations
             or warranties, express or implied.
@@ -67,7 +67,7 @@ export default function TermsOfUsePage() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">
+          <h2 className="font-serif text-2xl text-amber-100">
             Limitations Of Liabilities
           </h2>
           <p className="mt-3">
@@ -78,7 +78,7 @@ export default function TermsOfUsePage() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">
+          <h2 className="font-serif text-2xl text-amber-100">
             Law &amp; Jurisdiction
           </h2>
           <p className="mt-3">
@@ -89,7 +89,7 @@ export default function TermsOfUsePage() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-stone-100">Contacting Us</h2>
+          <h2 className="font-serif text-2xl text-amber-100">Contacting Us</h2>
           <p className="mt-3">
             If there are any questions regarding this terms of use you may
             contact us using the information below.

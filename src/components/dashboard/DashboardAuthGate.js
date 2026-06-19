@@ -65,7 +65,7 @@ export default function DashboardAuthGate({ children }) {
           </p>
           <Link
             href="/"
-            className="text-sm font-medium text-amber-200/95 underline-offset-4 hover:underline"
+            className="text-sm font-medium text-blue-200/95 underline-offset-4 hover:underline"
           >
             Back to site
           </Link>

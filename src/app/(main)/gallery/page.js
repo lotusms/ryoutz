@@ -7,7 +7,7 @@ import { getFirestoreGalleryProducts } from "@/lib/gallery-firestore";
 
 export const metadata = {
   title: sitePageTitle("Gallery"),
-  description: `Wedding photography gallery by ${orgLegalName} — real brides, soft light, and heirloom images from weddings, elopements, and couples sessions. Browse love stories and portrait work by ${orgName}.`,
+  description: `Project gallery by ${orgLegalName} — driveways, parking lots, crack sealing, and resurfacing work across the service area.`,
 };
 
 export default async function GalleryPage() {
@@ -17,9 +17,9 @@ export default async function GalleryPage() {
   const initialProducts = await getFirestoreGalleryProducts();
   return (
     <PageLayout
-      eyebrow="Portfolio"
+      eyebrow="Projects"
       title="Gallery"
-      subtitle={`If you are dreaming in lace, candlelight, and the quiet second before you walk toward the person you chose — you are in the right place. This wedding photography gallery is filled with the celebrations, stolen glances, and the in-between moments that become our clients' favorites. Browse for inspiration, then tap any image to linger: every frame is a love story captured by ${orgLegalName}, with the patience and heart you want behind your own wedding photos.`}
+      subtitle={`Recent asphalt maintenance, sealcoating, and repair work by ${orgLegalName}. Browse driveways, parking lots, and crack-seal projects — tap any image for details.`}
       width="full"
     >
       <GalleryCatalogClient initialProducts={initialProducts} />

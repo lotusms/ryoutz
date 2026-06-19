@@ -52,7 +52,7 @@ export default function HomeHeroArtRotator({ products }) {
 
   return (
     <div
-      className="relative overflow-hidden rounded-3xl border-2 border-stone-600/40 bg-site-bg shadow-2xl shadow-stone-950/40 transition duration-500 hover:ring-amber-400/35 hover:shadow-stone-950/50"
+      className="relative overflow-hidden rounded-3xl border-2 border-amber-600/40 bg-site-bg shadow-2xl shadow-amber-950/40 transition duration-500 hover:ring-blue-400/35 hover:shadow-amber-950/50"
     >
       {/* Mat + inner aperture; fixed portrait; mockup PNG zoom fills aperture. */}
       <div className={ARTWORK_MAT_OUTER}>
@@ -85,7 +85,7 @@ export default function HomeHeroArtRotator({ products }) {
                     <ArtworkImageScrim variant="hero" />
                   </div>
                 ) : (
-                  <div className="flex h-full items-center justify-center text-sm text-stone-500">
+                  <div className="flex h-full items-center justify-center text-sm text-amber-500">
                     No preview image
                   </div>
                 )}
@@ -99,7 +99,7 @@ export default function HomeHeroArtRotator({ products }) {
         <p className="text-xs uppercase tracking-[0.32em] text-slate-400">
           Featured product
         </p>
-        <h2 className="font-serif mt-3 text-2xl font-medium tracking-[-0.02em] text-stone-100 sm:text-3xl"> {current.title} </h2>
+        <h2 className="font-serif mt-3 text-2xl font-medium tracking-[-0.02em] text-amber-100 sm:text-3xl"> {current.title} </h2>
         
         
         <div className=" flex items-end justify-between gap-6">

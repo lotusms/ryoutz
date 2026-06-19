@@ -7,14 +7,14 @@ import { useAuth } from "@/context/AuthContext";
 
 function GateEscapeBar() {
   return (
-    <div className="pointer-events-auto fixed left-0 right-0 top-0 z-[9999] flex justify-end gap-4 border-b border-white/[0.06] bg-stone-950/95 px-4 py-2 text-xs backdrop-blur-md">
+    <div className="pointer-events-auto fixed left-0 right-0 top-0 z-[9999] flex justify-end gap-4 border-b border-white/[0.06] bg-amber-950/95 px-4 py-2 text-xs backdrop-blur-md">
       <Link
         href="/"
-        className="font-medium text-amber-200/95 transition hover:text-amber-100"
+        className="font-medium text-blue-200/95 transition hover:text-blue-100"
       >
         Home
       </Link>
-      <Link href="/login" className="text-stone-500 transition hover:text-stone-300">
+      <Link href="/login" className="text-amber-500 transition hover:text-amber-300">
         Sign in
       </Link>
     </div>
@@ -50,14 +50,14 @@ export default function AccountAuthGate({ children }) {
     return (
       <>
         <GateEscapeBar />
-        <div className="flex min-h-dvh flex-col items-center justify-center gap-4 bg-stone-950 px-6 text-center text-stone-400">
+        <div className="flex min-h-dvh flex-col items-center justify-center gap-4 bg-amber-950 px-6 text-center text-amber-400">
           <p className="max-w-md text-sm leading-relaxed">
             Account features require Firebase configuration in{" "}
             <code className="rounded bg-white/10 px-1 py-0.5 text-xs">.env.local</code>.
           </p>
           <Link
             href="/"
-            className="text-sm font-medium text-amber-200/95 underline-offset-4 hover:underline"
+            className="text-sm font-medium text-blue-200/95 underline-offset-4 hover:underline"
           >
             Back to site
           </Link>
@@ -70,7 +70,7 @@ export default function AccountAuthGate({ children }) {
     return (
       <>
         <GateEscapeBar />
-        <div className="flex min-h-dvh items-center justify-center bg-stone-950 text-stone-400">
+        <div className="flex min-h-dvh items-center justify-center bg-amber-950 text-amber-400">
           <p className="text-sm tracking-wide">Loading…</p>
         </div>
       </>
@@ -81,7 +81,7 @@ export default function AccountAuthGate({ children }) {
     return (
       <>
         <GateEscapeBar />
-        <div className="flex min-h-dvh items-center justify-center bg-stone-950 text-stone-400">
+        <div className="flex min-h-dvh items-center justify-center bg-amber-950 text-amber-400">
           <p className="text-sm tracking-wide">Signing out…</p>
         </div>
       </>
@@ -92,7 +92,7 @@ export default function AccountAuthGate({ children }) {
     return (
       <>
         <GateEscapeBar />
-        <div className="flex min-h-dvh items-center justify-center bg-stone-950 text-stone-400">
+        <div className="flex min-h-dvh items-center justify-center bg-amber-950 text-amber-400">
           <p className="text-sm tracking-wide">Redirecting to sign in…</p>
         </div>
       </>
@@ -103,7 +103,7 @@ export default function AccountAuthGate({ children }) {
     return (
       <>
         <GateEscapeBar />
-        <div className="flex min-h-dvh items-center justify-center bg-stone-950 text-stone-400">
+        <div className="flex min-h-dvh items-center justify-center bg-amber-950 text-amber-400">
           <p className="text-sm tracking-wide">Loading your account…</p>
         </div>
       </>
@@ -114,7 +114,7 @@ export default function AccountAuthGate({ children }) {
     return (
       <>
         <GateEscapeBar />
-        <div className="flex min-h-dvh items-center justify-center bg-stone-950 text-stone-400">
+        <div className="flex min-h-dvh items-center justify-center bg-amber-950 text-amber-400">
           <p className="text-sm tracking-wide">Opening the portal…</p>
         </div>
       </>

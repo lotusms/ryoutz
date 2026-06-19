@@ -67,7 +67,7 @@ export default function LoginPage() {
         </p>
         <Link
           href="/"
-          className="text-sm font-medium text-amber-200/95 underline-offset-4 hover:underline"
+          className="text-sm font-medium text-blue-200/95 underline-offset-4 hover:underline"
         >
           Back to site
         </Link>
@@ -93,7 +93,7 @@ export default function LoginPage() {
         <p className="text-sm tracking-wide">
           Opening {isAdmin ? "the portal" : "your account"}…
         </p>
-        <p className="max-w-sm text-xs text-stone-500">
+        <p className="max-w-sm text-xs text-amber-500">
           Stuck here? Continue manually:
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4 text-sm">
@@ -107,8 +107,8 @@ export default function LoginPage() {
             href="/"
             className={
               light
-                ? "text-stone-600 transition hover:text-stone-900"
-                : "text-stone-500 transition hover:text-stone-300"
+                ? "text-amber-600 transition hover:text-amber-900"
+                : "text-amber-500 transition hover:text-amber-300"
             }
           >
             Back to site

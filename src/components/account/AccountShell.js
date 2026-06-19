@@ -52,7 +52,7 @@ export default function AccountShell({ children }) {
   }
 
   return (
-    <div className="relative flex min-h-dvh overflow-hidden bg-stone-950 text-stone-100">
+    <div className="relative flex min-h-dvh overflow-hidden bg-amber-950 text-amber-100">
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 z-0 opacity-[0.04] mix-blend-overlay"
@@ -62,7 +62,7 @@ export default function AccountShell({ children }) {
         <InnerPageBackdrop />
       </div>
 
-      <aside className="relative z-10 flex w-[4.25rem] shrink-0 flex-col border-r border-white/[0.06] bg-stone-950/85 px-2 py-6 backdrop-blur-md supports-[backdrop-filter]:bg-stone-950/75 lg:w-56 lg:px-4 lg:py-8">
+      <aside className="relative z-10 flex w-[4.25rem] shrink-0 flex-col border-r border-white/[0.06] bg-amber-950/85 px-2 py-6 backdrop-blur-md supports-[backdrop-filter]:bg-amber-950/75 lg:w-56 lg:px-4 lg:py-8">
         <p className="mb-4 hidden px-3 text-[0.65rem] font-medium uppercase tracking-[0.35em] text-slate-500 lg:mb-6 lg:block">
           Your account
         </p>
@@ -78,8 +78,8 @@ export default function AccountShell({ children }) {
                 aria-label={item.label}
                 className={`flex items-center justify-center gap-3 rounded-lg px-2 py-2.5 text-sm font-medium transition lg:justify-start lg:px-3 ${
                   active
-                    ? "bg-amber-400/12 text-amber-100 ring-1 ring-amber-400/25"
-                    : "text-stone-400 hover:bg-white/[0.04] hover:text-stone-100"
+                    ? "bg-blue-400/12 text-blue-100 ring-1 ring-blue-400/25"
+                    : "text-amber-400 hover:bg-white/[0.04] hover:text-amber-100"
                 }`}
               >
                 <Icon
@@ -94,7 +94,7 @@ export default function AccountShell({ children }) {
             href="/"
             title="Back to the site"
             aria-label="Back to the site"
-            className="mt-4 flex items-center justify-center gap-3 rounded-lg px-2 py-2.5 text-sm font-medium text-stone-500 transition hover:bg-white/[0.04] hover:text-stone-200 lg:justify-start lg:px-3"
+            className="mt-4 flex items-center justify-center gap-3 rounded-lg px-2 py-2.5 text-sm font-medium text-amber-500 transition hover:bg-white/[0.04] hover:text-amber-200 lg:justify-start lg:px-3"
           >
             <RiHome4Line className="size-[1.35rem] shrink-0" aria-hidden />
             <span className="hidden lg:inline">Shop site</span>
@@ -103,31 +103,31 @@ export default function AccountShell({ children }) {
       </aside>
 
       <div className="relative z-10 flex min-w-0 flex-1 flex-col">
-        <header className="flex h-16 shrink-0 items-center justify-between border-b border-white/[0.06] bg-stone-950/80 px-6 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.35)] backdrop-blur-xl backdrop-saturate-150 supports-[backdrop-filter]:bg-stone-950/70 sm:px-8">
+        <header className="flex h-16 shrink-0 items-center justify-between border-b border-white/[0.06] bg-amber-950/80 px-6 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.35)] backdrop-blur-xl backdrop-saturate-150 supports-[backdrop-filter]:bg-amber-950/70 sm:px-8">
           <Link
             href="/"
-            className="font-serif text-lg font-medium tracking-[-0.03em] text-stone-100 transition hover:text-amber-100"
+            className="font-serif text-lg font-medium tracking-[-0.03em] text-amber-100 transition hover:text-blue-100"
           >
             {orgName}
           </Link>
           <div className="flex items-center gap-4">
-            <span className="hidden max-w-[min(100%,18rem)] truncate text-sm text-stone-400 sm:inline">
+            <span className="hidden max-w-[min(100%,18rem)] truncate text-sm text-amber-400 sm:inline">
               Welcome{" "}
-              <span className="font-medium text-stone-200">
+              <span className="font-medium text-amber-200">
                 {welcomeName || "…"}
               </span>
             </span>
             <button
               type="button"
               onClick={() => signOut()}
-              className="rounded-full bg-linear-to-br from-amber-100 via-stone-100 to-slate-300 px-4 py-2 text-sm font-semibold text-slate-900 shadow-lg shadow-slate-900/35 ring-2 ring-white/30 transition hover:scale-[1.02] hover:shadow-xl"
+              className="rounded-full bg-linear-to-br from-blue-100 via-amber-100 to-slate-300 px-4 py-2 text-sm font-semibold text-slate-900 shadow-lg shadow-slate-900/35 ring-2 ring-white/30 transition hover:scale-[1.02] hover:shadow-xl"
             >
               Sign out
             </button>
           </div>
         </header>
 
-        <main className="relative min-h-0 flex-1 overflow-auto bg-stone-950/40 p-6 sm:p-8">
+        <main className="relative min-h-0 flex-1 overflow-auto bg-amber-950/40 p-6 sm:p-8">
           {children}
         </main>
       </div>

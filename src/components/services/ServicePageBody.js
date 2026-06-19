@@ -36,14 +36,14 @@ export default function ServicePageBody({
   const themeId = useDocumentThemeId();
   const light = isLightThemeId(themeId);
 
-  const body = light ? "text-stone-800/95" : "text-stone-200/90";
-  const leadTone = light ? "text-stone-700" : "text-stone-300/90";
-  const heading = light ? "text-stone-900" : "text-stone-100";
-  const muted = light ? "text-stone-600" : "text-stone-500";
-  const label = light ? "text-amber-900/90" : "text-amber-300/90";
-  const divider = light ? "border-stone-300/60" : "border-white/10";
-  const accentBar = light ? "border-amber-600/40" : "border-amber-400/35";
-  const stepNumber = light ? "text-amber-700/80" : "text-amber-300/70";
+  const body = light ? "text-amber-800/95" : "text-amber-200/90";
+  const leadTone = light ? "text-amber-700" : "text-amber-300/90";
+  const heading = light ? "text-amber-900" : "text-amber-100";
+  const muted = light ? "text-amber-600" : "text-amber-500";
+  const label = light ? "text-blue-900/90" : "text-blue-300/90";
+  const divider = light ? "border-amber-300/60" : "border-white/10";
+  const accentBar = light ? "border-blue-600/40" : "border-blue-400/35";
+  const stepNumber = light ? "text-blue-700/80" : "text-blue-300/70";
 
   return (
     <div className="space-y-16 sm:space-y-20 lg:space-y-24">
@@ -73,7 +73,7 @@ export default function ServicePageBody({
               <span
                 aria-hidden
                 className={`mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full ${
-                  light ? "bg-amber-600/70" : "bg-amber-400/70"
+                  light ? "bg-blue-600/70" : "bg-blue-400/70"
                 }`}
               />
               <span className={`text-sm leading-7 ${body}`}>{item}</span>

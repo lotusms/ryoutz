@@ -31,7 +31,7 @@ function Toggle({ checked, disabled, onChange, label }) {
     <label className="flex cursor-pointer items-center gap-2 text-sm">
       <input
         type="checkbox"
-        className="size-4 rounded border-slate-500 accent-amber-400 disabled:opacity-40"
+        className="size-4 rounded border-slate-500 accent-blue-400 disabled:opacity-40"
         checked={checked}
         disabled={disabled}
         onChange={(e) => onChange(e.target.checked)}
@@ -130,14 +130,14 @@ export default function DashboardProductsPage() {
   const settingFor = (slug) => settingsBySlug.get(slug) || {};
 
   const tableWrap = light
-    ? "overflow-x-auto rounded-2xl border border-stone-300/60 bg-white/90 shadow-sm"
+    ? "overflow-x-auto rounded-2xl border border-amber-300/60 bg-white/90 shadow-sm"
     : "overflow-x-auto rounded-2xl border border-slate-700/50 bg-slate-900/40 shadow-lg shadow-slate-950/30";
 
   const th = light
-    ? "px-3 py-3 text-left text-xs font-semibold uppercase tracking-[0.2em] text-stone-600"
+    ? "px-3 py-3 text-left text-xs font-semibold uppercase tracking-[0.2em] text-amber-600"
     : "px-3 py-3 text-left text-xs font-semibold uppercase tracking-[0.2em] text-slate-400";
 
-  const td = light ? "px-3 py-3 align-middle text-sm text-stone-800" : "px-3 py-3 align-middle text-sm text-stone-200";
+  const td = light ? "px-3 py-3 align-middle text-sm text-amber-800" : "px-3 py-3 align-middle text-sm text-amber-200";
 
   return (
     <div className="mx-auto max-w-7xl">
@@ -146,7 +146,7 @@ export default function DashboardProductsPage() {
         Control visibility, which pieces appear in the home hero slider and home collection (only
         checked items show there), optional custom listing images, and gallery section filters
         (Mens, Womens, or Accessories). Pieces are loaded from{" "}
-        <code className="rounded bg-slate-800/80 px-1 py-0.5 text-xs text-stone-200">
+        <code className="rounded bg-slate-800/80 px-1 py-0.5 text-xs text-amber-200">
           public/images/gallery
         </code>
         ; per-piece toggles are stored in Firestore by slug.
@@ -160,19 +160,19 @@ export default function DashboardProductsPage() {
         <button
           type="button"
           onClick={() => void loadGalleryCatalog()}
-          className="rounded-full border border-slate-500/60 bg-slate-900/40 px-4 py-2 text-sm font-semibold text-stone-100 transition hover:border-amber-300/45"
+          className="rounded-full border border-slate-500/60 bg-slate-900/40 px-4 py-2 text-sm font-semibold text-amber-100 transition hover:border-blue-300/45"
         >
           Refresh gallery list
         </button>
       </div>
 
       {loading ? (
-        <p className={`mt-10 text-sm ${light ? "text-stone-600" : "text-slate-400"}`}>Loading…</p>
+        <p className={`mt-10 text-sm ${light ? "text-amber-600" : "text-slate-400"}`}>Loading…</p>
       ) : (
         <div className={`mt-8 ${tableWrap}`}>
           <table className="min-w-[64rem] w-full border-collapse text-left">
             <thead>
-              <tr className={light ? "border-b border-stone-200" : "border-b border-slate-700/60"}>
+              <tr className={light ? "border-b border-amber-200" : "border-b border-slate-700/60"}>
                 <th className={th}>Image</th>
                 <th className={th}>Product</th>
                 <th className={th}>Category</th>
@@ -201,7 +201,7 @@ export default function DashboardProductsPage() {
                 return (
                   <tr
                     key={slug || p.id}
-                    className={light ? "border-b border-stone-100" : "border-b border-slate-800/80"}
+                    className={light ? "border-b border-amber-100" : "border-b border-slate-800/80"}
                   >
                     <td className={td}>
                       <div className="relative h-14 w-14 overflow-hidden rounded-lg border border-slate-600/40 bg-slate-950/40">
@@ -218,11 +218,11 @@ export default function DashboardProductsPage() {
                     </td>
                     <td className={td}>
                       <p
-                        className={`font-medium ${light ? "text-stone-900" : "text-stone-100"}`}
+                        className={`font-medium ${light ? "text-amber-900" : "text-amber-100"}`}
                       >
                         {p.title}
                       </p>
-                      <p className={`text-xs ${light ? "text-stone-500" : "text-slate-500"}`}>
+                      <p className={`text-xs ${light ? "text-amber-500" : "text-slate-500"}`}>
                         Slug: {slug}
                       </p>
                     </td>

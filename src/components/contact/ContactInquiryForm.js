@@ -6,16 +6,14 @@ import Card from "@/components/ui/Card";
 import DateField from "@/components/ui/DateField";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import { orgInquiryEmail } from "@/config";
-import { useDocumentThemeId } from "@/hooks/useDocumentThemeId";
 import { digitsFromTelInput, formatUsPhoneMask } from "@/lib/checkout-auth";
 import * as overlayChrome from "@/lib/overlayChrome";
-import { isLightThemeId } from "@/theme";
 
 const EMPTY_FORM = {
   name: "",
   email: "",
   phone: "",
-  weddingDate: "",
+  preferredDate: "",
   comments: "",
   website: "",
 };
@@ -47,13 +45,9 @@ function todayIsoDate() {
 }
 
 export default function ContactInquiryForm() {
-  const themeId = useDocumentThemeId();
-  const light = isLightThemeId(themeId);
-  const colorScheme = light ? "light" : "dark";
-
-  const labelClass = overlayChrome.checkoutLabelUppercase(light);
-  const inputClass = overlayChrome.checkoutInputBase(light);
-  const errorClass = overlayChrome.checkoutInlineError(light);
+  const labelClass = overlayChrome.checkoutLabelUppercase(false);
+  const inputClass = overlayChrome.checkoutInputBase(false);
+  const errorClass = overlayChrome.checkoutInlineError(false);
 
   const [form, setForm] = useState(EMPTY_FORM);
   const [touched, setTouched] = useState({});
@@ -61,7 +55,7 @@ export default function ContactInquiryForm() {
   const [status, setStatus] = useState("idle");
   const [serverError, setServerError] = useState("");
 
-  const minWeddingDate = useMemo(() => todayIsoDate(), []);
+  const minPreferredDate = useMemo(() => todayIsoDate(), []);
 
   const errors = clientFieldErrors(form);
   const showError = (field) => Boolean(touched[field] && errors[field]);
@@ -87,7 +81,7 @@ export default function ContactInquiryForm() {
       name: true,
       email: true,
       phone: true,
-      weddingDate: true,
+      preferredDate: true,
       comments: true,
     });
 
@@ -131,24 +125,18 @@ export default function ContactInquiryForm() {
     }
   }
 
-  const successCopy = light ? "text-emerald-800" : "text-emerald-300/95";
+  const successCopy = "text-emerald-300/95";
 
   return (
-    <Card variant="inset" className="min-w-0 w-full" title="Send an inquiry" titleTag="h2">
-      <p
-        className={
-          light
-            ? "mt-2 text-sm leading-7 text-stone-600"
-            : "mt-2 text-sm leading-7 text-stone-400"
-        }
-      >
-        Share a few details and I will reply to you at the email you provide — usually within
-        one to two business days.
+    <Card variant="inset" className="min-w-0 w-full" title="Request an estimate" titleTag="h2">
+      <p className="mt-2 text-sm leading-7 text-neutral-200/90">
+        Share your property details and we will reply at the email you provide — usually within
+        one business day.
       </p>
 
       {status === "success" ? (
         <p className={`mt-6 rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-4 py-3 text-sm ${successCopy}`} role="status">
-          Thank you — your message is on its way. I will be in touch soon.
+          Thank you — your request is on its way. We will be in touch soon.
         </p>
       ) : null}
 
@@ -236,15 +224,15 @@ export default function ContactInquiryForm() {
           </div>
 
           <DateField
-            id="contact-wedding-date"
-            label="Wedding date"
-            name="weddingDate"
-            value={form.weddingDate}
-            onChange={(e) => update("weddingDate", e.target.value)}
-            min={minWeddingDate}
+            id="contact-preferred-date"
+            label="Preferred start date"
+            name="preferredDate"
+            value={form.preferredDate}
+            onChange={(e) => update("preferredDate", e.target.value)}
+            min={minPreferredDate}
             labelClassName={labelClass}
             inputClassName={inputClass}
-            colorScheme={colorScheme}
+            colorScheme="dark"
           />
         </div>
 
@@ -258,7 +246,7 @@ export default function ContactInquiryForm() {
               value={form.comments}
               onChange={(e) => update("comments", e.target.value)}
               className={`${inputClass} resize-y min-h-[6.5rem]`}
-              placeholder="Tell me about your celebration, location, or anything else that would help."
+              placeholder="Property address, surface type, problem areas, or anything else that would help us quote the job."
             />
           </label>
         </div>
@@ -271,13 +259,13 @@ export default function ContactInquiryForm() {
 
         <div className="flex flex-wrap items-center gap-4 pt-1">
           <PrimaryButton type="submit" disabled={submitting} className="px-6 py-2.5">
-            {submitting ? "Sending…" : "Send message"}
+            {submitting ? "Sending…" : "Send request"}
           </PrimaryButton>
-          <p className={light ? "text-xs text-stone-500" : "text-xs text-stone-500"}>
+          <p className="text-xs text-neutral-200/90">
             Or email{" "}
             <a
               href={`mailto:${orgInquiryEmail}`}
-              className="underline decoration-stone-500/40 underline-offset-2 transition hover:text-amber-300/90"
+              className="underline decoration-amber-500/40 underline-offset-2 transition hover:text-blue-300/90"
             >
               {orgInquiryEmail}
             </a>{" "}

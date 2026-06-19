@@ -2,44 +2,23 @@
  * Active visual theme — edit `CHOSEN_THEME` below (no UI toggle).
  * `./themes.css` — ids must match `THEME_IDS`.
  *
- * Dark: default | midnight | ember | noir-rose | velvet
- * Light: dawn | porcelain | linen
- * Light feminine: blush | petal | ballet
+ * Dark palettes only: default | midnight | ember | noir-rose | velvet
  */
 
 export const THEME_IDS = /** @type {const} */ ([
-  /* Dark */
   "default",
   "midnight",
   "ember",
   "noir-rose",
   "velvet",
-  /* Light */
-  "dawn",
-  "porcelain",
-  "linen",
-  /* Light feminine */
-  "blush",
-  "petal",
-  "ballet",
 ]);
 
-/**
- * Light page themes — used by `isLightThemeId()` for component styling.
- * Keep in sync with `themes.css` “Light themes — global text” utility remaps.
- */
-export const LIGHT_THEME_IDS = /** @type {const} */ ([
-  "dawn",
-  "porcelain",
-  "linen",
-  "blush",
-  "petal",
-  "ballet",
-]);
+/** Site is dark-only — kept for call-site compatibility. */
+export const LIGHT_THEME_IDS = /** @type {const} */ ([]);
 
-/** @param {string} [id] */
-export function isLightThemeId(id) {
-  return typeof id === "string" && LIGHT_THEME_IDS.includes(id);
+/** @param {string} [_id] */
+export function isLightThemeId(_id) {
+  return false;
 }
 
 /** @type {(typeof THEME_IDS)[number]} */

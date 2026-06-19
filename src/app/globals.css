@@ -1,20 +1,22 @@
+@import url("https://use.typekit.net/tbw7ovt.css");
 @import "tailwindcss";
 
 @theme inline {
   --font-sans: var(--font-geist-sans);
-  --font-serif: var(--font-display), ui-serif, Georgia, "Times New Roman", serif;
+  /* Do not use --font-display (reserved / conflicts with @font-face font-display). */
+  --font-serif: "industry", industry, ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
 
   /*
    * Semantic site colors — alias Tailwind’s default palette so you get
    * hover:/focus:/opacity modifiers (e.g. bg-site-primary, hover:text-site-primary/90).
    */
-  /* Gold = accents only; canvas = warm charcoal (stone), not cool navy (slate). */
-  --color-site-primary: var(--color-amber-400);
-  --color-site-secondary: var(--color-stone-400);
-  --color-site-tertiary: var(--color-yellow-300);
-  --color-site-bg: var(--color-stone-950);
-  --color-site-fg: var(--color-stone-100);
+  /* Brand blue = accents; canvas = cool dark slate (not warm amber). */
+  --color-site-primary: var(--color-blue-600);
+  --color-site-secondary: var(--color-amber-400);
+  --color-site-tertiary: var(--color-blue-400);
+  --color-site-bg: var(--color-slate-950);
+  --color-site-fg: var(--color-slate-100);
 
   /* Optional: same tokens for inline style / email fallbacks (mirrors site-*). */
   --site-primary: var(--color-site-primary);
@@ -43,7 +45,7 @@ body {
  * paper (inherits into card content).
  */
 [data-card-surface="light"] {
-  --color-site-fg: var(--color-stone-900);
+  --color-site-fg: var(--color-amber-900);
   --site-fg: var(--color-site-fg);
 }
 
@@ -51,6 +53,10 @@ body {
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  .font-serif {
+    font-family: "industry", industry, ui-sans-serif, system-ui, sans-serif;
   }
 }
 
@@ -138,8 +144,8 @@ body {
     background-image: linear-gradient(
       118deg,
       var(--color-site-fg) 0%,
-      color-mix(in oklch, var(--color-site-primary) 50%, var(--color-stone-100)) 22%,
-      var(--color-stone-200) 42%,
+      color-mix(in oklch, var(--color-site-primary) 50%, var(--color-amber-100)) 22%,
+      var(--color-amber-200) 42%,
       var(--color-white) 58%,
       color-mix(in oklch, var(--color-site-tertiary) 55%, white) 82%,
       color-mix(in oklch, var(--color-site-primary) 60%, white) 100%
@@ -161,9 +167,9 @@ body {
   .text-gradient-hero-subtle {
     background-image: linear-gradient(
       105deg,
-      var(--color-stone-300) 0%,
-      var(--color-stone-200) 40%,
-      color-mix(in oklch, var(--color-site-tertiary) 35%, var(--color-amber-50)) 100%
+      var(--color-amber-300) 0%,
+      var(--color-amber-200) 40%,
+      color-mix(in oklch, var(--color-site-tertiary) 35%, var(--color-blue-50)) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -216,7 +222,7 @@ body {
     );
   }
 
-  /* Gallery watermark wells — block casual drag / long-press save where supported */
+  /* Gallery image wells — block casual drag / long-press save where supported */
   .gallery-image-protected {
     -webkit-touch-callout: none;
   }

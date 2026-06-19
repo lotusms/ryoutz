@@ -17,9 +17,9 @@ const IMAGE_EXT = new Set([
 ]);
 
 const GALLERY_DIR = path.join(process.cwd(), "public", "images", "gallery");
+const STOCK_GALLERY_DIR = path.join(GALLERY_DIR, "stock");
 
-export function getRawGalleryPiecesSync() {
-  const dir = GALLERY_DIR;
+function readGalleryDirectory(dir) {
   if (!fs.existsSync(dir)) return [];
 
   const publicRoot = path.join(process.cwd(), "public");
@@ -91,7 +91,7 @@ export function getRawGalleryPiecesSync() {
         fileMeta.title || displayTitleFromImageFilename(filename),
       ).trim() || uniqueSlug;
     const description = String(fileMeta.description || "").trim();
-    const medium = String(fileMeta.medium || "Photography").trim();
+    const medium = String(fileMeta.medium || "Asphalt project").trim();
     const dimensions = String(fileMeta.dimensions || "").trim();
 
     const iw = Number(fileMeta.imageWidth);
@@ -114,6 +114,16 @@ export function getRawGalleryPiecesSync() {
   }
 
   return pieces;
+}
+
+/** Your own project photos in `public/images/gallery` (top-level files only). */
+export function getRawGalleryPiecesSync() {
+  return readGalleryDirectory(GALLERY_DIR);
+}
+
+/** Bundled placeholder photos in `public/images/gallery/stock` (always shipped with the site). */
+export function getRawBundledStockPiecesSync() {
+  return readGalleryDirectory(STOCK_GALLERY_DIR);
 }
 
 /** Gallery list + detail: merges Firestore merchandising (visibility, featured, categories). */

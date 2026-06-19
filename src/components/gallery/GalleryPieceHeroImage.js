@@ -5,7 +5,7 @@ import Image from "next/image";
 import GalleryImageWell from "@/components/gallery/GalleryImageWell";
 
 /**
- * Full-width gallery piece hero with watermark and download discouragement.
+ * Full-width gallery piece hero image.
  *
  * @param {{
  *   src: string;
@@ -16,9 +16,9 @@ import GalleryImageWell from "@/components/gallery/GalleryImageWell";
 export default function GalleryPieceHeroImage({ src, alt, aspectRatio }) {
   return (
     <figure className="relative">
-      <GalleryImageWell watermarkSize="lg">
+      <GalleryImageWell>
         <div
-          className="relative w-full overflow-hidden bg-stone-950/60"
+          className="relative w-full overflow-hidden bg-amber-950/60"
           style={{ aspectRatio }}
         >
           <Image

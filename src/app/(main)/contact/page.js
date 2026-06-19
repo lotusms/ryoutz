@@ -6,23 +6,24 @@ import { orgLegalName, orgName, sitePageTitle } from "@/config";
 
 export const metadata = {
   title: sitePageTitle("Contact"),
-  description: `Inquire about wedding photography, elopements, engagement and portrait sessions with ${orgLegalName}. Heart-led photography for couples who want to feel present on their day.`,
+  description: `Request a free asphalt maintenance estimate from ${orgLegalName}. Sealcoating, crack repair, patching, and line striping for driveways, parking lots, and private roads in Maryland and the surrounding region.`,
 };
 
 const checklist = [
-  "Your wedding date, or your best estimate, and the city or region you are considering",
-  "The kind of celebration: full wedding day, elopement, engagement, or portrait session",
-  "A rough guest count and the venue name if you already have one in mind",
-  "A few words about how you want the day to feel, quiet and intimate, lively and full of family, somewhere in between",
-  "Any links, Pinterest boards, or photographs that have already moved you",
+  "Property address or nearest cross streets, plus city or county",
+  "Type of surface: residential driveway, parking lot, private road, or other",
+  "Approximate size if you know it — square footage, number of spaces, or lane length",
+  "What you need: sealcoating, crack filling, patching, striping, or a full walkthrough",
+  "Your preferred timing — urgent repair, this season, or flexible on schedule",
+  "Photos of problem areas or recent work nearby (optional, but helpful for a faster quote)",
 ];
 
 export default function ContactPage() {
   return (
     <PageLayout
-      eyebrow="Let’s talk"
-      title="Tell me about your day"
-      subtitle={`If you are planning a wedding, an elopement, an engagement shoot, or a portrait session and you want a photographer who shows up early, stays kind, and leaves you with images that feel like the day really felt, you are in the right place. ${orgName} books a small number of celebrations each year so every couple gets the same patience and presence behind the camera. Send a note below; every inquiry is read personally, and you will hear back within a couple of days.`}
+      eyebrow="Get in touch"
+      title="Request a free estimate"
+      subtitle={`Tell us about your driveway, parking lot, or private road and we will follow up with a clear scope and quote. ${orgName} serves Maryland and the surrounding region for sealcoating, crack repair, patching, and line striping — residential and commercial. Every inquiry is read personally; expect a reply within one business day.`}
       width="full"
     >
       <div className="mx-auto max-w-7xl px-6 pb-16 sm:px-10 lg:px-12">

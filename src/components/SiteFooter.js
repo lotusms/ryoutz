@@ -15,7 +15,7 @@ const footerLinks = [
 ];
 
 const linkClass =
-  "text-xs font-medium uppercase tracking-[0.28em] text-slate-500 transition hover:text-amber-200/90";
+  "text-xs font-medium uppercase tracking-[0.28em] text-slate-500 transition hover:text-blue-200/90";
 
 export default function SiteFooter() {
   return (
@@ -23,12 +23,13 @@ export default function SiteFooter() {
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-6 sm:px-10 lg:px-12">
         <Link
           href="/"
-          className="group shrink-0 text-stone-100 transition-colors duration-300 hover:text-amber-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400/60"
+          className="group shrink-0 text-amber-100 transition-colors duration-300 hover:text-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400/60"
           aria-label={`${orgName} — home`}
         >
           <RyoutzLogo
-            className="h-14 w-14 sm:h-16 sm:w-16"
+            className="h-14 w-auto max-w-[13rem] sm:h-16 sm:max-w-[15rem]"
             title={orgName}
+            neutralColor="#FFFFFF"
           />
         </Link>
 

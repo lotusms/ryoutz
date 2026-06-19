@@ -76,7 +76,7 @@ function ThankYouContent() {
           className={`mb-6 rounded-2xl border px-4 py-3 text-sm ${
             emailNotice.kind === "forward"
               ? "border-sky-400/35 bg-sky-950/35 text-sky-100/95"
-              : "border-amber-400/35 bg-amber-950/40 text-amber-100/95"
+              : "border-blue-400/35 bg-blue-950/40 text-blue-100/95"
           }`}
           role="status"
         >
@@ -92,10 +92,10 @@ function ThankYouContent() {
             </>
           ) : (
             <>
-              <p className="font-medium text-amber-200">
+              <p className="font-medium text-blue-200">
                 Confirmation email could not be sent automatically.
               </p>
-              <p className="mt-1 text-amber-100/85">
+              <p className="mt-1 text-blue-100/85">
                 {emailNotice.skipped && emailNotice.reason === "smtp_not_configured"
                   ? "The shop’s mail settings are not configured on this server (for example on Vercel, add the same SMTP variables you use locally)."
                   : "You can still use the order number on this page for your records. If you need a receipt, contact us with your order number."}
@@ -165,11 +165,11 @@ function ThankYouContent() {
           {order.lines.map((l) => (
             <li
               key={l.productId}
-              className={`flex justify-between gap-4 border-b pb-3 last:border-0 last:pb-0 ${lightSurface ? "border-stone-300/45" : "border-site-fg/10"}`}
+              className={`flex justify-between gap-4 border-b pb-3 last:border-0 last:pb-0 ${lightSurface ? "border-amber-300/45" : "border-site-fg/10"}`}
             >
               <span
                 className={
-                  lightSurface ? "text-stone-800" : "text-site-fg/90"
+                  lightSurface ? "text-amber-800" : "text-site-fg/90"
                 }
               >
                 {l.title}{" "}
@@ -178,7 +178,7 @@ function ThankYouContent() {
                 </span>
               </span>
               <span
-                className={`shrink-0 tabular-nums ${lightSurface ? "text-stone-900" : "text-site-fg"}`}
+                className={`shrink-0 tabular-nums ${lightSurface ? "text-amber-900" : "text-site-fg"}`}
               >
                 {formatUsd(l.priceUsd * l.quantity)}
               </span>
@@ -186,7 +186,7 @@ function ThankYouContent() {
           ))}
         </ul>
         <dl
-          className={`mt-6 space-y-2 border-t pt-6 text-sm ${lightSurface ? "border-stone-300/55 text-stone-900" : "border-site-fg/15 text-site-fg"}`}
+          className={`mt-6 space-y-2 border-t pt-6 text-sm ${lightSurface ? "border-amber-300/55 text-amber-900" : "border-site-fg/15 text-site-fg"}`}
         >
           <div className="flex justify-between">
             <dt className={overlayChrome.checkoutSummaryMuted(lightSurface)}>
@@ -209,9 +209,9 @@ function ThankYouContent() {
             </dd>
           </div>
           <div
-            className={`flex justify-between border-t pt-4 text-base font-semibold text-site-primary ${lightSurface ? "border-stone-300/60" : "border-site-fg/15"}`}
+            className={`flex justify-between border-t pt-4 text-base font-semibold text-site-primary ${lightSurface ? "border-amber-300/60" : "border-site-fg/15"}`}
           >
-            <dt className={lightSurface ? "text-stone-900" : undefined}>Total</dt>
+            <dt className={lightSurface ? "text-amber-900" : undefined}>Total</dt>
             <dd className="tabular-nums">{formatUsd(order.totalUsd)}</dd>
           </div>
         </dl>
@@ -237,7 +237,7 @@ export default function ThankYouPage() {
     <Suspense
       fallback={
         <PageLayout eyebrow="Order" title="Loading…" width="wide">
-          <p className="text-stone-400">Loading order…</p>
+          <p className="text-amber-400">Loading order…</p>
         </PageLayout>
       }
     >

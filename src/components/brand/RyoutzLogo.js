@@ -1,22 +1,33 @@
-import Image from "next/image";
+import RyoutzLogoSvg from "@/components/brand/RyoutzLogoSvg";
+import {
+  RYOUTZ_LOGO_BLUE,
+  RYOUTZ_LOGO_NEUTRAL,
+} from "@/components/brand/ryoutzLogoPaths";
+
+export { RYOUTZ_LOGO_BLUE, RYOUTZ_LOGO_NEUTRAL };
 
 /**
- * RYoutz brand mark — replace `public/images/brand/ryoutz-logo.png` as needed.
+ * RYoutz brand mark (inline SVG).
  *
  * @param {{
  *   className?: string;
  *   title?: string;
+ *   blueColor?: string;
+ *   neutralColor?: string;
  * }} props
  */
-export default function RyoutzLogo({ className = "", title }) {
+export default function RyoutzLogo({
+  className = "",
+  title,
+  blueColor = RYOUTZ_LOGO_BLUE,
+  neutralColor = RYOUTZ_LOGO_NEUTRAL,
+}) {
   return (
-    <Image
-      src="/images/brand/ryoutz-logo.png"
-      alt={title ?? "RYoutz Asphalt Maintenance"}
-      width={256}
-      height={256}
-      className={`h-auto w-auto object-contain ${className}`.trim()}
-      priority
+    <RyoutzLogoSvg
+      title={title ?? "R. Youtz Asphalt Maintenance"}
+      blueColor={blueColor}
+      neutralColor={neutralColor}
+      className={`h-auto w-auto max-w-none object-contain object-left drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)] ${className}`.trim()}
     />
   );
 }

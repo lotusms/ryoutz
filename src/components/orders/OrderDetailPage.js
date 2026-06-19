@@ -212,26 +212,26 @@ export default function OrderDetailPage({
               <div>
                 <dt className={dash.dashboardStatCaption(light)}>Order ID</dt>
                 <dd
-                  className={`font-mono ${light ? "text-amber-900" : "text-amber-200/95"}`}
+                  className={`font-mono ${light ? "text-blue-900" : "text-blue-200/95"}`}
                 >
                   {order.id}
                 </dd>
               </div>
               <div>
                 <dt className={dash.dashboardStatCaption(light)}>Placed</dt>
-                <dd className={light ? "text-stone-800" : "text-stone-200"}>
+                <dd className={light ? "text-amber-800" : "text-amber-200"}>
                   {formatWhen(order.createdAt)}
                 </dd>
               </div>
               <div>
                 <dt className={dash.dashboardStatCaption(light)}>Email</dt>
-                <dd className={light ? "text-stone-800" : "text-stone-200"}>
+                <dd className={light ? "text-amber-800" : "text-amber-200"}>
                   {order.email || "—"}
                 </dd>
               </div>
               <div>
                 <dt className={dash.dashboardStatCaption(light)}>Phone</dt>
-                <dd className={light ? "text-stone-800" : "text-stone-200"}>
+                <dd className={light ? "text-amber-800" : "text-amber-200"}>
                   {order.phone || "—"}
                 </dd>
               </div>
@@ -242,7 +242,7 @@ export default function OrderDetailPage({
             <div className={dash.ordersPanel(light)}>
               <h2 className={dash.dashboardActivityTitle(light)}>Shipping</h2>
               <address
-                className={`mt-3 text-sm not-italic leading-relaxed ${light ? "text-stone-800" : "text-stone-200"}`}
+                className={`mt-3 text-sm not-italic leading-relaxed ${light ? "text-amber-800" : "text-amber-200"}`}
               >
                 {order.shippingAddress.fullName ? (
                   <p>{order.shippingAddress.fullName}</p>
@@ -272,22 +272,22 @@ export default function OrderDetailPage({
                 ? order.lines.map((line, i) => (
                     <li
                       key={`${line.slug ?? line.variantId ?? i}-${i}`}
-                      className={`flex gap-4 border-b pb-4 last:border-0 last:pb-0 ${light ? "border-stone-300/55" : "border-slate-700/35"}`}
+                      className={`flex gap-4 border-b pb-4 last:border-0 last:pb-0 ${light ? "border-amber-300/55" : "border-slate-700/35"}`}
                     >
                       {line.image ? (
                         <img
                           src={line.image}
                           alt=""
-                          className={`h-16 w-16 shrink-0 rounded-lg object-cover ${light ? "border border-stone-300/80" : "border border-slate-600/40"}`}
+                          className={`h-16 w-16 shrink-0 rounded-lg object-cover ${light ? "border border-amber-300/80" : "border border-slate-600/40"}`}
                         />
                       ) : (
                         <div
-                          className={`h-16 w-16 shrink-0 rounded-lg ${light ? "bg-stone-200/80" : "bg-slate-900"}`}
+                          className={`h-16 w-16 shrink-0 rounded-lg ${light ? "bg-amber-200/80" : "bg-slate-900"}`}
                         />
                       )}
                       <div className="min-w-0 flex-1">
                         <p
-                          className={`font-medium ${light ? "text-stone-900" : "text-stone-100"}`}
+                          className={`font-medium ${light ? "text-amber-900" : "text-amber-100"}`}
                         >
                           {line.title}
                         </p>
@@ -297,14 +297,14 @@ export default function OrderDetailPage({
                           </p>
                         ) : null}
                         <p
-                          className={`mt-1 text-sm ${light ? "text-stone-600" : "text-slate-400"}`}
+                          className={`mt-1 text-sm ${light ? "text-amber-600" : "text-slate-400"}`}
                         >
                           Qty {line.quantity ?? 0} · {formatUsd(line.priceUsd ?? 0)}{" "}
                           each
                         </p>
                       </div>
                       <p
-                        className={`shrink-0 text-sm tabular-nums ${light ? "text-stone-800" : "text-stone-200"}`}
+                        className={`shrink-0 text-sm tabular-nums ${light ? "text-amber-800" : "text-amber-200"}`}
                       >
                         {formatUsd(
                           Number(line.priceUsd ?? 0) * Number(line.quantity ?? 0),
@@ -320,14 +320,14 @@ export default function OrderDetailPage({
             </ul>
 
             <div
-              className={`mt-6 space-y-2 border-t pt-4 text-sm ${light ? "border-stone-300/55" : "border-slate-700/40"}`}
+              className={`mt-6 space-y-2 border-t pt-4 text-sm ${light ? "border-amber-300/55" : "border-slate-700/40"}`}
             >
               <div
                 className={`flex justify-between ${dash.dashboardStatCaption(light)}`}
               >
                 <span>Subtotal</span>
                 <span
-                  className={`tabular-nums ${light ? "text-stone-800" : "text-stone-300"}`}
+                  className={`tabular-nums ${light ? "text-amber-800" : "text-amber-300"}`}
                 >
                   {formatUsd(order.subtotalUsd ?? 0)}
                 </span>
@@ -337,13 +337,13 @@ export default function OrderDetailPage({
               >
                 <span>Shipping</span>
                 <span
-                  className={`tabular-nums ${light ? "text-stone-800" : "text-stone-300"}`}
+                  className={`tabular-nums ${light ? "text-amber-800" : "text-amber-300"}`}
                 >
                   {formatUsd(order.shippingUsd ?? 0)}
                 </span>
               </div>
               <div
-                className={`flex justify-between text-base font-semibold ${light ? "text-stone-900" : "text-stone-100"}`}
+                className={`flex justify-between text-base font-semibold ${light ? "text-amber-900" : "text-amber-100"}`}
               >
                 <span>Total</span>
                 <span className="tabular-nums">{formatUsd(order.totalUsd ?? 0)}</span>
@@ -355,7 +355,7 @@ export default function OrderDetailPage({
             <div className={dash.ordersPanel(light)}>
               <h2 className={dash.dashboardActivityTitle(light)}>Notes</h2>
               <p
-                className={`mt-2 text-sm whitespace-pre-wrap ${light ? "text-stone-800" : "text-stone-300"}`}
+                className={`mt-2 text-sm whitespace-pre-wrap ${light ? "text-amber-800" : "text-amber-300"}`}
               >
                 {order.notes}
               </p>
@@ -368,7 +368,7 @@ export default function OrderDetailPage({
               <dl className="mt-3 space-y-2 text-sm">
                 <div className="flex justify-between gap-4">
                   <dt className={dash.dashboardStatCaption(light)}>Provider</dt>
-                  <dd className={light ? "text-stone-800" : "text-stone-200"}>
+                  <dd className={light ? "text-amber-800" : "text-amber-200"}>
                     {String(order.fulfillment.provider ?? "—")}
                   </dd>
                 </div>
@@ -378,7 +378,7 @@ export default function OrderDetailPage({
                       Provider order
                     </dt>
                     <dd
-                      className={`font-mono text-xs ${light ? "text-stone-700" : "text-stone-300"}`}
+                      className={`font-mono text-xs ${light ? "text-amber-700" : "text-amber-300"}`}
                     >
                       {String(order.fulfillment.providerOrderId)}
                     </dd>
@@ -387,7 +387,7 @@ export default function OrderDetailPage({
                 {order.fulfillment.providerStatus ? (
                   <div className="flex justify-between gap-4">
                     <dt className={dash.dashboardStatCaption(light)}>Status</dt>
-                    <dd className={light ? "text-stone-800" : "text-stone-200"}>
+                    <dd className={light ? "text-amber-800" : "text-amber-200"}>
                       {String(order.fulfillment.providerStatus)}
                     </dd>
                   </div>
@@ -400,7 +400,7 @@ export default function OrderDetailPage({
             <div className={dash.ordersPanel(light)}>
               <h2 className={dash.dashboardActivityTitle(light)}>Payment</h2>
               <pre
-                className={`mt-2 overflow-x-auto text-xs ${light ? "text-stone-600" : "text-slate-400"}`}
+                className={`mt-2 overflow-x-auto text-xs ${light ? "text-amber-600" : "text-slate-400"}`}
               >
                 {JSON.stringify(order.payment, null, 2)}
               </pre>
