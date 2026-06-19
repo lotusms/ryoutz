@@ -27,6 +27,21 @@ export default function ContactServiceAreaMap() {
     let cancelled = false;
     const mapHolder = { current: null };
 
+    const invalidate = () => {
+      if (!cancelled) mapHolder.current?.invalidateSize();
+    };
+
+    const resizeObserver = new ResizeObserver(invalidate);
+    resizeObserver.observe(el);
+
+    const intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) invalidate();
+      },
+      { threshold: 0.1 },
+    );
+    intersectionObserver.observe(el);
+
     (async () => {
       await import("leaflet/dist/leaflet.css");
       const L = (await import("leaflet")).default;
@@ -46,13 +61,14 @@ export default function ContactServiceAreaMap() {
       }).addTo(map);
 
       map.setView(MARYLAND_CENTER, MARYLAND_ZOOM);
-      requestAnimationFrame(() => {
-        if (!cancelled) map.invalidateSize();
-      });
+      requestAnimationFrame(invalidate);
+      window.setTimeout(invalidate, 150);
     })();
 
     return () => {
       cancelled = true;
+      resizeObserver.disconnect();
+      intersectionObserver.disconnect();
       mapHolder.current?.remove();
       mapHolder.current = null;
     };
@@ -61,7 +77,7 @@ export default function ContactServiceAreaMap() {
   return (
     <Card
       variant="inset"
-      className="min-w-0 w-full"
+      className="min-w-0 w-full !backdrop-blur-none"
       aria-labelledby="contact-service-area-heading"
     >
       <p className="text-[11px] font-medium uppercase tracking-[0.32em] text-blue-300/90">
@@ -89,7 +105,7 @@ export default function ContactServiceAreaMap() {
 
       <div
         ref={containerRef}
-        className="mt-6 h-[min(22rem,52vh)] w-full overflow-hidden rounded-xl ring-1 ring-white/10 sm:h-[min(26rem,50vh)]"
+        className="relative isolate z-0 mt-6 h-[min(22rem,52vh)] w-full overflow-hidden rounded-xl bg-slate-950/40 ring-1 ring-white/10 sm:h-[min(26rem,50vh)] [&_.leaflet-container]:h-full [&_.leaflet-container]:w-full"
         role="presentation"
       />
 
