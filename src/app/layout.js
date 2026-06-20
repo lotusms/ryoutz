@@ -24,17 +24,17 @@ export const metadata = {
     "RYoutz Asphalt Maintenance — professional asphalt maintenance and sealcoating services.",
   icons: {
     icon: [
-      { url: "/images/favicon/favicon.ico", sizes: "any" },
-      { url: "/images/favicon/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon/favicon.ico", sizes: "any" },
+      { url: "/favicon/favicon.svg", type: "image/svg+xml" },
       {
-        url: "/images/favicon/favicon-96x96.png",
+        url: "/favicon/favicon-96x96.png",
         sizes: "96x96",
         type: "image/png",
       },
     ],
-    apple: "/images/favicon/apple-touch-icon.png",
+    apple: "/favicon/apple-touch-icon.png",
   },
-  manifest: "/images/favicon/site.webmanifest",
+  manifest: "/favicon/site.webmanifest",
 };
 
 export default function RootLayout({ children }) {

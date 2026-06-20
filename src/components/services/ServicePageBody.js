@@ -2,16 +2,9 @@
 
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import SecondaryButton from "@/components/ui/SecondaryButton";
-import { useDocumentThemeId } from "@/hooks/useDocumentThemeId";
-import { isLightThemeId } from "@/theme";
 
 /**
  * Shared layout for every page under `/services/*`.
- *
- * Each service page renders this with its own data so the structure stays
- * consistent (lead → what's included → how it works → optional pull quote →
- * CTA). Theme-aware in the same way `AboutStudioCards` is — light/dark text
- * variants follow `html[data-theme]`.
  *
  * @param {{
  *   lead: string[];
@@ -33,18 +26,6 @@ export default function ServicePageBody({
   pullQuote,
   cta,
 }) {
-  const themeId = useDocumentThemeId();
-  const light = isLightThemeId(themeId);
-
-  const body = light ? "text-amber-800/95" : "text-amber-200/90";
-  const leadTone = light ? "text-amber-700" : "text-amber-300/90";
-  const heading = light ? "text-amber-900" : "text-amber-100";
-  const muted = light ? "text-amber-600" : "text-amber-500";
-  const label = light ? "text-blue-900/90" : "text-blue-300/90";
-  const divider = light ? "border-amber-300/60" : "border-white/10";
-  const accentBar = light ? "border-blue-600/40" : "border-blue-400/35";
-  const stepNumber = light ? "text-blue-700/80" : "text-blue-300/70";
-
   return (
     <div className="space-y-16 sm:space-y-20 lg:space-y-24">
       {lead.length > 0 ? (
@@ -52,7 +33,7 @@ export default function ServicePageBody({
           {lead.map((paragraph, i) => (
             <p
               key={i}
-              className={`text-base leading-8 ${i === 0 ? leadTone : body}`}
+              className={`text-base leading-8 text-neutral-200/90 ${i === 0 ? "text-neutral-100/95" : ""}`}
             >
               {paragraph}
             </p>
@@ -61,80 +42,70 @@ export default function ServicePageBody({
       ) : null}
 
       <section>
-        <p className={`text-xs font-medium uppercase tracking-[0.32em] ${label}`}>
+        <p className="text-xs font-medium uppercase tracking-[0.32em] text-blue-300/90">
           {inclusions.title ?? "What's included"}
         </p>
-        <ul className={`mt-8 grid gap-x-10 gap-y-5 sm:grid-cols-2`}>
+        <ul className="mt-8 grid gap-x-10 gap-y-5 sm:grid-cols-2">
           {inclusions.items.map((item, i) => (
             <li
               key={i}
-              className={`flex gap-4 border-t pt-5 ${divider}`}
+              className="flex gap-4 border-t border-white/10 pt-5"
             >
               <span
                 aria-hidden
-                className={`mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full ${
-                  light ? "bg-blue-600/70" : "bg-blue-400/70"
-                }`}
+                className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400/70 shadow-[0_0_8px] shadow-blue-500/35"
               />
-              <span className={`text-sm leading-7 ${body}`}>{item}</span>
+              <span className="text-sm leading-7 text-neutral-200/90">{item}</span>
             </li>
           ))}
         </ul>
       </section>
 
       <section>
-        <p className={`text-xs font-medium uppercase tracking-[0.32em] ${label}`}>
+        <p className="text-xs font-medium uppercase tracking-[0.32em] text-blue-300/90">
           {process.title ?? "How it works"}
         </p>
         <ol className="mt-8 grid gap-10 sm:grid-cols-2 sm:gap-x-10 lg:grid-cols-4 lg:gap-x-8">
           {process.steps.map((step, i) => (
             <li
               key={step.title}
-              className={`border-t pt-6 ${divider}`}
+              className="border-t border-white/10 pt-6"
             >
-              <p
-                className={`font-mono text-xs tabular-nums tracking-[0.3em] ${stepNumber}`}
-              >
+              <p className="font-mono text-xs tabular-nums tracking-[0.3em] text-blue-300/70">
                 {String(i + 1).padStart(2, "0")}
               </p>
-              <h3
-                className={`mt-3 font-serif text-lg font-medium tracking-[-0.02em] ${heading}`}
-              >
+              <h3 className="mt-3 font-serif text-lg font-bold tracking-[-0.02em] text-blue-400">
                 {step.title}
               </h3>
-              <p className={`mt-3 text-sm leading-7 ${body}`}>{step.body}</p>
+              <p className="mt-3 text-sm leading-7 text-neutral-200/90">{step.body}</p>
             </li>
           ))}
         </ol>
       </section>
 
       {pullQuote ? (
-        <blockquote className={`relative border-l-2 pl-8 sm:pl-10 ${accentBar}`}>
-          <p
-            className={`font-serif text-xl font-medium italic leading-relaxed sm:text-2xl lg:text-[1.55rem] lg:leading-snug ${heading}`}
-          >
+        <blockquote className="relative border-l-2 border-blue-400/35 pl-8 sm:pl-10">
+          <p className="font-serif text-xl font-medium italic leading-relaxed text-amber-100 sm:text-2xl lg:text-[1.55rem] lg:leading-snug">
             {pullQuote}
           </p>
-          <footer className={`mt-5 text-xs uppercase tracking-[0.28em] ${muted}`}>
+          <footer className="mt-5 text-xs uppercase tracking-[0.28em] text-amber-500">
             — RYoutz Asphalt Maintenance
           </footer>
         </blockquote>
       ) : null}
 
-      <section
-        className={`flex flex-col items-start gap-6 border-t pt-12 sm:flex-row sm:items-center sm:justify-between ${divider}`}
-      >
+      <section className="flex flex-col items-start gap-6 border-t border-white/10 pt-12 sm:flex-row sm:items-center sm:justify-between">
         <div className="max-w-md">
-          <p className={`text-xs font-medium uppercase tracking-[0.32em] ${label}`}>
+          <p className="text-xs font-medium uppercase tracking-[0.32em] text-blue-300/90">
             Next step
           </p>
-          <p className={`mt-3 font-serif text-2xl font-medium tracking-[-0.02em] ${heading}`}>
-            Tell me what you have in mind.
+          <p className="mt-3 font-serif text-2xl font-bold tracking-[-0.02em] text-blue-400">
+            Tell us about your pavement.
           </p>
-          <p className={`mt-3 text-sm leading-7 ${body}`}>
-            Every inquiry is read personally. Share the date, the place, and a
-            sentence about how you want it to feel — I&apos;ll take it from
-            there.
+          <p className="mt-3 text-sm leading-7 text-neutral-200/90">
+            Share your property address, surface type, and what you need done —
+            we will follow up with a clear scope and estimate, usually within one
+            business day.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-3">

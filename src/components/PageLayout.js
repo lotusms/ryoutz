@@ -1,4 +1,5 @@
 import InnerPageBackdrop from "@/components/InnerPageBackdrop";
+import ServicePageHero from "@/components/services/ServicePageHero";
 
 export default function PageLayout({
   eyebrow,
@@ -7,8 +8,12 @@ export default function PageLayout({
   children,
   width: _width = "default",
   buttonArea = null,
+  heroImage,
+  heroImageAlt,
+  heroImagePosition,
 }) {
   const layoutWidth = "";
+  const hasHero = Boolean(heroImage?.trim());
 
   return (
     <main className="relative z-10 w-full min-w-0">
@@ -20,8 +25,15 @@ export default function PageLayout({
         }}
       />
       <InnerPageBackdrop />
+      {hasHero ? (
+        <ServicePageHero
+          src={heroImage}
+          alt={heroImageAlt ?? title}
+          objectPosition={heroImagePosition}
+        />
+      ) : null}
       <div
-        className={`relative z-10 mx-auto w-full max-w-7xl px-6 pb-14 pt-29 sm:px-10 lg:px-12 ${layoutWidth}`}
+        className={`relative z-10 mx-auto w-full max-w-7xl px-6 pb-14 sm:px-10 lg:px-12 ${hasHero ? "pt-10 sm:pt-12" : "pt-29"} ${layoutWidth}`}
       >
         <div className="flex flex-col justify-center items-center md:flex-row md:justify-between gap-2">
             <div>

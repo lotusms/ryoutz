@@ -90,14 +90,15 @@ export default function HomeBookingCTA({ images = [] }) {
 
           <h2
             id="booking-heading"
-            className="mt-6 font-serif text-4xl font-medium leading-[1.05] tracking-[-0.02em] text-amber-50 sm:text-5xl lg:text-6xl"
+            className="mt-6 font-serif text-4xl font-medium leading-[1.05] tracking-[-0.02em] text-neutral-200 sm:text-5xl lg:text-6xl"
           >
             Ready to protect{" "}
-            <span className="italic text-blue-300">your pavement</span>?
-          </h2>
+            <span className="italic text-blue-400">your pavement</span>
+            <span className="text-neutral-200 ms-1.5">?</span>
+            </h2> 
 
           <p className="mt-7 max-w-xl text-base leading-8 text-neutral-200/90">
-            Sealcoating, crack repair, patching, and line striping — scheduled
+            Sealcoating, crack repair, patching, and line striping, scheduled
             around your property, explained clearly, and finished with a surface
             you can count on season after season.
           </p>
@@ -124,13 +125,6 @@ export default function HomeBookingCTA({ images = [] }) {
           {FRAME_LAYOUT.map((frame, idx) => (
             <FrameImage key={idx} image={frameImages[idx]} frame={frame} />
           ))}
-
-          <div
-            aria-hidden="true"
-            className="absolute -top-2 right-2 z-40 rotate-[8deg] rounded-full bg-blue-300 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.28em] text-amber-900 shadow-md shadow-amber-950/40"
-          >
-            est. {orgName.split(" ")[0].toLowerCase()}
-          </div>
         </ScrollSlideIn>
       </div>
     </section>

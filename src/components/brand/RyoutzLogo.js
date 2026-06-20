@@ -27,7 +27,7 @@ export default function RyoutzLogo({
       title={title ?? "R. Youtz Asphalt Maintenance"}
       blueColor={blueColor}
       neutralColor={neutralColor}
-      className={`h-auto w-auto max-w-none object-contain object-left drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)] ${className}`.trim()}
+      className={`block shrink-0 object-contain object-left drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)] ${className}`.trim()}
     />
   );
 }

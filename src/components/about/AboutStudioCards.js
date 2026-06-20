@@ -111,7 +111,7 @@ export default function AboutStudioCards({ orgName, principles }) {
         ))}
       </div>
 
-      <blockquote className="relative border-l-2 border-blue-400 pl-8 sm:pl-10">
+      <blockquote className="relative border-l-2 border-blue-400å pl-8 sm:pl-10">
         <p className="font-serif text-xl italic leading-relaxed text-neutral-200/90 lg:leading-snug">
           Every lot and driveway is different. The right fix depends on how the
           pavement was built, how it is used, and what the weather has already

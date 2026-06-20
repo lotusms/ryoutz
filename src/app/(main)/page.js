@@ -31,10 +31,12 @@ export default async function Home() {
 
   return (
     <main>
-      <section className="relative -mt-16 flex min-h-[88dvh] flex-col sm:min-h-dvh">
-        <HomeHero />
+      <section className="relative -mt-16 flex flex-col">
+        <div className="relative flex min-h-svh flex-col sm:min-h-[88dvh] lg:min-h-dvh">
+          <HomeHero />
 
-        <HomeValueBar />
+          <HomeValueBar />
+        </div>
       </section>
 
       {/* Carousel hero — swap back in when ready */}

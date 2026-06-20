@@ -49,26 +49,29 @@ export default function HomeValueBar({ className = "" }) {
     <div
       className={`relative z-10 border-t border-white/10 bg-black/85 backdrop-blur-md ${className}`.trim()}
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-7xl grid-cols-4 divide-x divide-white/10 max-[320px]:grid-cols-2 max-[320px]:divide-x-0 max-[320px]:divide-y">
         {VALUE_ITEMS.map((item, index) => {
           const Icon = item.Icon;
 
           return (
             <div
               key={item.title}
-              className={`relative flex items-center gap-4 px-5 py-5 sm:py-6 lg:px-7 ${
-                index >= 2 ? "border-t border-white/10 sm:border-t lg:border-t-0" : ""
-              } ${index % 2 === 1 ? "sm:border-l sm:border-white/10 lg:border-l-0" : ""}`}
+              className="relative flex flex-col items-center gap-1.5 px-2 py-3 text-center sm:gap-2 sm:px-3 sm:py-4 lg:flex-row lg:items-center lg:gap-4 lg:px-7 lg:py-6 lg:text-left"
             >
               {index > 0 ? <SlantDivider /> : null}
 
-              <Icon accent={item.accent} className="h-11 w-11 shrink-0 sm:h-12 sm:w-12" />
+              <Icon
+                accent={item.accent}
+                className="h-8 w-8 shrink-0 sm:h-10 sm:w-10 lg:h-12 lg:w-12"
+              />
 
-              <div className="min-w-0 text-left">
-                <p className="font-serif text-sm font-bold uppercase tracking-[0.24em] text-white sm:tracking-[0.28em]">
+              <div className="min-w-0">
+                <p className="font-serif text-[0.62rem] font-bold uppercase tracking-[0.16em] text-white sm:text-xs sm:tracking-[0.22em] lg:text-sm lg:tracking-[0.28em]">
                   {item.title}
                 </p>
-                <p className="mt-1 text-sm leading-snug text-neutral-200/90">{item.subtext}</p>
+                <p className="mt-0.5 text-[0.58rem] leading-tight text-neutral-200/90 sm:mt-1 sm:text-[0.65rem] sm:leading-snug lg:text-sm">
+                  {item.subtext}
+                </p>
               </div>
             </div>
           );

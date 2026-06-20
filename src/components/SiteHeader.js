@@ -161,6 +161,7 @@ export default function SiteHeader() {
         }`}
       >
         <div className="relative z-120 mx-auto flex h-18 max-w-7xl items-center px-5 sm:px-8 lg:px-10">
+          {/* Logo */}
           <Link
             href="/"
             className="group relative z-10 flex shrink-0 items-center rounded-sm text-slate-100 transition-colors duration-300 hover:text-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400/60"
@@ -168,16 +169,16 @@ export default function SiteHeader() {
             aria-label={`${orgName} — home`}
           >
             <RyoutzLogo
-              className="h-14 w-auto max-w-[min(52vw,11.5rem)] sm:h-16 sm:max-w-52 lg:h-19 lg:max-w-60"
+              className="h-11 w-39 shrink-0 sm:h-16 sm:w-46 lg:h-19 lg:w-54"
               title={orgName}
               neutralColor="#FFFFFF"
             />
           </Link>
 
+          {/* Main Navigation */}
           <nav
             aria-label="Main"
-            className="absolute left-1/2 top-1/2 z-30 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-9 md:flex"
-          >
+            className="absolute left-1/2 top-1/2 z-30 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-9 min-[992px]:flex">
             {mainNav.map((item) => {
               const hasChildren =
                 Array.isArray(item.children) && item.children.length > 0;
@@ -195,10 +196,11 @@ export default function SiteHeader() {
             })}
           </nav>
 
+          {/* Phone Number */}
           <div className="relative z-10 ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
             {phoneHref ? (
               <a
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/4 px-3 py-2 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-200 transition hover:border-blue-400/35 hover:bg-white/7 hover:text-neutral-50 sm:px-4 sm:tracking-[0.28em]"
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/4 px-2.5 py-2 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-200 transition hover:border-blue-400/35 hover:bg-white/7 hover:text-neutral-50 min-[420px]:px-3 sm:px-4 sm:tracking-[0.28em]"
                 href={phoneHref}
                 aria-label={`Call ${orgPhoneLabel}`}
               >
@@ -217,14 +219,16 @@ export default function SiteHeader() {
                     d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
                   />
                 </svg>
-                <span className="whitespace-nowrap text-xs font-semibold tabular-nums tracking-normal text-neutral-200/90 sm:text-sm">
+                <span className="hidden whitespace-nowrap text-xs font-semibold tabular-nums tracking-normal text-neutral-200/90 min-[420px]:inline sm:text-sm">
                   {orgPhoneLabel}
                 </span>
               </a>
             ) : null}
+
+            {/* Mobile Menu Button */}
             <button
               type="button"
-              className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/6 text-amber-100 transition hover:border-blue-400/35 hover:bg-white/1 md:hidden"
+              className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/6 text-neutral-200/90 transition hover:border-blue-400/35 hover:bg-white/1 min-[992px]:hidden"
               aria-expanded={open}
               aria-controls={panelId}
               aria-label={open ? "Close menu" : "Open menu"}
@@ -257,56 +261,31 @@ export default function SiteHeader() {
         aria-modal="true"
         aria-label="Site navigation"
         aria-hidden={!open}
-        className={`mobile-nav-panel fixed inset-0 z-100 flex h-full min-h-dvh flex-col md:hidden ${open ? "mobile-nav-panel--open" : ""} transition-[visibility,opacity] duration-300 ease-out ${
+        className={`mobile-nav-panel fixed inset-0 z-100 flex h-full min-h-dvh flex-col min-[992px]:hidden ${open ? "mobile-nav-panel--open" : ""} transition-[visibility,opacity] duration-300 ease-out ${
           open
             ? "visible opacity-100"
             : "invisible pointer-events-none opacity-0"
         }`}
       >
-        <div
-          className="absolute inset-0 bg-slate-950"
-          aria-hidden
-        />
+        <div className="absolute inset-0 bg-slate-950" aria-hidden/>
 
-        <div
-          className="pointer-events-none absolute inset-0 overflow-hidden"
-          aria-hidden
-        >
-          <div className="absolute -left-[20%] -top-[10%] h-[min(90vw,28rem)] w-[min(90vw,28rem)] rounded-full bg-amber-600/22 blur-[90px]" />
+        {/* Mobile Menu Background */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+          <div className="absolute -left-[20%] -top-[10%] h-[min(90vw,28rem)] w-[min(90vw,28rem)] rounded-full bg-blue-600/22 blur-[90px]" />
           <div className="absolute -right-[15%] bottom-[-20%] h-[min(110vw,32rem)] w-[min(110vw,32rem)] rounded-full bg-blue-400/18 blur-[100px]" />
           <div className="absolute left-[40%] top-[35%] h-48 w-48 rounded-full bg-sky-400/12 blur-3xl" />
           <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-blue-400/35 to-transparent" />
         </div>
 
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.045] mix-blend-overlay"
-          style={{ backgroundImage: GRAIN_BG }}
-        />
+        {/* Mobile Menu Grain Background */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.045] mix-blend-overlay" style={{ backgroundImage: GRAIN_BG }}/>
 
-        <div className="relative z-10 flex h-full min-h-dvh flex-1 flex-col pt-[max(4.25rem,env(safe-area-inset-top))]">
-          <div className="flex shrink-0 items-end justify-between gap-4 border-b border-white/10 px-6 pb-5 pt-2">
-            <div>
-              <p className="text-[0.65rem] uppercase tracking-[0.45em] text-slate-500">
-                Navigate
-              </p>
-              <p className="mt-1 font-serif text-2xl font-medium tracking-[-0.02em] text-amber-100">
-                Menu
-              </p>
-            </div>
-            <button
-              type="button"
-              className="rounded-full border border-white/15 bg-white/6 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.25em] text-amber-200 transition hover:border-blue-400/40 hover:bg-white/1 hover:text-blue-100"
-              onClick={close}
-            >
-              Close
-            </button>
-          </div>
-
+        {/* Mobile Menu Content */} 
+        <div className="relative z-10 flex h-full min-h-dvh flex-1 flex-col pt-[max(5.5rem,env(safe-area-inset-top))]">
+          {/* Mobile Menu Navigation */}
           <nav
             aria-label="Mobile main"
-            className="flex flex-1 flex-col justify-center gap-0 px-2 sm:px-6"
-          >
+            className="flex flex-1 flex-col justify-start gap-0 overflow-y-auto px-2 sm:px-6">
             {mainNav.map((item, i) => {
               const active = isNavItemActive(pathname, item);
               const animationDelay = open ? `${70 + i * 55}ms` : "0ms";
@@ -334,7 +313,7 @@ export default function SiteHeader() {
                       className={`mobile-nav-item group relative flex w-full items-center gap-5 py-5 pl-4 pr-2 text-left transition-colors sm:gap-8 sm:py-6 ${
                         active
                           ? "bg-white/4 text-blue-50"
-                          : "text-amber-50 hover:bg-white/3 hover:text-white"
+                          : "text-neutral-200/90 hover:bg-white/3 hover:text-white"
                       }`}
                     >
                       <span
@@ -388,14 +367,14 @@ export default function SiteHeader() {
                                   className={`block rounded-lg px-4 py-3 transition-colors ${
                                     childActive
                                       ? "bg-blue-400/10 text-blue-50"
-                                      : "text-amber-200 hover:bg-white/4 hover:text-white"
+                                      : "text-neutral-200/90 hover:bg-white/4 hover:text-white"
                                   }`}
                                 >
                                   <span className="block font-serif text-lg font-medium tracking-[-0.01em]">
                                     {child.label}
                                   </span>
                                   {child.description ? (
-                                    <span className="mt-1 block text-xs leading-relaxed text-amber-400">
+                                    <span className="mt-1 block text-xs leading-relaxed text-neutral-200/90">
                                       {child.description}
                                     </span>
                                   ) : null}
@@ -419,7 +398,7 @@ export default function SiteHeader() {
                   className={`mobile-nav-item group relative flex items-center gap-5 border-b border-white/[0.07] py-5 pl-4 pr-2 transition-colors sm:gap-8 sm:py-6 ${
                     active
                       ? "bg-white/4 text-blue-50"
-                      : "text-amber-50 hover:bg-white/3 hover:text-white"
+                      : "text-neutral-200/90 hover:bg-white/3 hover:text-white"
                   }`}
                 >
                   <span
@@ -451,6 +430,7 @@ export default function SiteHeader() {
             })}
           </nav>
 
+          {/* Mobile Menu Phone Number */}
           <div className="shrink-0 space-y-4 border-t border-blue-400/15 bg-slate-900/70 px-6 py-6 backdrop-blur-sm">
             {phoneHref ? (
               <a
@@ -464,7 +444,7 @@ export default function SiteHeader() {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1.5"
-                  className="h-[1em] w-[1em] shrink-0 text-blue-300/90"
+                  className="h-[1em] w-[1em] shrink-0 text-blue-500"
                   aria-hidden
                 >
                   <path
@@ -476,7 +456,7 @@ export default function SiteHeader() {
                 <span className="min-w-0">{orgPhoneLabel}</span>
               </a>
             ) : null}
-            <p className="text-center text-[0.65rem] uppercase tracking-[0.35em] text-slate-600">
+            <p className="text-center text-[0.65rem] uppercase tracking-[0.35em] text-neutral-200/75">
               {orgName}
             </p>
           </div>

@@ -22,11 +22,37 @@ export const orgInquiryEmail = "info@ryoutzasphalt.com";
  *   A group is a UI-only label — it has NO `href` and is never navigable.
  *   `pathPrefix` is used only for active-state styling (it doesn't have to
  *   resolve to a real page). Each `child` is a real link with its own route.
- *   (Former Services group lives in
- *   `src/components/nav/archived/ArchivedMainNavServicesDropdown.js`.)
+   *   (Former photography Services group lives in
+   *   `src/components/nav/archived/ArchivedMainNavServicesDropdown.js`.)
  */
 export const mainNav = [
   { href: "/", label: "Home" },
+  {
+    label: "Services",
+    pathPrefix: "/services",
+    children: [
+      {
+        href: "/services/sealcoating",
+        label: "Sealcoating",
+        description: "Protect and refresh asphalt with a clean, even finish.",
+      },
+      {
+        href: "/services/crack-filling",
+        label: "Crack Filling",
+        description: "Route, fill, and seal cracks before water does more damage.",
+      },
+      {
+        href: "/services/line-painting",
+        label: "Line Painting",
+        description: "Crisp striping for lots, lanes, and traffic markings.",
+      },
+      {
+        href: "/services/pavement-maintenance",
+        label: "Pavement Maintenance",
+        description: "Ongoing care to extend the life of your pavement.",
+      },
+    ],
+  },
   { href: "/gallery", label: "Gallery", prefix: true },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },

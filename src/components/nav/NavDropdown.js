@@ -75,8 +75,8 @@ export default function NavDropdown({ item }) {
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className={`group inline-flex items-center gap-1.5 py-1 text-[0.7rem] font-medium uppercase tracking-[0.35em] transition-colors ${
-          active || open ? "text-blue-50" : "text-amber-100/90 hover:text-white"
+        className={`group inline-flex items-center gap-1.5 py-1 text-[0.7rem] font-serif font-bold uppercase tracking-[0.35em] transition-colors ${
+          active || open ? "text-neutral-200/90" : "text-neutral-200/90 hover:text-white"
         }`}
       >
         <span className="relative">
@@ -115,7 +115,7 @@ export default function NavDropdown({ item }) {
         }`}
       >
         <div className="absolute -top-5 left-0 right-0 h-5" aria-hidden />
-        <div className="rounded-2xl border border-white/10 bg-slate-950/95 p-2 shadow-2xl shadow-slate-950/60 backdrop-blur-xl">
+        <div className="rounded-2xl border border-white/15 bg-slate-900/98 p-2 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.8)] ring-1 ring-white/8 backdrop-blur-xl">
           {item.children.map((child) => {
             const childActive = pathname === child.href;
             return (
@@ -133,14 +133,14 @@ export default function NavDropdown({ item }) {
                 <span
                   className={`font-serif text-base font-medium tracking-[-0.01em] transition-colors ${
                     childActive
-                      ? "text-blue-50"
-                      : "text-amber-100 group-hover/item:text-blue-100"
+                      ? "text-white"
+                      : "text-neutral-200/90 group-hover/item:text-white"
                   }`}
                 >
                   {child.label}
                 </span>
                 {child.description ? (
-                  <span className="text-xs leading-relaxed text-amber-400">
+                  <span className="text-xs leading-relaxed text-neutral-200/90">
                     {child.description}
                   </span>
                 ) : null}
