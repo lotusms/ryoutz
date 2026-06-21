@@ -2,6 +2,7 @@ import { unstable_noStore as noStore } from "next/cache";
 import HomeSectionDivider from "@/components/ui/HomeSectionDivider";
 import HomeBookingCTA from "@/components/home/HomeBookingCTA";
 import HomeCollectionPreview from "@/components/home/HomeCollectionPreview";
+import HomeTestimonialWheel from "@/components/home/HomeTestimonialWheel";
 // import HomeCarouselHero from "@/components/home/HomeCarouselHero";
 import { pickPortraitHeroProducts } from "@/lib/catalogSort";
 import { getHomeLensHeroImagePaths } from "@/lib/home-lens-hero-images";
@@ -55,8 +56,9 @@ export default async function Home() {
 
       <HomeSectionDivider className="my-10" />
 
-      {/* Hidden until asphalt customer testimonials and photos are ready. */}
-      {/* <HomeTestimonialWheel /> */}
+      <HomeTestimonialWheel />
+
+      <HomeSectionDivider className="my-10" />
 
       {/* Hidden until asphalt industry awards or certifications are ready. */}
       {/* <HomeAwardsStrip /> */}

@@ -51,7 +51,7 @@ const cta = {
   secondaryLabel: "See our work",
 };
 
-const heroImage = "/images/gallery/stock/parkinglot.png";
+const heroImage = "/images/services/pavement.png";
 const heroImageAlt = "Commercial parking lot asphalt maintenance";
 
 export default function PavementMaintenancePage() {

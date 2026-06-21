@@ -1,6 +1,7 @@
 "use client";
 
 import PrimaryButton from "@/components/ui/PrimaryButton";
+import PullQuote from "@/components/ui/PullQuote";
 import SecondaryButton from "@/components/ui/SecondaryButton";
 
 /**
@@ -83,16 +84,7 @@ export default function ServicePageBody({
         </ol>
       </section>
 
-      {pullQuote ? (
-        <blockquote className="relative border-l-2 border-blue-400/35 pl-8 sm:pl-10">
-          <p className="font-serif text-xl font-medium italic leading-relaxed text-amber-100 sm:text-2xl lg:text-[1.55rem] lg:leading-snug">
-            {pullQuote}
-          </p>
-          <footer className="mt-5 text-xs uppercase tracking-[0.28em] text-amber-500">
-            — RYoutz Asphalt Maintenance
-          </footer>
-        </blockquote>
-      ) : null}
+      {pullQuote ? <PullQuote quote={pullQuote} /> : null}
 
       <section className="flex flex-col items-start gap-6 border-t border-white/10 pt-12 sm:flex-row sm:items-center sm:justify-between">
         <div className="max-w-md">

@@ -3,6 +3,7 @@
 import Image from "next/image";
 
 import PrimaryButton from "@/components/ui/PrimaryButton";
+import PullQuote from "@/components/ui/PullQuote";
 import SecondaryButton from "@/components/ui/SecondaryButton";
 import { ARTWORK_MAT_INNER, ARTWORK_MAT_OUTER } from "@/components/ui/artworkMatClasses";
 
@@ -111,16 +112,10 @@ export default function AboutStudioCards({ orgName, principles }) {
         ))}
       </div>
 
-      <blockquote className="relative border-l-2 border-blue-400å pl-8 sm:pl-10">
-        <p className="font-serif text-xl italic leading-relaxed text-neutral-200/90 lg:leading-snug">
-          Every lot and driveway is different. The right fix depends on how the
-          pavement was built, how it is used, and what the weather has already
-          done to it — not a one-size-fits-all package.
-        </p>
-        <footer className="mt-5 text-xs uppercase tracking-[0.28em] text-neutral-200/90">
-          — {orgName}
-        </footer>
-      </blockquote>
+      <PullQuote
+        quote="Every lot and driveway is different. The right fix depends on how the pavement was built, how it is used, and what the weather has already done to it — not a one-size-fits-all package."
+        attribution={orgName}
+      />
 
       <div>
         <p className="text-xs font-bold font-serif uppercase tracking-[0.32em] text-blue-300/90">

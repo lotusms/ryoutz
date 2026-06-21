@@ -80,8 +80,8 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "images.pexels.com",
-        pathname: "/photos/**",
+        hostname: "randomuser.me",
+        pathname: "/api/portraits/**",
       },
     ],
   },

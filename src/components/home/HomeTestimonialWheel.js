@@ -3,65 +3,70 @@
 import Image from "next/image";
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 
-import GoldSpectrumBackdrop from "@/components/ui/GoldSpectrumBackdrop";
-
 const TESTIMONIALS = [
   {
-    name: "Iman & Nick",
-    role: "Married September 2020",
-    image: "https://firebasestorage.googleapis.com/v0/b/ryoutz.firebasestorage.app/o/testimonials%2Fiman-nick.png?alt=media&token=2250ee47-8033-4c6d-9e0f-a59f6506d7d2",
+    id: "marcus-thompson",
+    name: "Marcus Thompson",
+    role: "Homeowner · Eldersburg, MD",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
     quote:
-      "We had our wedding September 2020. Anthony was amazing. It was a very stressful time to have a wedding, but once talking to him through our vision, he filled in all the gaps and helped us to relax and enjoy our day. I had no idea how amazingly supportive he would be.",
+      "Our driveway looked tired and gray after years of sun and oil spots. RYoutz cleaned it up, filled the cracks, and sealcoated it in one visit. It looks brand new — neighbors have already asked who we used.",
   },
   {
-    name: "Madilyn & Wyatt",
-    role: "Married May 2024",
-    image: "https://firebasestorage.googleapis.com/v0/b/ryoutz.firebasestorage.app/o/testimonials%2FMadilyn_Wyatt.png?alt=media&token=d4d9f45d-5c02-449d-89f4-c1b4660145f1",
+    id: "danielle-reyes",
+    name: "Danielle Reyes",
+    role: "Property Manager · Columbia, MD",
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
     quote:
-      "Anthony & Chris were spectacular! Anthony was great with communicating throughout the entire process. He made great suggestions at our one month pre-wedding meeting. I would recommend them to anyone!!",
+      "We needed a lot restriped before a tenant inspection on short notice. They laid out the stalls cleanly, kept traffic moving, and the lines dried on schedule. Professional from estimate to walkthrough.",
   },
   {
-    name: "Christopher & Stephanie",
-    role: "Married July 2018",
-    image: "https://firebasestorage.googleapis.com/v0/b/ryoutz.firebasestorage.app/o/testimonials%2Fchristopher_stephanie.png?alt=media&token=21fe88e7-2aa5-426e-9034-c9d68d74a15f",
+    id: "james-linda-hart",
+    name: "James & Linda Hart",
+    role: "Residential · Annapolis, MD",
+    image: "https://randomuser.me/api/portraits/women/68.jpg",
     quote:
-      "We couldn't have asked for a better video team. AM Films knew the rhythm of the day, stayed in close touch with us, and coordinated with our DJ and photographer so microphones, speeches, and coverage never stepped on each other. That professionalism made everything feel simple and smooth.",
+      "Cracks were spreading across our apron every winter. They routed and filled everything, explained what could wait and what could not, and left the surface smooth. No upsell — just straight answers.",
   },
   {
-    name: "John & Tori",
-    role: "Married April 2025",  
-    image: "https://firebasestorage.googleapis.com/v0/b/ryoutz.firebasestorage.app/o/testimonials%2FJohn-Tori.png?alt=media&token=842a238f-b69f-463b-9fdc-c798ddb2023c",
+    id: "teresa-williams",
+    name: "Teresa Williams",
+    role: "HOA Board · Frederick, MD",
+    image: "https://randomuser.me/api/portraits/women/21.jpg",
     quote:
-      "We almost skipped video for budget reasons until my mom helped us hire AM Films—meeting Anthony made it feel like the obvious yes. He showed up early, felt like a friend we'd known forever, and our highlight and full film still make us laugh and cry like the wedding itself. We'd recommend him to anyone who wants a cinematic recap from someone who truly cares.",
-  }, 
-  {
-    name: "Justin & Misha",
-    role: "Married June 2024",
-    image: "https://firebasestorage.googleapis.com/v0/b/ryoutz.firebasestorage.app/o/testimonials%2FJustin.png?alt=media&token=ce2b4c08-f38b-4248-9c70-842cb5dfd409",
-    quote:
-      "When we got engaged, finding the right videographer felt essential—video would shape how we remembered the day. A few early conversations elsewhere didn't measure up, but once we were referred to Anthony, his work online was the first that felt unmistakably right.",
+      "We signed up for a maintenance plan for our private road and parking areas. Inspections are documented, repairs happen before small issues become big ones, and the board finally has a pavement budget we can trust.",
   },
   {
-    name: "Camri & Kelvin",
-    role: "Married April 2021",
-    image:
-      "https://firebasestorage.googleapis.com/v0/b/ryoutz.firebasestorage.app/o/testimonials%2Fcamri.png?alt=media&token=56d6f374-0d8c-443a-9e31-6fe6a1fd1469",
+    id: "robert-kim",
+    name: "Robert Kim",
+    role: "Small Business Owner · Baltimore, MD",
+    image: "https://randomuser.me/api/portraits/men/75.jpg",
     quote:
-      "We hired Anthony in 2019 for our April 2020 wedding. When Maryland shut down four weeks before our date, he was kind and steady while everything was upside down—and we knew we still wanted him with us. Our smaller day and highlight reel turned out perfect; we recommend him without hesitation and can't wait for him to capture our big celebration too.",
+      "Handicap spaces, fire lane markings, and aisle stripes — all sharp and compliant. Customers notice when a lot looks maintained. This crew treated our storefront pavement like it mattered.",
   },
   {
-    name: "Francisco & Genesis",
-    role: "Married September 2025",
-    image: "https://firebasestorage.googleapis.com/v0/b/ryoutz.firebasestorage.app/o/testimonials%2FFrancisco_Genesis.png?alt=media&token=a4d5a24c-edf0-42ed-b390-b5fa55a71e10",
+    id: "angela-morris",
+    name: "Angela Morris",
+    role: "Homeowner · Rockville, MD",
+    image: "https://randomuser.me/api/portraits/women/57.jpg",
     quote:
-      "Meeting Anthony in person put us at ease right away—he understood our vision, planned with us patiently, and showed up early on the wedding day ready to help wherever needed. He went above and beyond on the day and kept working after until the film was something our families will cherish. We'd hire him a hundred times over.",
+      "They barricaded the driveway, walked us through cure time, and checked back after the first rain. The sealer held even color and the edges look hand-cut, not sprayed over the lawn.",
   },
   {
-    name: "Jakob Owens",
-    role: "Married October 2023",
-    image: "https://firebasestorage.googleapis.com/v0/b/ryoutz.firebasestorage.app/o/testimonials%2Fj_owens.png?alt=media&token=c1cbb267-d9e4-4de7-8aae-a3849c624413",
+    id: "vincent-cole",
+    name: "Vincent Cole",
+    role: "Facility Director · Towson, MD",
+    image: "https://randomuser.me/api/portraits/men/41.jpg",
     quote:
-      "Neither of us is comfortable in front of a camera. By the second hour we forgot it existed. By the time the gallery arrived, we understood why everyone we know who's worked with him cried when they opened theirs.",
+      "Patching, crack seal, and a full sealcoat cycle on our church lot — scheduled around Sunday traffic and finished without disrupting services. Clear communication every step of the way.",
+  },
+  {
+    id: "sarah-nguyen",
+    name: "Sarah Nguyen",
+    role: "Homeowner · Gaithersburg, MD",
+    image: "https://randomuser.me/api/portraits/women/33.jpg",
+    quote:
+      "Got three quotes. RYoutz was the only one that explained prep in detail instead of just quoting a gallon count. The finished driveway is even, dark, and ready for Maryland weather.",
   },
 ];
 
@@ -93,12 +98,12 @@ function Avatar({ testimonial, isActive }) {
   const [failed, setFailed] = useState(false);
   const showImage = mounted && Boolean(testimonial.image) && !failed;
 
-  const wellClass = "bg-amber-900/90 text-blue-100";
+  const wellClass = "bg-slate-800 text-blue-100";
 
   const ringActive =
-    "border-amber-900 shadow-lg shadow-amber-900/25 ring-2 ring-amber-900/20";
+    "border-blue-400 shadow-lg shadow-blue-500/25 ring-2 ring-blue-400/30";
 
-  const ringIdle = "border-amber-900/35 shadow-sm shadow-amber-900/10";
+  const ringIdle = "border-white/15 shadow-sm shadow-black/20";
 
   return (
     <div
@@ -185,24 +190,27 @@ export default function HomeTestimonialWheel({ testimonials = TESTIMONIALS }) {
   }
 
   const eyebrow =
-    "text-xs uppercase tracking-[0.32em] text-amber-800/90";
+    "text-xs font-medium uppercase tracking-[0.32em] text-blue-300/90";
 
   const heading =
-    "font-serif text-3xl font-medium tracking-[-0.02em] text-amber-950 sm:text-4xl";
+    "font-serif text-3xl font-medium tracking-[-0.02em] text-neutral-100 sm:text-4xl";
 
-  const role = "mt-1 text-sm text-amber-800/80";
+  const role = "mt-1 text-sm text-neutral-200/75";
 
-  const quote = "mt-6 text-base leading-8 text-amber-900";
+  const quote = "mt-6 text-base leading-8 text-neutral-200/90";
 
-  const quoteMark = "text-amber-700/70";
+  const quoteMark = "text-blue-400/70";
 
   return (
     <section
       id="testimonials"
       aria-label="Client testimonials"
-      className="relative z-10 w-full overflow-hidden py-16 sm:py-20"
+      className="relative z-10 w-full overflow-hidden border-y border-white/10 py-16 sm:py-20"
     >
-      <GoldSpectrumBackdrop />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_15%_0%,rgba(29,78,216,0.16),transparent_55%),radial-gradient(ellipse_60%_50%_at_100%_100%,rgba(15,23,42,0.85),transparent_50%)]"
+      />
 
       <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-6 sm:px-10 lg:grid-cols-[1fr_1.05fr] lg:gap-16 lg:px-12">
         <div
@@ -224,11 +232,11 @@ export default function HomeTestimonialWheel({ testimonials = TESTIMONIALS }) {
               return (
                 <button
                   type="button"
-                  key={t.name}
+                  key={t.id ?? t.name}
                   onClick={() => jumpTo(i)}
                   aria-label={`Show testimonial from ${t.name}`}
                   aria-pressed={isActive}
-                  className="group absolute left-1/2 top-1/2 rounded-[28%] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-900/50 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-100/80"
+                  className="group absolute left-1/2 top-1/2 rounded-[28%] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
                   style={{
                     width: "var(--avatar)",
                     height: "var(--avatar)",
@@ -244,7 +252,7 @@ export default function HomeTestimonialWheel({ testimonials = TESTIMONIALS }) {
         </div>
 
         <div className="relative">
-          <p className={eyebrow}>Voices from the day</p>
+          <p className={eyebrow}>What our clients say</p>
           <div
             className="relative mt-6 min-h-80 sm:min-h-72"
             aria-live="polite"
@@ -254,7 +262,7 @@ export default function HomeTestimonialWheel({ testimonials = TESTIMONIALS }) {
               const isActive = i === active;
               return (
                 <article
-                  key={t.name}
+                  key={t.id ?? t.name}
                   aria-hidden={!isActive}
                   className={`absolute inset-0 transition-all duration-700 ease-out ${
                     isActive
@@ -284,7 +292,7 @@ export default function HomeTestimonialWheel({ testimonials = TESTIMONIALS }) {
                 const isActive = i === active;
                 return (
                   <button
-                    key={`dot-${t.name}`}
+                    key={`dot-${t.id ?? t.name}`}
                     type="button"
                     role="tab"
                     aria-selected={isActive}
@@ -292,8 +300,8 @@ export default function HomeTestimonialWheel({ testimonials = TESTIMONIALS }) {
                     onClick={() => jumpTo(i)}
                     className={`h-1.5 rounded-full transition-all duration-500 ${
                       isActive
-                        ? "w-8 bg-amber-900"
-                        : "w-3 bg-amber-900/30 hover:bg-amber-900/50"
+                        ? "w-8 bg-blue-400"
+                        : "w-3 bg-white/20 hover:bg-white/35"
                     }`}
                   />
                 );
@@ -305,7 +313,7 @@ export default function HomeTestimonialWheel({ testimonials = TESTIMONIALS }) {
                 type="button"
                 onClick={prev}
                 aria-label="Previous testimonial"
-                className="group inline-flex items-center gap-3 py-1 text-[11px] font-medium uppercase tracking-[0.32em] text-amber-900/70 transition-colors duration-300 hover:text-amber-950 focus:outline-none focus-visible:text-amber-950"
+                className="group inline-flex items-center gap-3 py-1 text-[11px] font-medium uppercase tracking-[0.32em] text-neutral-200/70 transition-colors duration-300 hover:text-neutral-100 focus:outline-none focus-visible:text-neutral-100"
               >
                 <svg
                   viewBox="0 0 40 12"
@@ -325,7 +333,7 @@ export default function HomeTestimonialWheel({ testimonials = TESTIMONIALS }) {
                 type="button"
                 onClick={next}
                 aria-label="Next testimonial"
-                className="group inline-flex items-center gap-3 py-1 text-[11px] font-medium uppercase tracking-[0.32em] text-amber-900/70 transition-colors duration-300 hover:text-amber-950 focus:outline-none focus-visible:text-amber-950"
+                className="group inline-flex items-center gap-3 py-1 text-[11px] font-medium uppercase tracking-[0.32em] text-neutral-200/70 transition-colors duration-300 hover:text-neutral-100 focus:outline-none focus-visible:text-neutral-100"
               >
                 <svg
                   viewBox="0 0 40 12"
