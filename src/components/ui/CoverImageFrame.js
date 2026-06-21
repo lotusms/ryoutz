@@ -57,6 +57,8 @@ export default function CoverImageFrame({
   scrim = "none",
   /** Next/Image LCP hint for above-the-fold PDP / hero tiles. */
   priority = false,
+  /** Override lazy loading — use `"eager"` for small above-the-fold grids. */
+  loading: loadingProp,
   /** 1–100; lower = smaller files (default 80 for catalog/hero balance). */
   quality = 80,
   matOuterClassName = "",
@@ -76,6 +78,7 @@ export default function CoverImageFrame({
     imageHeight,
     fallbackAspectRatio,
   );
+  const loading = loadingProp ?? (priority ? "eager" : "lazy");
 
   const imageWellInner =
     frameLayout === "masonry" ? (
@@ -92,6 +95,7 @@ export default function CoverImageFrame({
               sizes={sizes}
               quality={quality}
               priority={priority}
+              loading={loading}
               fetchPriority={priority ? "high" : "auto"}
               draggable={galleryProtected ? false : undefined}
               className={
@@ -120,6 +124,7 @@ export default function CoverImageFrame({
               sizes={sizes}
               quality={quality}
               priority={priority}
+              loading={loading}
               fetchPriority={priority ? "high" : "auto"}
               draggable={galleryProtected ? false : undefined}
               className={protectedImageClass}

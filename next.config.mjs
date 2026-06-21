@@ -7,6 +7,7 @@
  */
 const homeHeroAssetsGlob = "./public/images/home-lens-hero-images/**/*";
 const galleryAssetsGlob = "./public/images/gallery/**/*";
+const beforeAfterAssetsGlob = "./public/images/before-after/**/*";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -19,6 +20,7 @@ const nextConfig = {
     "/": [homeHeroAssetsGlob, galleryAssetsGlob],
     "/gallery": [galleryAssetsGlob],
     "/gallery/[slug]": [galleryAssetsGlob],
+    "/gallery/before-after": [beforeAfterAssetsGlob],
   },
   async redirects() {
     return [

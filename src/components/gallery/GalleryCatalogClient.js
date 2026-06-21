@@ -9,7 +9,7 @@ import { orgName } from "@/config";
 import { fetchCatalogProductList } from "@/lib/catalogClientFetch";
 import { packMasonryColumns } from "@/lib/masonry-layout";
 
-function GalleryCard({ product }) {
+function GalleryCard({ product, priority = false }) {
   const showLightImageWell =
     String(product?.medium || "").toLowerCase().includes("print") ||
     String(product?.medium || "").toLowerCase().includes("tapestry");
@@ -22,7 +22,9 @@ function GalleryCard({ product }) {
           imageWidth={product.imageWidth}
           imageHeight={product.imageHeight}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-          frameLayout="masonry"
+          frameLayout="fill"
+          priority={priority}
+          loading="eager"
           imageZoom={false}
           frameClassName={
             showLightImageWell
@@ -98,7 +100,7 @@ export default function GalleryCatalogClient({ initialProducts }) {
     if (initial.length > 0) return false;
     return hasFirebaseConfig();
   });
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     if (initial.length > 0) {
@@ -129,8 +131,7 @@ export default function GalleryCatalogClient({ initialProducts }) {
 
   useEffect(() => {
     if (loading) return;
-    const t = window.setTimeout(() => setVisible(true), 80);
-    return () => window.clearTimeout(t);
+    setVisible(true);
   }, [loading]);
 
   const skeletons = useMemo(() => Array.from({ length: 8 }, (_, i) => i), []);
@@ -189,8 +190,8 @@ export default function GalleryCatalogClient({ initialProducts }) {
 
   return (
     <div
-      className={`transition-all duration-700 ease-out ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
+      className={`transition-transform duration-700 ease-out ${
+        visible ? "translate-y-0" : "translate-y-2"
       }`}
     >
       {products.length === 0 ? (
@@ -199,8 +200,12 @@ export default function GalleryCatalogClient({ initialProducts }) {
         <div className={gridColumnsClass}>
           {productColumns.map((column, colIdx) => (
             <div key={`product-col-${colIdx}`} className="space-y-6">
-              {column.map((p) => (
-                <GalleryCard key={p.id} product={p} />
+              {column.map((p, rowIdx) => (
+                <GalleryCard
+                  key={p.id}
+                  product={p}
+                  priority={rowIdx === 0}
+                />
               ))}
             </div>
           ))}

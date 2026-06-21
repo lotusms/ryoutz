@@ -129,7 +129,7 @@ export default function BeforeAfterCompare({
             alt={`${label} after`}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 960px"
-            quality={90}
+            quality={88}
             className="object-cover object-center"
             draggable={false}
           />
@@ -143,7 +143,7 @@ export default function BeforeAfterCompare({
               alt={`${label} before`}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 960px"
-              quality={90}
+              quality={88}
               className="object-cover object-center"
               draggable={false}
             />
