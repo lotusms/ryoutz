@@ -160,14 +160,14 @@ async function fetchStockPiecesRaw() {
   }
 
   console.warn(
-    "[gallery-stock] public/images/gallery/stock is empty — using remote Pexels URLs as last resort.",
+    "[gallery-stock] public/images/gallery/stock is empty — add bundled files under public/images/gallery/stock.",
   );
-  return REMOTE_PEXELS_FALLBACK.map(shapeStaticRemote);
+  return [];
 }
 
 const getCachedStockPiecesRaw = unstable_cache(
   fetchStockPiecesRaw,
-  ["gallery-stock-bundled-v2"],
+  ["gallery-stock-bundled-v3"],
   { revalidate: CACHE_SECONDS },
 );
 

@@ -4,6 +4,7 @@ import {
   applyCatalogMerchandising,
   loadCatalogMerchandisingState,
 } from "@/lib/catalog-merchandising";
+import { shuffleCatalogDisplayOrder } from "@/lib/catalogSort";
 import { displayTitleFromImageFilename } from "@/lib/image-filename-display-title";
 import { slugify } from "@/lib/slug";
 
@@ -18,6 +19,23 @@ const IMAGE_EXT = new Set([
 
 const GALLERY_DIR = path.join(process.cwd(), "public", "images", "gallery");
 const STOCK_GALLERY_DIR = path.join(GALLERY_DIR, "stock");
+const WORK_GALLERY_DIR = path.join(GALLERY_DIR, "work");
+
+function readPngDimensionsSync(filePath) {
+  try {
+    const fd = fs.openSync(filePath, "r");
+    const buf = Buffer.alloc(24);
+    fs.readSync(fd, buf, 0, 24, 0);
+    fs.closeSync(fd);
+    if (buf.readUInt32BE(0) !== 0x89504e47) return null;
+    const width = buf.readUInt32BE(16);
+    const height = buf.readUInt32BE(20);
+    if (!(width > 0 && height > 0)) return null;
+    return { width, height };
+  } catch {
+    return null;
+  }
+}
 
 function readGalleryDirectory(dir) {
   if (!fs.existsSync(dir)) return [];
@@ -94,8 +112,17 @@ function readGalleryDirectory(dir) {
     const medium = String(fileMeta.medium || "Asphalt project").trim();
     const dimensions = String(fileMeta.dimensions || "").trim();
 
-    const iw = Number(fileMeta.imageWidth);
-    const ih = Number(fileMeta.imageHeight);
+    let iw = Number(fileMeta.imageWidth);
+    let ih = Number(fileMeta.imageHeight);
+    if (!(Number.isFinite(iw) && iw > 0 && Number.isFinite(ih) && ih > 0)) {
+      if (path.extname(filename).toLowerCase() === ".png") {
+        const dims = readPngDimensionsSync(full);
+        if (dims) {
+          iw = dims.width;
+          ih = dims.height;
+        }
+      }
+    }
 
     pieces.push({
       id: uniqueSlug,
@@ -118,12 +145,27 @@ function readGalleryDirectory(dir) {
 
 /** Your own project photos in `public/images/gallery` (top-level files only). */
 export function getRawGalleryPiecesSync() {
-  return readGalleryDirectory(GALLERY_DIR);
+  return [
+    ...readGalleryDirectory(GALLERY_DIR),
+    ...readGalleryDirectory(WORK_GALLERY_DIR),
+  ];
 }
 
 /** Bundled placeholder photos in `public/images/gallery/stock` (always shipped with the site). */
 export function getRawBundledStockPiecesSync() {
   return readGalleryDirectory(STOCK_GALLERY_DIR);
+}
+
+/** Project photos in `public/images/gallery/work` (mixed aspect ratios). */
+export function getRawWorkGalleryPiecesSync() {
+  return readGalleryDirectory(WORK_GALLERY_DIR);
+}
+
+/** Work gallery list + Firestore merchandising flags. */
+export async function getWorkGalleryProducts() {
+  const raw = getRawWorkGalleryPiecesSync();
+  const state = await loadCatalogMerchandisingState();
+  return shuffleCatalogDisplayOrder(applyCatalogMerchandising(raw, state));
 }
 
 /** Gallery list + detail: merges Firestore merchandising (visibility, featured, categories). */

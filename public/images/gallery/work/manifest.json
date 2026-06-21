@@ -1,0 +1,19 @@
+{
+  "order": ["gal1.png", "gal2.png"],
+  "meta": {
+    "gal1.png": {
+      "title": "Commercial parking lot sealcoat",
+      "medium": "Parking lot",
+      "description": "Fresh sealcoat on a commercial parking lot.",
+      "imageWidth": 1448,
+      "imageHeight": 1086
+    },
+    "gal2.png": {
+      "title": "Residential driveway project",
+      "medium": "Driveway",
+      "description": "Sealcoating and edge work on a home driveway.",
+      "imageWidth": 1086,
+      "imageHeight": 1448
+    }
+  }
+}

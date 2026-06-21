@@ -1,6 +1,7 @@
 import { unstable_noStore as noStore } from "next/cache";
 
 import PageLayout from "@/components/PageLayout";
+import GalleryBeforeAfterCTA from "@/components/gallery/GalleryBeforeAfterCTA";
 import GalleryCatalogClient from "@/components/gallery/GalleryCatalogClient";
 import { orgLegalName, orgName, sitePageTitle } from "@/config";
 import { getFirestoreGalleryProducts } from "@/lib/gallery-firestore";
@@ -22,6 +23,7 @@ export default async function GalleryPage() {
       subtitle={`Recent asphalt maintenance, sealcoating, and repair work by ${orgLegalName}. Browse driveways, parking lots, and crack-seal projects — tap any image for details.`}
       width="full"
     >
+      <GalleryBeforeAfterCTA />
       <GalleryCatalogClient initialProducts={initialProducts} />
     </PageLayout>
   );

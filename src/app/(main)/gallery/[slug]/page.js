@@ -5,7 +5,6 @@ import GalleryPieceHeroImage from "@/components/gallery/GalleryPieceHeroImage";
 import GalleryPieceNav from "@/components/gallery/GalleryPieceNav";
 import GalleryPieceStory from "@/components/gallery/GalleryPieceStory";
 import { orgLegalName, orgName, sitePageTitle } from "@/config";
-import { sortCatalogByRecency } from "@/lib/catalogSort";
 import {
   getFirestoreGalleryProductBySlug,
   getFirestoreGalleryProducts,
@@ -43,7 +42,7 @@ export default async function GalleryPiecePage({ params }) {
   const product = await getFirestoreGalleryProductBySlug(slug);
   if (!product) notFound();
 
-  const all = sortCatalogByRecency(await getFirestoreGalleryProducts());
+  const all = await getFirestoreGalleryProducts();
   const idx = all.findIndex((p) => p.slug === product.slug);
   const prev = idx > 0 ? all[idx - 1] : null;
   const next = idx >= 0 && idx < all.length - 1 ? all[idx + 1] : null;

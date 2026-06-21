@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { fetchCatalogProductList } from "@/lib/catalogClientFetch";
-import { sortCatalogByRecency } from "@/lib/catalogSort";
 import { catalogVariantSizeRange } from "@/lib/catalogDisplay";
 import { orgName } from "@/config";
 import SecondaryButton from "@/components/ui/SecondaryButton";
@@ -22,44 +21,7 @@ import { linkButtonClasses, linkButtonClassesLight } from "@/components/ui/LinkB
 import { useDocumentThemeId } from "@/hooks/useDocumentThemeId";
 import { isLightThemeId } from "@/theme";
 
-/** @param {{ imageWidth?: number; imageHeight?: number }} product */
-function productImageHeightOverWidth(product) {
-  const w = Number(product?.imageWidth);
-  const h = Number(product?.imageHeight);
-  if (w > 0 && h > 0) return h / w;
-  return 1.25;
-}
-
-/**
- * Interleave taller vs wider pieces before masonry placement so reading order and columns
- * don’t stack identical aspect ratios (e.g. all portraits in one band).
- */
-function interleaveByAspectRatio(products) {
-  if (!Array.isArray(products) || products.length <= 1) return [...products];
-  const portrait = [];
-  const landscape = [];
-  for (const p of products) {
-    if (productImageHeightOverWidth(p) >= 1) portrait.push(p);
-    else landscape.push(p);
-  }
-  const out = [];
-  let pi = 0;
-  let li = 0;
-  let takePortrait = portrait.length >= landscape.length;
-  while (pi < portrait.length || li < landscape.length) {
-    if (takePortrait && pi < portrait.length) {
-      out.push(portrait[pi++]);
-    } else if (!takePortrait && li < landscape.length) {
-      out.push(landscape[li++]);
-    } else if (pi < portrait.length) {
-      out.push(portrait[pi++]);
-    } else {
-      out.push(landscape[li++]);
-    }
-    takePortrait = !takePortrait;
-  }
-  return out;
-}
+import { packMasonryColumns } from "@/lib/masonry-layout";
 
 function CollectionSkeletonCard({ delay = 0 }) {
   const h = delay % 2 === 0 ? "min-h-[18rem]" : "min-h-[24rem]";
@@ -161,7 +123,7 @@ export default function HomeCollectionPreview({ initialProducts = [] }) {
       try {
         const list = await fetchCatalogProductList({ context: "home-collection" });
         if (!active) return;
-        setProducts(sortCatalogByRecency(list));
+        setProducts(list);
       } catch {
         if (!active) return;
         setProducts((prev) => (prev.length > 0 ? prev : []));
@@ -189,27 +151,17 @@ export default function HomeCollectionPreview({ initialProducts = [] }) {
     return () => window.removeEventListener("resize", updateColumnCount);
   }, []);
 
-  const orderedProducts = useMemo(
-    () => interleaveByAspectRatio(products),
-    [products],
-  );
-
   const workColumns = useMemo(() => {
-    const cols = Array.from({ length: columnCount }, () => []);
-    const heights = Array.from({ length: columnCount }, () => 0);
-
-    orderedProducts.forEach((product, globalIndex) => {
-      const ratio = productImageHeightOverWidth(product);
-      const estimatedHeight = ratio + 0.42;
-      let target = 0;
-      for (let i = 1; i < heights.length; i += 1) {
-        if (heights[i] < heights[target]) target = i;
-      }
-      cols[target].push({ product, globalIndex });
-      heights[target] += estimatedHeight;
-    });
-    return cols;
-  }, [orderedProducts, columnCount]);
+    const cols = packMasonryColumns(products, columnCount);
+    let globalIndex = 0;
+    return cols.map((column) =>
+      column.map((product) => {
+        const entry = { product, globalIndex };
+        globalIndex += 1;
+        return entry;
+      }),
+    );
+  }, [products, columnCount]);
 
   const gridClass =
     columnCount >= 3

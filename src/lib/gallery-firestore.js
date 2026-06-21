@@ -13,7 +13,7 @@ import {
   applyCatalogMerchandising,
   loadCatalogMerchandisingState,
 } from "@/lib/catalog-merchandising";
-import { getLocalGalleryProducts } from "@/lib/gallery-local";
+import { getLocalGalleryProducts, getWorkGalleryProducts } from "@/lib/gallery-local";
 import { getStockGalleryProducts } from "@/lib/gallery-stock";
 import { GALLERY_COLLECTION, shapeGalleryDoc, sortRawGalleryProducts } from "@/lib/gallery-shape";
 import { getFirebaseAdminDb } from "@/lib/firebase-admin-server";
@@ -71,6 +71,12 @@ async function loadFirestoreGalleryProducts() {
  * @returns {Promise<Array<Record<string, unknown>>>} merchandising-applied gallery rows.
  */
 export async function getFirestoreGalleryProducts() {
+  /** Project photos in `public/images/gallery/work` take priority over stock/Firestore. */
+  const work = await getWorkGalleryProducts();
+  if (work.length > 0) {
+    return work;
+  }
+
   const source = resolveGallerySource();
 
   if (source === "local") {
@@ -105,7 +111,7 @@ export async function getFirestoreGalleryProducts() {
   if (fromStock.length > 0 && !loggedStockFallback) {
     loggedStockFallback = true;
     console.info(
-      `[gallery] Serving ${fromStock.length} stock placeholder(s) from Pexels (add real photos to public/images/gallery when ready).`,
+      `[gallery] Serving ${fromStock.length} stock placeholder(s) from public/images/gallery/stock.`,
     );
   }
   return fromStock;

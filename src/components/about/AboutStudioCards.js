@@ -9,27 +9,27 @@ import { ARTWORK_MAT_INNER, ARTWORK_MAT_OUTER } from "@/components/ui/artworkMat
 
 const PROJECT_PHOTOS = [
   {
-    src: "/images/gallery/stock/homedriveway.png",
-    alt: "Freshly sealcoated residential driveway",
+    src: "/images/Owners.jpeg",
+    alt: "R. Youtz Asphalt Maintenance owners",
     sizes: "(max-width: 1024px) min(92vw, 32rem), (max-width: 1280px) 46vw, 840px",
     quality: 88,
     priority: true,
   },
   {
-    src: "/images/gallery/stock/crackfilling.png",
-    alt: "Crack sealing on asphalt pavement",
+    src: "/images/gallery/work/gal2.png",
+    alt: "Residential driveway sealcoating project",
     sizes: "(max-width: 640px) 92vw, (max-width: 1024px) 50vw, 33vw",
     quality: 88,
   },
   {
-    src: "/images/gallery/stock/parkinglot.png",
-    alt: "Commercial parking lot sealcoating",
+    src: "/images/gallery/work/gal11.png",
+    alt: "Sealcoating crew finishing a driveway",
     sizes: "(max-width: 640px) 92vw, (max-width: 1024px) 50vw, 33vw",
     quality: 88,
   },
   {
-    src: "/images/gallery/stock/road-construction.jpg",
-    alt: "Asphalt paving and repair crew at work",
+    src: "/images/gallery/work/gal12.png",
+    alt: "Fresh sealcoat on asphalt pavement",
     sizes: "(max-width: 640px) 92vw, (max-width: 1024px) 50vw, 33vw",
     quality: 88,
   },

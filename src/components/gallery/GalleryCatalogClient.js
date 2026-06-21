@@ -7,6 +7,7 @@ import { hasFirebaseConfig } from "@firebase/config";
 import CoverImageFrame from "@/components/ui/CoverImageFrame";
 import { orgName } from "@/config";
 import { fetchCatalogProductList } from "@/lib/catalogClientFetch";
+import { packMasonryColumns } from "@/lib/masonry-layout";
 
 function GalleryCard({ product }) {
   const showLightImageWell =
@@ -159,25 +160,10 @@ export default function GalleryCatalogClient({ initialProducts }) {
   const gridColumnsClass =
     "grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4";
 
-  const productColumns = useMemo(() => {
-    const cols = Array.from({ length: columnCount }, () => []);
-    const heights = Array.from({ length: columnCount }, () => 0);
-
-    products.forEach((product) => {
-      const ratio =
-        Number(product.imageHeight) > 0 && Number(product.imageWidth) > 0
-          ? Number(product.imageHeight) / Number(product.imageWidth)
-          : 1.25;
-      const estimatedHeight = ratio + 0.42;
-      let target = 0;
-      for (let i = 1; i < heights.length; i += 1) {
-        if (heights[i] < heights[target]) target = i;
-      }
-      cols[target].push(product);
-      heights[target] += estimatedHeight;
-    });
-    return cols;
-  }, [products, columnCount]);
+  const productColumns = useMemo(
+    () => packMasonryColumns(products, columnCount),
+    [products, columnCount],
+  );
 
   const skeletonColumns = useMemo(() => {
     const cols = Array.from({ length: columnCount }, () => []);
