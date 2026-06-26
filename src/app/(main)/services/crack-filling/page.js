@@ -1,15 +1,15 @@
 import PageLayout from "@/components/PageLayout";
 import ServicePageBody from "@/components/services/ServicePageBody";
-import { orgLegalName, sitePageTitle } from "@/config";
+import { orgLegalName, serviceAreaProse, sitePageTitle } from "@/config";
 
 export const metadata = {
   title: sitePageTitle("Crack Filling"),
-  description: `Crack filling and sealing by ${orgLegalName} — stop water intrusion and pavement breakdown on driveways, parking lots, and private roads in Maryland.`,
+  description: `Crack filling by ${orgLegalName} — hot poly fiber tar heated to 370–390°F for durable crack seals on driveways, parking lots, and private roads in ${serviceAreaProse}.`,
 };
 
 const lead = [
   "Cracks are how water gets under your pavement — and freeze-thaw cycles do the rest. Routing and filling cracks early keeps small problems from becoming potholes, alligatoring, and full resurfacing jobs.",
-  "We clean each crack, route where needed for better sealant adhesion, and fill with commercial-grade material rated for Maryland weather and traffic. The goal is a tight, flush repair that protects the base and blends with the surrounding surface.",
+  "We fill cracks with hot poly fiber tar, heated to 370–390°F and applied while it flows into the repair. That heat helps the material bond to the asphalt, flex with the pavement, and seal moisture out of the base — for a tight, flush repair that holds up in Pennsylvania weather and traffic.",
 ];
 
 const inclusions = {
@@ -17,7 +17,7 @@ const inclusions = {
     "Visual survey of crack patterns and pavement condition",
     "Blowing and cleaning cracks before any material goes in",
     "Mechanical routing on eligible cracks for deeper, longer-lasting seals",
-    "Hot- or cold-applied crack sealant matched to crack width and use",
+    "Hot poly fiber tar heated to 370–390°F and applied while hot for full penetration",
     "Hand tooling for flush finishes along edges and joints",
     "Recommendations for follow-up sealcoating or patching where needed",
   ],
@@ -35,7 +35,7 @@ const process = {
     },
     {
       title: "Fill",
-      body: "Route, fill, and tool cracks for a clean, durable seal that keeps moisture out of the base.",
+      body: "Heat poly fiber tar to 370–390°F, route where needed, and fill cracks while the material is hot so it bonds deep and seals moisture out of the base.",
     },
     {
       title: "Review",
@@ -59,7 +59,7 @@ export default function CrackFillingPage() {
     <PageLayout
       eyebrow="Services / Crack Filling"
       title="Crack Filling"
-      subtitle="Route, clean, and seal cracks before water and freeze-thaw cycles turn them into costly pavement failure — residential and commercial properties across Maryland."
+      subtitle={`Hot poly fiber tar crack filling — heated to 370–390°F and applied while hot — for driveways, parking lots, and private roads in ${serviceAreaProse}.`}
       width="full"
       heroImage={heroImage}
       heroImageAlt={heroImageAlt}
@@ -70,7 +70,7 @@ export default function CrackFillingPage() {
           lead={lead}
           inclusions={inclusions}
           process={process}
-          pullQuote="The cheapest pavement repair is the crack you fill before winter — once water gets underneath, the price goes up fast."
+          pullQuote="Hot poly fiber tar at 370–390°F does not just sit on top of a crack — it bonds while it is hot and keeps water out of the base before winter does the expensive work."
           cta={cta}
         />
       </div>

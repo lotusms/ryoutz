@@ -1,10 +1,10 @@
 import PageLayout from "@/components/PageLayout";
 import ServicePageBody from "@/components/services/ServicePageBody";
-import { orgLegalName, sitePageTitle } from "@/config";
+import { orgLegalName, serviceAreaProse, sitePageTitle } from "@/config";
 
 export const metadata = {
   title: sitePageTitle("Line Painting"),
-  description: `Line painting and pavement striping by ${orgLegalName} — parking lots, drive lanes, and traffic markings with crisp, durable lines across Maryland.`,
+  description: `Line painting and pavement striping by ${orgLegalName} — parking lots, drive lanes, and traffic markings with crisp, durable lines in ${serviceAreaProse}.`,
 };
 
 const lead = [

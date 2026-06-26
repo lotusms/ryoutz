@@ -1,21 +1,21 @@
 import PageLayout from "@/components/PageLayout";
 import ServicePageBody from "@/components/services/ServicePageBody";
-import { orgLegalName, sitePageTitle } from "@/config";
+import { orgLegalName, serviceAreaProse, sitePageTitle } from "@/config";
 
 export const metadata = {
   title: sitePageTitle("Pavement Maintenance"),
-  description: `Ongoing pavement maintenance by ${orgLegalName} — scheduled sealcoating, crack repair, patching, and striping to extend pavement life across Maryland.`,
+  description: `Ongoing pavement maintenance by ${orgLegalName} — scheduled sealcoating, hot poly fiber tar crack filling, patching, and striping in ${serviceAreaProse}.`,
 };
 
 const lead = [
   "Pavement maintenance is the plan that keeps small issues from becoming capital projects. Regular inspections, crack sealing, sealcoating on cycle, and timely patching extend the life of your asphalt and smooth out surprise repair bills.",
-  "We work with property owners, HOAs, and facility managers on maintenance schedules that fit how the surface is used — residential driveways, retail lots, church campuses, and private roads. You get straight answers on what needs attention now and what can wait.",
+  "When cracks show up, we do not patch over them with cold material — we fill with hot poly fiber tar, heated to 370–390°F, so repairs bond to the asphalt and keep water out of the base. Combined with brush-applied coal tar sealcoating and timely patching, maintenance stays ahead of costly rebuilds.",
 ];
 
 const inclusions = {
   items: [
     "Annual or seasonal pavement inspections with written recommendations",
-    "Scheduled crack filling and joint maintenance",
+    "Scheduled crack filling with hot poly fiber tar (370–390°F)",
     "Sealcoating on a cycle matched to traffic and sun exposure",
     "Pothole and patch repairs before they spread",
     "Line repainting and layout refresh as markings fade",
@@ -35,7 +35,7 @@ const process = {
     },
     {
       title: "Execute",
-      body: "Complete repairs and preventive work on schedule with clear communication before each visit.",
+      body: "Complete crack filling with hot poly fiber tar, sealcoating, patching, and striping on schedule — with clear communication before each visit.",
     },
     {
       title: "Follow up",

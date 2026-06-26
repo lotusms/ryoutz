@@ -5,8 +5,8 @@ import { useMemo, useState } from "react";
 import Card from "@/components/ui/Card";
 import DateField from "@/components/ui/DateField";
 import PrimaryButton from "@/components/ui/PrimaryButton";
-import { orgInquiryEmail } from "@/config";
-import { digitsFromTelInput, formatUsPhoneMask } from "@/lib/checkout-auth";
+import { orgInquiryEmail, orgPhoneLabel } from "@/config";
+import { digitsFromTelInput, formatUsPhoneMask } from "@/lib/phone-format";
 import * as overlayChrome from "@/lib/overlayChrome";
 
 const EMPTY_FORM = {
@@ -131,7 +131,7 @@ export default function ContactInquiryForm() {
     <Card variant="inset" className="min-w-0 w-full" title="Request an estimate" titleTag="h2">
       <p className="mt-2 text-sm leading-7 text-neutral-200/90">
         Share your property details and we will reply at the email you provide — usually within
-        one business day.
+        48 hours.
       </p>
 
       {status === "success" ? (
@@ -212,7 +212,7 @@ export default function ContactInquiryForm() {
                 onChange={handlePhoneChange}
                 onBlur={() => markTouched("phone")}
                 className={inputClass}
-                placeholder="(410) 555-0123"
+                placeholder={orgPhoneLabel}
                 aria-invalid={showError("phone")}
               />
             </label>

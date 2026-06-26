@@ -6,7 +6,7 @@ import { useState } from "react";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import SecondaryButton from "@/components/ui/SecondaryButton";
 import ScrollSlideIn from "@/components/ui/ScrollSlideIn";
-import { orgName } from "@/config";
+import { orgName, serviceAreaTagline } from "@/config";
 
 const FRAME_LAYOUT = [
   {
@@ -109,9 +109,9 @@ export default function HomeBookingCTA({ images = [] }) {
           </div>
 
           <p className="mt-8 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-neutral-200/90">
-            <span>Replies within 24 hours</span>
+            <span>Replies within 48 hours</span>
             <span className="text-amber-600" aria-hidden="true">·</span>
-            <span>Maryland &amp; the surrounding region</span>
+            <span>{serviceAreaTagline}</span>
             <span className="text-amber-600" aria-hidden="true">·</span>
             <span>Residential &amp; commercial</span>
           </p>

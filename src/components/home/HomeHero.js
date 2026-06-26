@@ -84,7 +84,7 @@ export default function HomeHero({
 
           <p className="mt-4 max-w-lg text-sm leading-relaxed text-neutral-200/90 sm:mt-6 sm:text-base sm:leading-relaxed lg:text-lg">
             Professional asphalt maintenance, sealing, and repair for driveways,
-            parking lots, and private roads — done cleanly, on schedule, and built
+            parking lots, and private roads, done cleanly, on schedule, and built
             to stand up to weather and daily traffic.
           </p>
 

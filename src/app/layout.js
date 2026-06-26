@@ -1,7 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import CartProvider from "@/components/CartProvider";
 import ScrollToTopOnLoad from "@/components/ScrollToTopOnLoad";
-import { AuthProvider } from "@/context/AuthContext";
 import { orgName } from "@/config";
 import { ACTIVE_THEME_ID } from "@/theme";
 import "./globals.css";
@@ -21,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: orgName,
   description:
-    "RYoutz Asphalt Maintenance — professional asphalt maintenance and sealcoating services.",
+    "R. Youtz Asphalt Maintenance — professional asphalt maintenance and sealcoating services.",
   icons: {
     icon: [
       { url: "/favicon/favicon.ico", sizes: "any" },
@@ -48,12 +46,8 @@ export default function RootLayout({ children }) {
         className="flex min-h-dvh flex-col overflow-x-clip bg-site-bg font-sans text-site-fg"
         suppressHydrationWarning
       >
-        <AuthProvider>
-          <CartProvider>
-            <ScrollToTopOnLoad />
-            {children}
-          </CartProvider>
-        </AuthProvider>
+        <ScrollToTopOnLoad />
+        {children}
       </body>
     </html>
   );

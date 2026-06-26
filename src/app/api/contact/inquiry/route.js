@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { sendContactInquiryEmail } from "@/lib/email/contact-inquiry.mjs";
-import { digitsFromTelInput } from "@/lib/checkout-auth";
+import { digitsFromTelInput } from "@/lib/phone-format";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;

@@ -3,12 +3,12 @@ import { unstable_noStore as noStore } from "next/cache";
 import PageLayout from "@/components/PageLayout";
 import GalleryBeforeAfterCTA from "@/components/gallery/GalleryBeforeAfterCTA";
 import GalleryCatalogClient from "@/components/gallery/GalleryCatalogClient";
-import { orgLegalName, orgName, sitePageTitle } from "@/config";
+import { orgLegalName, orgName, serviceAreaProse, sitePageTitle } from "@/config";
 import { getFirestoreGalleryProducts } from "@/lib/gallery-firestore";
 
 export const metadata = {
   title: sitePageTitle("Gallery"),
-  description: `Project gallery by ${orgLegalName} — driveways, parking lots, crack sealing, and resurfacing work across the service area.`,
+  description: `Project gallery by ${orgLegalName} — driveways, parking lots, crack sealing, and resurfacing work in ${serviceAreaProse}.`,
 };
 
 export default async function GalleryPage() {

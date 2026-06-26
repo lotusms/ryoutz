@@ -10,7 +10,7 @@ const SOCIAL_LINKS = [
   },
   {
     href: "https://www.facebook.com/ryoutzasphalt",
-    label: "Facebook — RYoutz Asphalt Maintenance",
+    label: "Facebook — R. Youtz Asphalt Maintenance",
     Icon: RiFacebookCircleLine,
   },
 ];

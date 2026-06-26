@@ -8,12 +8,21 @@ import LinkButton from "@/components/ui/LinkButton";
 import { orgName } from "@/config";
 import { useDocumentThemeId } from "@/hooks/useDocumentThemeId";
 import { catalogMediumDimensionsLine } from "@/lib/catalogDisplay";
-import { formatUsd } from "@/lib/money";
 import { isLightThemeId } from "@/theme";
 
 const ROTATE_MS = 8000;
 /** Crossfade between slides (opacity on overlapping layers). */
 const SLIDE_FADE_MS = 2500;
+
+function formatUsd(value) {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return "";
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }).format(n);
+}
 
 /** Display price: range when available, else single price. */
 function heroPriceLabel(product) {

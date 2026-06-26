@@ -22,7 +22,7 @@ const ASSETS = [
     h: 1080,
     title: "Commercial lot — aerial view",
     medium: "Parking lot",
-    description: "Fresh sealcoat on a retail parking lot, Maryland.",
+    description: "Fresh sealcoat on a retail parking lot, Central Pennsylvania.",
   },
   {
     file: "02-driveway-sealcoat-portrait-9x16.jpg",

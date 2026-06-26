@@ -112,7 +112,7 @@ export default function HomeCarouselHero({
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-neutral-200/90 sm:text-lg">
             Professional asphalt maintenance, sealing, and repair for driveways,
-            parking lots, and private roads — done cleanly, on schedule, and built
+            parking lots, and private roads, done cleanly, on schedule, and built
             to stand up to weather and daily traffic.
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">

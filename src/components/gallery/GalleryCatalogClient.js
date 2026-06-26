@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
-import { hasFirebaseConfig } from "@firebase/config";
 import CoverImageFrame from "@/components/ui/CoverImageFrame";
 import { orgName } from "@/config";
 import { fetchCatalogProductList } from "@/lib/catalogClientFetch";
@@ -96,37 +95,13 @@ function EmptyState() {
 export default function GalleryCatalogClient({ initialProducts }) {
   const initial = Array.isArray(initialProducts) ? initialProducts : [];
   const [products, setProducts] = useState(initial);
-  const [loading, setLoading] = useState(() => {
-    if (initial.length > 0) return false;
-    return hasFirebaseConfig();
-  });
+  const [loading, setLoading] = useState(() => initial.length === 0);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     if (initial.length > 0) {
       setLoading(false);
-      return undefined;
     }
-    if (!hasFirebaseConfig()) {
-      setLoading(false);
-      return undefined;
-    }
-
-    let cancelled = false;
-    (async () => {
-      try {
-        const list = await fetchCatalogProductList();
-        if (!cancelled) setProducts(list);
-      } catch {
-        if (!cancelled) setProducts([]);
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
-    })();
-
-    return () => {
-      cancelled = true;
-    };
   }, [initial.length]);
 
   useEffect(() => {

@@ -5,6 +5,7 @@ import Image from "next/image";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import PullQuote from "@/components/ui/PullQuote";
 import SecondaryButton from "@/components/ui/SecondaryButton";
+import { serviceAreaProse } from "@/config";
 import { ARTWORK_MAT_INNER, ARTWORK_MAT_OUTER } from "@/components/ui/artworkMatClasses";
 
 const PROJECT_PHOTOS = [
@@ -70,7 +71,7 @@ export default function AboutStudioCards({ orgName, principles }) {
             We treat your pavement like it is ours.
           </p>
           <p className="mt-6 text-base leading-8 text-neutral-100/90">
-            {orgName} is a Maryland asphalt maintenance company focused on the
+            {orgName} is an asphalt maintenance company serving {serviceAreaProse}, focused on the
             work property owners actually need, sealcoating, crack repair,
             patching, and line striping for driveways, parking lots, and private
             roads. We show up prepared, explain the scope in plain language, and
@@ -78,7 +79,7 @@ export default function AboutStudioCards({ orgName, principles }) {
             weather.
             <br/><br/>
             When you browse our gallery, you are seeing real projects, residential
-            driveways, commercial lots, and repair work across the region. If you
+            driveways, commercial lots, and repair work across Dauphin, Lancaster, and Lebanon counties. If you
             want a crew that respects your property and your schedule, we would
             like to hear about your pavement.
           </p>

@@ -5,33 +5,41 @@ import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 
 const TESTIMONIALS = [
   {
-    id: "marcus-thompson",
-    name: "Marcus Thompson",
-    role: "Homeowner · Eldersburg, MD",
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    id: "greg",
+    name: "Greg",
+    role: "Homeowner · Dauphin County, PA",
+    image: "/images/testimonials/greg.png",
     quote:
-      "Our driveway looked tired and gray after years of sun and oil spots. RYoutz cleaned it up, filled the cracks, and sealcoated it in one visit. It looks brand new — neighbors have already asked who we used.",
+      "Tyler was honest when our driveway wasn't ready to seal. He had us wait a year and filled a few cracks in the meantime. The 2025 coal tar job gave us the uniform, flat finish I wanted, with clean edges and no splatter on the garage or sidewalks. Excellent work and one of the best prices in the area.",
   },
   {
-    id: "danielle-reyes",
-    name: "Danielle Reyes",
-    role: "Property Manager · Columbia, MD",
-    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    id: "damien",
+    name: "Damien",
+    role: "Homeowner · Lancaster County, PA",
+    image: "/images/testimonials/damian.jpeg",
     quote:
-      "We needed a lot restriped before a tenant inspection on short notice. They laid out the stalls cleanly, kept traffic moving, and the lines dried on schedule. Professional from estimate to walkthrough.",
+      "Huge thanks to R.Youtz for bringing our driveway back to life with a fresh new look. Don't hesitate to reach out for an estimate. They were great from start to finish. I'd highly recommend them to anyone looking to get their driveway sealed.",
   },
   {
-    id: "james-linda-hart",
-    name: "James & Linda Hart",
-    role: "Residential · Annapolis, MD",
-    image: "https://randomuser.me/api/portraits/women/68.jpg",
+    id: "frank",
+    name: "Frank",
+    role: "Homeowner · Lebanon County, PA",
+    image: "/images/testimonials/frank.jpeg",
     quote:
-      "Cracks were spreading across our apron every winter. They routed and filled everything, explained what could wait and what could not, and left the surface smooth. No upsell — just straight answers.",
+      "Tyler resealed our driveway a few years ago and it still looks like it was just done. If you need your driveway resealed, give him a call. The price was very reasonable. Professional, friendly, and always prompt getting back to you.",
+  },
+  {
+    id: "denyse",
+    name: "Denyse",
+    role: "Homeowner · Dauphin County, PA",
+    image: "/images/testimonials/denyse.jpeg",
+    quote:
+      "Extremely pleased with our recent sealing job. The results were amazing. The price was very reasonable and the turnaround from first contact to completion was much quicker than I expected. Would highly recommend.",
   },
   {
     id: "teresa-williams",
     name: "Teresa Williams",
-    role: "HOA Board · Frederick, MD",
+    role: "HOA Board · Lancaster County, PA",
     image: "https://randomuser.me/api/portraits/women/21.jpg",
     quote:
       "We signed up for a maintenance plan for our private road and parking areas. Inspections are documented, repairs happen before small issues become big ones, and the board finally has a pavement budget we can trust.",
@@ -39,15 +47,15 @@ const TESTIMONIALS = [
   {
     id: "robert-kim",
     name: "Robert Kim",
-    role: "Small Business Owner · Baltimore, MD",
+    role: "Small Business Owner · Dauphin County, PA",
     image: "https://randomuser.me/api/portraits/men/75.jpg",
     quote:
-      "Handicap spaces, fire lane markings, and aisle stripes — all sharp and compliant. Customers notice when a lot looks maintained. This crew treated our storefront pavement like it mattered.",
+      "Handicap spaces, fire lane markings, and aisle stripes, all sharp and compliant. Customers notice when a lot looks maintained. This crew treated our storefront pavement like it mattered.",
   },
   {
     id: "angela-morris",
     name: "Angela Morris",
-    role: "Homeowner · Rockville, MD",
+    role: "Homeowner · Dauphin County, PA",
     image: "https://randomuser.me/api/portraits/women/57.jpg",
     quote:
       "They barricaded the driveway, walked us through cure time, and checked back after the first rain. The sealer held even color and the edges look hand-cut, not sprayed over the lawn.",
@@ -55,18 +63,18 @@ const TESTIMONIALS = [
   {
     id: "vincent-cole",
     name: "Vincent Cole",
-    role: "Facility Director · Towson, MD",
+    role: "Facility Director · Lebanon County, PA",
     image: "https://randomuser.me/api/portraits/men/41.jpg",
     quote:
-      "Patching, crack seal, and a full sealcoat cycle on our church lot — scheduled around Sunday traffic and finished without disrupting services. Clear communication every step of the way.",
+      "Patching, crack seal, and a full sealcoat cycle on our church lot. Scheduled around Sunday traffic and finished without disrupting services. Clear communication every step of the way.",
   },
   {
     id: "sarah-nguyen",
     name: "Sarah Nguyen",
-    role: "Homeowner · Gaithersburg, MD",
+    role: "Homeowner · Lancaster County, PA",
     image: "https://randomuser.me/api/portraits/women/33.jpg",
     quote:
-      "Got three quotes. RYoutz was the only one that explained prep in detail instead of just quoting a gallon count. The finished driveway is even, dark, and ready for Maryland weather.",
+      "Got three quotes. R. Youtz was the only one that explained prep in detail instead of just quoting a gallon count. The finished driveway is even, dark, and ready for Pennsylvania weather.",
   },
 ];
 

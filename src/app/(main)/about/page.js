@@ -1,10 +1,10 @@
 import AboutStudioCards from "@/components/about/AboutStudioCards";
 import PageLayout from "@/components/PageLayout";
-import { orgLegalName, orgName, sitePageTitle } from "@/config";
+import { orgLegalName, orgName, serviceAreaProse, sitePageTitle } from "@/config";
 
 export const metadata = {
   title: sitePageTitle("About"),
-  description: `Meet ${orgLegalName} — Maryland asphalt maintenance for driveways, parking lots, and private roads. Sealcoating, crack repair, patching, and striping done cleanly and on schedule.`,
+  description: `Meet ${orgLegalName} — asphalt maintenance for driveways, parking lots, and private roads in ${serviceAreaProse}. Sealcoating, crack repair, patching, and striping done cleanly and on schedule.`,
 };
 
 const principles = [
@@ -21,7 +21,7 @@ const principles = [
   {
     title: "Built for Traffic & Weather",
     body:
-      "Maryland freeze-thaw cycles, sun, oil, and daily wear are part of the job. Every mix, repair, and application is chosen so your surface holds up through the seasons ahead.",
+      "Pennsylvania freeze-thaw cycles, sun, oil, and daily wear are part of the job. Every mix, repair, and application is chosen so your surface holds up through the seasons ahead.",
   },
 ];
 
@@ -30,7 +30,7 @@ export default function AboutPage() {
     <PageLayout
       eyebrow="About us"
       title={`About ${orgName}`}
-      subtitle={`Family-owned asphalt maintenance serving Maryland and the surrounding region, driveways, parking lots, and private roads. Here is who we are, how we approach the work, and what you can expect from the first walkthrough to the final stripe.`}
+      subtitle={`Family-owned asphalt maintenance serving ${serviceAreaProse} — driveways, parking lots, and private roads. Here is who we are, how we approach the work, and what you can expect from the first walkthrough to the final stripe.`}
       width="full"
     >
       <div className="mx-auto max-w-7xl px-6 pb-16 sm:px-10 lg:px-12">

@@ -2,11 +2,11 @@ import ContactInquiryForm from "@/components/contact/ContactInquiryForm";
 import ContactInquiryPanel from "@/components/contact/ContactInquiryPanel";
 import ContactServiceAreaMap from "@/components/contact/ContactServiceAreaMap";
 import PageLayout from "@/components/PageLayout";
-import { orgLegalName, orgName, sitePageTitle } from "@/config";
+import { orgLegalName, orgName, serviceAreaProse, sitePageTitle } from "@/config";
 
 export const metadata = {
   title: sitePageTitle("Contact"),
-  description: `Request a free asphalt maintenance estimate from ${orgLegalName}. Sealcoating, crack repair, patching, and line striping for driveways, parking lots, and private roads in Maryland and the surrounding region.`,
+  description: `Request a free asphalt maintenance estimate from ${orgLegalName}. Sealcoating, crack repair, patching, and line striping for driveways, parking lots, and private roads in ${serviceAreaProse}.`,
 };
 
 const checklist = [
@@ -23,7 +23,7 @@ export default function ContactPage() {
     <PageLayout
       eyebrow="Get in touch"
       title="Request a free estimate"
-      subtitle={`Tell us about your driveway, parking lot, or private road and we will follow up with a clear scope and quote. ${orgName} serves Maryland and the surrounding region for sealcoating, crack repair, patching, and line striping — residential and commercial. Every inquiry is read personally; expect a reply within one business day.`}
+      subtitle={`Tell us about your driveway, parking lot, or private road and we will follow up with a clear scope and quote. ${orgName} serves ${serviceAreaProse} for sealcoating, crack repair, patching, and line striping — residential and commercial. Every inquiry is read personally; expect a reply within 48 hours.`}
       width="full"
     >
       <div className="mx-auto max-w-7xl px-6 pb-16 sm:px-10 lg:px-12">

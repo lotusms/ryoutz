@@ -3,19 +3,11 @@
 import { useEffect, useRef } from "react";
 
 import Card from "@/components/ui/Card";
+import { serviceAreaProse, serviceAreaTagline, serviceCounties } from "@/config";
 
-const SERVICE_AREA_REGION_LABELS = [
-  "Baltimore City & County",
-  "Anne Arundel",
-  "Howard",
-  "Montgomery & Prince George's",
-  "Harford",
-  "Carroll",
-];
-
-/** Center of Maryland — map shows the broader service region without county overlays. */
-const MARYLAND_CENTER = [39.05, -76.64];
-const MARYLAND_ZOOM = 8;
+/** Center of Dauphin, Lancaster, and Lebanon counties. */
+const SERVICE_AREA_CENTER = [40.22, -76.45];
+const SERVICE_AREA_ZOOM = 9;
 
 export default function ContactServiceAreaMap() {
   const containerRef = useRef(null);
@@ -60,7 +52,7 @@ export default function ContactServiceAreaMap() {
         maxZoom: 19,
       }).addTo(map);
 
-      map.setView(MARYLAND_CENTER, MARYLAND_ZOOM);
+      map.setView(SERVICE_AREA_CENTER, SERVICE_AREA_ZOOM);
       requestAnimationFrame(invalidate);
       window.setTimeout(invalidate, 150);
     })();
@@ -87,18 +79,14 @@ export default function ContactServiceAreaMap() {
         id="contact-service-area-heading"
         className="mt-2 font-serif text-2xl font-bold tracking-[-0.02em] text-blue-400"
       >
-        Maryland &amp; the surrounding region
+        {serviceAreaTagline}
       </h3>
       <p className="mt-3 text-sm leading-7 text-neutral-200/90">
         Driveways, parking lots, and private roads throughout{" "}
         <strong className="font-semibold text-neutral-100">
-          Central Maryland and the Baltimore metro
+          {serviceAreaProse}
         </strong>
-        , including{" "}
-        <strong className="font-semibold text-neutral-100">
-          Anne Arundel, Howard, Montgomery, and Prince George&apos;s
-        </strong>{" "}
-        counties.
+        .
         <br />
         Outside our usual routes? Send your address — we will let you know if we can schedule a visit.
       </p>
@@ -113,7 +101,7 @@ export default function ContactServiceAreaMap() {
         className="mt-6 flex list-none flex-wrap justify-center gap-x-2 gap-y-2 px-1 text-center text-xs font-medium uppercase tracking-[0.18em] text-neutral-200/90 sm:gap-x-3 sm:tracking-[0.2em] [&>li]:max-w-[min(100%,22rem)] sm:[&>li]:max-w-none [&>li+li]:before:mr-2 [&>li+li]:before:inline-block [&>li+li]:before:text-neutral-500 [&>li+li]:before:content-['·']"
         aria-label="Regions served"
       >
-        {SERVICE_AREA_REGION_LABELS.map((label) => (
+        {serviceCounties.map((label) => (
           <li key={label} className="text-balance">
             {label}
           </li>

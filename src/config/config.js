@@ -2,16 +2,31 @@
  * Site-wide values that may change (brand, navigation).
  */
 
-export const orgName = "RYoutz Asphalt Maintenance";
+export const orgName = "R. Youtz Asphalt Maintenance";
 
 /** Legal / policy pages — full business name as registered or presented publicly. */
-export const orgLegalName = "RYoutz Asphalt Maintenance";
+export const orgLegalName = "R. Youtz Asphalt Maintenance";
 
-export const orgPhoneTel = "+14105551234";
-export const orgPhoneLabel = "(410) 555-1234";
+export const orgPhoneTel = "+17173045772";
+export const orgPhoneLabel = "(717) 304-5772";
 
 /** Inquiries — contact form and mailto links */
 export const orgInquiryEmail = "info@ryoutzasphalt.com";
+
+/** Pennsylvania counties served. */
+export const serviceCounties = [
+  "Dauphin County",
+  "Lancaster County",
+  "Lebanon County",
+];
+
+/** Prose for page copy, e.g. meta descriptions and subtitles. */
+export const serviceAreaProse =
+  "Dauphin, Lancaster, and Lebanon counties in Pennsylvania";
+
+/** Compact label for footers, CTAs, and map chips. */
+export const serviceAreaTagline =
+  "Dauphin, Lancaster & Lebanon counties, PA";
 
 /**
  * Primary site navigation — add routes alongside `src/app/.../page.js`.
@@ -34,12 +49,12 @@ export const mainNav = [
       {
         href: "/services/sealcoating",
         label: "Sealcoating",
-        description: "Protect and refresh asphalt with a clean, even finish.",
+        description: "Single-coat coal tar sealer applied by brush for a longer-lasting finish.",
       },
       {
         href: "/services/crack-filling",
         label: "Crack Filling",
-        description: "Route, fill, and seal cracks before water does more damage.",
+        description: "Hot poly fiber tar crack filling heated to 370–390°F.",
       },
       {
         href: "/services/line-painting",
@@ -66,7 +81,7 @@ export const homeLensHeroFilenames = [
 
 /**
  * @param {string} segment Page title segment (e.g. "Gallery", "Contact")
- * @returns {string} e.g. "Gallery | RYoutz Asphalt Maintenance"
+ * @returns {string} e.g. "Gallery | R. Youtz Asphalt Maintenance"
  */
 export function sitePageTitle(segment) {
   const s = String(segment ?? "").trim();
@@ -76,7 +91,7 @@ export function sitePageTitle(segment) {
 
 /**
  * @param {string} segment Page title segment (e.g. "Privacy Policy")
- * @returns {string} e.g. "Privacy Policy | RYoutz Asphalt Maintenance"
+ * @returns {string} e.g. "Privacy Policy | R. Youtz Asphalt Maintenance"
  */
 export function siteLegalPageTitle(segment) {
   const s = String(segment ?? "").trim();

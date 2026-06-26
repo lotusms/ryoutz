@@ -20,7 +20,7 @@ export default function ContactInquiryPanel({ lines }) {
           <SocialMediaLinks showLabel />
           <p className="text-sm leading-7 text-neutral-200/90">
             Typical reply:{" "}
-            <span className="text-neutral-200/90">within one business day</span>. For urgent repairs,
+            <span className="text-neutral-200/90">within 48 hours</span>. For urgent repairs,
             mention that in your message and we will prioritize your request.
           </p>
         </div>

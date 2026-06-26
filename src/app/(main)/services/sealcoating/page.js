@@ -1,15 +1,15 @@
 import PageLayout from "@/components/PageLayout";
 import ServicePageBody from "@/components/services/ServicePageBody";
-import { orgLegalName, sitePageTitle } from "@/config";
+import { orgLegalName, serviceAreaProse, sitePageTitle } from "@/config";
 
 export const metadata = {
   title: sitePageTitle("Sealcoating"),
-  description: `Professional sealcoating by ${orgLegalName} — protect driveways, parking lots, and private roads across Maryland with a clean, even finish that stands up to sun, oil, and weather.`,
+  description: `Professional sealcoating by ${orgLegalName} — single-coat coal tar sealer applied by brush in ${serviceAreaProse} for a longer-lasting finish on driveways, parking lots, and private roads.`,
 };
 
 const lead = [
   "Sealcoating is the most cost-effective way to protect asphalt before cracks, fading, and surface wear turn into bigger repairs. A properly applied coat shields against UV breakdown, moisture, and everyday traffic — and it makes the pavement look cared for again.",
-  "We prep the surface first: blow off debris, treat oil spots, and address minor cracks so the sealer bonds cleanly. Then we apply commercial-grade sealer in even passes for a uniform finish you can count on season after season.",
+  "We use coal tar sealer for a longer-lasting job. After prep, we apply a single coat by brush so the material is worked into every pore — not just sprayed on top — for stronger adhesion, a uniform finish, and protection you can count on season after season.",
 ];
 
 const inclusions = {
@@ -18,7 +18,7 @@ const inclusions = {
     "Blowing, sweeping, and oil-spot treatment as needed",
     "Crack routing and filling for minor cracks prior to sealing",
     "Hand-cut edges and careful masking around curbs, garage aprons, and landscaping",
-    "Two-coat or single-coat application matched to surface condition and use",
+    "Single-coat coal tar sealer applied by brush to work into every pore",
     "Barricades and cure-time guidance so traffic returns at the right moment",
   ],
 };
@@ -35,7 +35,7 @@ const process = {
     },
     {
       title: "Application",
-      body: "Apply sealer in controlled passes for even coverage, sharp edges, and a finish that looks intentional.",
+      body: "Brush-apply a single coat of coal tar sealer, working it into the asphalt for even coverage, sharp edges, and a longer-lasting finish.",
     },
     {
       title: "Cure & handoff",
@@ -60,7 +60,7 @@ export default function SealcoatingPage() {
     <PageLayout
       eyebrow="Services / Sealcoating"
       title="Sealcoating"
-      subtitle="Protect and refresh asphalt surfaces with a professional sealcoat application — driveways, parking lots, and private roads across Maryland and the surrounding region."
+      subtitle={`Single-coat coal tar sealer applied by brush — driveways, parking lots, and private roads in ${serviceAreaProse}.`}
       width="full"
       heroImage={heroImage}
       heroImageAlt={heroImageAlt}
@@ -71,7 +71,7 @@ export default function SealcoatingPage() {
           lead={lead}
           inclusions={inclusions}
           process={process}
-          pullQuote="A good sealcoat starts with prep nobody photographs — clean edges, filled cracks, and a surface ready to hold the finish."
+          pullQuote="Coal tar sealer applied by brush — worked into every pore, not just sprayed on — is what makes a sealcoat last."
           cta={cta}
         />
       </div>
