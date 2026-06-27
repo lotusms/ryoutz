@@ -5,10 +5,11 @@ import {
   selectHomeCollectionPreviewProducts,
 } from "@/lib/gallery-firestore";
 
-export const dynamic = "force-dynamic";
+/** Gallery JSON is derived from local files — safe to cache briefly at the edge. */
+export const revalidate = 300;
 
-const NO_STORE_HEADERS = {
-  "Cache-Control": "private, no-store, max-age=0, must-revalidate",
+const CACHE_HEADERS = {
+  "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
 };
 
 function stripMerchandisingMeta(product) {
@@ -37,7 +38,7 @@ export async function GET(request) {
         count: out.length,
         products: out,
       },
-      { headers: NO_STORE_HEADERS },
+      { headers: CACHE_HEADERS },
     );
   } catch (error) {
     return NextResponse.json(
@@ -46,7 +47,7 @@ export async function GET(request) {
         error:
           error instanceof Error ? error.message : "Failed to load catalog.",
       },
-      { status: 500, headers: NO_STORE_HEADERS },
+      { status: 500, headers: { "Cache-Control": "no-store" } },
     );
   }
 }

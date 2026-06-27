@@ -1,5 +1,4 @@
 import ContactInquiryForm from "@/components/contact/ContactInquiryForm";
-import ContactInquiryPanel from "@/components/contact/ContactInquiryPanel";
 import ContactServiceAreaMap from "@/components/contact/ContactServiceAreaMap";
 import PageLayout from "@/components/PageLayout";
 import { orgLegalName, orgName, serviceAreaProse, sitePageTitle } from "@/config";
@@ -27,11 +26,7 @@ export default function ContactPage() {
       width="full"
     >
       <div className="mx-auto max-w-7xl px-6 pb-16 sm:px-10 lg:px-12">
-        <ContactInquiryForm />
-
-        <div className="mt-12">
-          <ContactInquiryPanel lines={checklist} />
-        </div>
+        <ContactInquiryForm lines={checklist} />
 
         <div className="mt-12">
           <ContactServiceAreaMap />

@@ -4,7 +4,7 @@ import Card from "@/components/ui/Card";
 import { cardTitleClassForVariant } from "@/lib/cardTitle";
 
 /**
- * @param {{ lines: string[]; embedded?: boolean }} props — `embedded`: body only (no outer `Card`); for use inside `ContactInquiryPanel`.
+ * @param {{ lines: string[]; embedded?: boolean }} props — `embedded`: body only (no outer `Card`); for use inside the contact form.
  */
 export default function ContactHelpfulDetailsCard({ lines, embedded = false }) {
   const titleClass = cardTitleClassForVariant("inset");

@@ -68,20 +68,20 @@ export default function AboutStudioCards({ orgName, principles }) {
             Who we are
           </p>
           <p className="mt-6 font-serif text-2xl font-medium leading-snug tracking-[-0.02em] text-neutral-200/90 sm:text-3xl">
-            We treat your pavement like it is ours.
+            We treat every driveway like it is our own.
           </p>
           <p className="mt-6 text-base leading-8 text-neutral-100/90">
-            {orgName} is an asphalt maintenance company serving {serviceAreaProse}, focused on the
-            work property owners actually need, sealcoating, crack repair,
-            patching, and line striping for driveways, parking lots, and private
-            roads. We show up prepared, explain the scope in plain language, and
-            finish with a surface that looks clean and stands up to traffic and
-            weather.
-            <br/><br/>
-            When you browse our gallery, you are seeing real projects, residential
-            driveways, commercial lots, and repair work across Dauphin, Lancaster, and Lebanon counties. If you
-            want a crew that respects your property and your schedule, we would
-            like to hear about your pavement.
+            Our grandfather started {orgName} in the 1960s. Today we are the third generation,
+            and the business has stayed family owned the entire way. We serve {serviceAreaProse}{" "}
+            with sealcoating, crack repair, patching, and line striping for driveways, parking
+            lots, and private roads.
+          </p>
+          <p className="mt-6 text-base leading-8 text-neutral-100/90">
+            One of the worst things you can do to a driveway is overseal it. Applying sealer too
+            often can shorten the life of your pavement and lead to a full replacement years
+            sooner than necessary. We will always be upfront with you. If your driveway can
+            safely wait another season, we will say so and help you plan work when it truly needs
+            to be done and when it will actually benefit the surface.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <PrimaryButton href="/contact">Get a free estimate</PrimaryButton>

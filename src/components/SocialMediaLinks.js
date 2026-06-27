@@ -1,15 +1,10 @@
 "use client";
 
-import { RiFacebookCircleLine, RiInstagramLine } from "react-icons/ri";
+import { RiFacebookCircleLine } from "react-icons/ri";
 
 const SOCIAL_LINKS = [
   {
-    href: "https://www.instagram.com/ryoutzasphalt/",
-    label: "Instagram — @ryoutzasphalt",
-    Icon: RiInstagramLine,
-  },
-  {
-    href: "https://www.facebook.com/ryoutzasphalt",
+    href: "https://www.facebook.com/RYoutzasphalt",
     label: "Facebook — R. Youtz Asphalt Maintenance",
     Icon: RiFacebookCircleLine,
   },

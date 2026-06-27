@@ -11,7 +11,43 @@ export const orgPhoneTel = "+17173045772";
 export const orgPhoneLabel = "(717) 304-5772";
 
 /** Inquiries — contact form and mailto links */
-export const orgInquiryEmail = "info@ryoutzasphalt.com";
+export const orgInquiryEmail = "info@ryoutzsealing.com";
+
+/**
+ * Contact form recipients — `id` is submitted with the form; `email` is the delivery address.
+ * Override any address with env vars on the server (see contact-inquiry.mjs).
+ */
+export const contactRecipients = [
+  {
+    id: "general",
+    label: "General inquiry",
+    email: "info@ryoutzsealing.com",
+    description: "Estimates, scheduling, and project questions.",
+  },
+  {
+    id: "tyler",
+    label: "Tyler",
+    email: "tyler@ryoutzsealing.com",
+    description: "Message Tyler directly.",
+  },
+  {
+    id: "rick",
+    label: "Rick",
+    email: "rick@ryoutzsealing.com",
+    description: "Message Rick directly.",
+  },
+];
+
+/** @type {Record<string, (typeof contactRecipients)[number]>} */
+export const contactRecipientById = Object.fromEntries(
+  contactRecipients.map((entry) => [entry.id, entry]),
+);
+
+/** @param {string} id */
+export function contactRecipientForId(id) {
+  const key = String(id ?? "").trim();
+  return contactRecipientById[key] ?? contactRecipientById.general;
+}
 
 /** Pennsylvania counties served. */
 export const serviceCounties = [

@@ -75,20 +75,23 @@ function NavLink({ href, label, prefix, onNavigate, className = "" }) {
   );
 }
 
-/** Scroll distance before the header picks up the solid bar (transparent → scrim). */
-const SCROLL_ELEVATE_PX = 168;
+/** Pixels over which the header scrim fades from transparent to fully solid. */
+const SCROLL_FADE_RANGE_PX = 10;
 
 function subscribeWindowScroll(callback) {
   window.addEventListener("scroll", callback, { passive: true });
   return () => window.removeEventListener("scroll", callback);
 }
 
-function scrollElevatedSnapshot() {
-  return window.scrollY > SCROLL_ELEVATE_PX;
+function scrollFadeSnapshot() {
+  const y = window.scrollY;
+  if (y <= 0) return 0;
+  if (y >= SCROLL_FADE_RANGE_PX) return 1;
+  return y / SCROLL_FADE_RANGE_PX;
 }
 
-function scrollElevatedServerSnapshot() {
-  return false;
+function scrollFadeServerSnapshot() {
+  return 0;
 }
 
 export default function SiteHeader() {
@@ -106,13 +109,14 @@ export default function SiteHeader() {
     setMobileExpanded(activeParentNavKey(pathname));
   }
 
-  const scrollElevated = useSyncExternalStore(
+  const scrollFade = useSyncExternalStore(
     subscribeWindowScroll,
-    scrollElevatedSnapshot,
-    scrollElevatedServerSnapshot,
+    scrollFadeSnapshot,
+    scrollFadeServerSnapshot,
   );
 
-  const showSolidBar = scrollElevated || open;
+  const headerFade = open ? 1 : scrollFade;
+  const topScrimOpacity = Math.max(0, 1 - headerFade);
 
   function setScrollLocked(locked) {
     document.body.style.overflow = locked ? "hidden" : "";
@@ -149,16 +153,27 @@ export default function SiteHeader() {
     <>
       <div
         aria-hidden
-        className={`pointer-events-none fixed inset-x-0 top-0 z-105 h-44 bg-linear-to-b from-black/80 via-black/45 to-transparent transition-opacity duration-300 ease-out sm:h-52 lg:h-56 ${
-          showSolidBar ? "opacity-0" : "opacity-100"
-        }`}
+        className="pointer-events-none fixed inset-x-0 top-0 z-105 h-44 bg-linear-to-b from-black/80 via-black/45 to-transparent sm:h-52 lg:h-56"
+        style={{ opacity: topScrimOpacity }}
       />
       <header
-        className={`fixed inset-x-0 top-0 z-110 transition-[border-color,background-color,box-shadow,backdrop-filter] duration-300 ease-out py-2 ${
-          showSolidBar
-            ? "border-b border-white/6 bg-slate-950/80 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.45)] backdrop-blur-xl backdrop-saturate-150 supports-backdrop-filter:bg-slate-950/70"
-            : "border-b border-transparent bg-transparent shadow-none backdrop-blur-none supports-backdrop-filter:bg-transparent"
-        }`}
+        className="fixed inset-x-0 top-0 z-110 border-b py-2"
+        style={{
+          backgroundColor: `rgba(2, 6, 23, ${0.8 * headerFade})`,
+          borderColor: headerFade > 0 ? `rgba(255, 255, 255, ${0.06 * headerFade})` : "transparent",
+          boxShadow:
+            headerFade > 0
+              ? `0 8px 32px -8px rgba(0, 0, 0, ${0.45 * headerFade})`
+              : "none",
+          backdropFilter:
+            headerFade > 0.01
+              ? `blur(${24 * headerFade}px) saturate(${100 + 50 * headerFade}%)`
+              : "none",
+          WebkitBackdropFilter:
+            headerFade > 0.01
+              ? `blur(${24 * headerFade}px) saturate(${100 + 50 * headerFade}%)`
+              : "none",
+        }}
       >
         <div className="relative z-120 mx-auto flex h-18 max-w-7xl items-center px-5 sm:px-8 lg:px-10">
           {/* Logo */}

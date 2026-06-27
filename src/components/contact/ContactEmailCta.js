@@ -25,7 +25,7 @@ export default function ContactEmailCta({ embedded = false }) {
         {orgInquiryEmail}
       </span>
       <span className="text-sm text-neutral-200/90">
-        Estimates, scheduling, and project questions.
+        General estimates and scheduling — or choose Tyler or Rick in the form below.
       </span>
     </a>
   );

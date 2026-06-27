@@ -28,6 +28,22 @@ const nextConfig = {
       { source: "/shop/:slug", destination: "/gallery/:slug", permanent: true },
     ];
   },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
+          },
+        ],
+      },
+    ];
+  },
   // Dev tooling is mounted once at the App Router root (wraps every route: /, /gallery,
   // /login, /dashboard, etc.). It is not part of the dashboard layout — so any stuck
   // dev overlay affects the whole site. `devIndicators: false` hides the on-canvas
