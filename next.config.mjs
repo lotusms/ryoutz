@@ -26,6 +26,15 @@ const nextConfig = {
     return [
       { source: "/shop", destination: "/gallery", permanent: true },
       { source: "/shop/:slug", destination: "/gallery/:slug", permanent: true },
+      { source: "/work", destination: "/gallery", permanent: true },
+      { source: "/services/weddings", destination: "/services/sealcoating", permanent: true },
+      { source: "/services/events", destination: "/gallery", permanent: true },
+      { source: "/services/commercial", destination: "/contact", permanent: true },
+      {
+        source: "/services/sporting-events",
+        destination: "/gallery",
+        permanent: true,
+      },
     ];
   },
   async headers() {

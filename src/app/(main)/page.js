@@ -3,7 +3,6 @@ import HomeSectionDivider from "@/components/ui/HomeSectionDivider";
 import HomeBookingCTA from "@/components/home/HomeBookingCTA";
 import HomeCollectionPreview from "@/components/home/HomeCollectionPreview";
 import HomeTestimonialWheel from "@/components/home/HomeTestimonialWheel";
-// import HomeCarouselHero from "@/components/home/HomeCarouselHero";
 import { pickPortraitHeroProducts } from "@/lib/catalogSort";
 import { getHomeLensHeroImagePaths } from "@/lib/home-lens-hero-images";
 import {
@@ -11,9 +10,16 @@ import {
   selectHomeCollectionPreviewProducts,
 } from "@/lib/gallery-firestore";
 import { selectHomeBookingCtaImages } from "@/lib/home-booking-cta-images";
-
 import HomeHero from "@/components/home/HomeHero";
 import HomeValueBar from "@/components/home/HomeValueBar";
+import { orgLegalName, serviceAreaProse } from "@/config";
+import { buildPageMetadata } from "@/lib/seo";
+
+export const metadata = buildPageMetadata({
+  title: orgLegalName,
+  description: `Family-owned asphalt maintenance in ${serviceAreaProse}. Sealcoating, crack filling, line striping, and pavement repair for driveways, parking lots, and private roads. Free estimates.`,
+  path: "/",
+});
 
 export default async function Home() {
   noStore();

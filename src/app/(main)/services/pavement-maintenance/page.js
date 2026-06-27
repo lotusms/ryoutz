@@ -1,11 +1,13 @@
 import PageLayout from "@/components/PageLayout";
 import ServicePageBody from "@/components/services/ServicePageBody";
-import { orgLegalName, serviceAreaProse, sitePageTitle } from "@/config";
+import { orgLegalName, serviceAreaProse } from "@/config";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: sitePageTitle("Pavement Maintenance"),
-  description: `Ongoing pavement maintenance by ${orgLegalName} — scheduled sealcoating, hot poly fiber tar crack filling, patching, and striping in ${serviceAreaProse}.`,
-};
+export const metadata = buildPageMetadata({
+  title: "Pavement Maintenance",
+  description: `Ongoing pavement maintenance by ${orgLegalName}. Scheduled sealcoating, hot poly fiber tar crack filling, patching, and striping in ${serviceAreaProse}.`,
+  path: "/services/pavement-maintenance",
+});
 
 const lead = [
   "Pavement maintenance is the plan that keeps small issues from becoming capital projects. Regular inspections, crack sealing, sealcoating on cycle, and timely patching extend the life of your asphalt and smooth out surprise repair bills.",

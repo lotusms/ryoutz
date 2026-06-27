@@ -1,11 +1,13 @@
 import PageLayout from "@/components/PageLayout";
 import ServicePageBody from "@/components/services/ServicePageBody";
-import { orgLegalName, serviceAreaProse, sitePageTitle } from "@/config";
+import { orgLegalName, serviceAreaProse } from "@/config";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: sitePageTitle("Crack Filling"),
-  description: `Crack filling by ${orgLegalName} — hot poly fiber tar heated to 370–390°F for durable crack seals on driveways, parking lots, and private roads in ${serviceAreaProse}.`,
-};
+export const metadata = buildPageMetadata({
+  title: "Crack Filling",
+  description: `Hot poly fiber tar crack filling by ${orgLegalName}, heated to 370 to 390 degrees F, for durable crack seals on driveways, parking lots, and private roads in ${serviceAreaProse}.`,
+  path: "/services/crack-filling",
+});
 
 const lead = [
   "Cracks are how water gets under your pavement — and freeze-thaw cycles do the rest. Routing and filling cracks early keeps small problems from becoming potholes, alligatoring, and full resurfacing jobs.",

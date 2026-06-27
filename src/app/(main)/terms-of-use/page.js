@@ -1,10 +1,12 @@
 import PageLayout from "@/components/PageLayout";
-import { orgLegalName, siteLegalPageTitle } from "@/config";
+import { orgInquiryEmail, orgLegalName, siteDefaultUrl } from "@/config";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: siteLegalPageTitle("Terms of Use"),
-  description: `Terms of Use for ${orgLegalName}.`,
-};
+export const metadata = buildPageMetadata({
+  title: "Terms of Use",
+  description: `Terms of Use for ${orgLegalName}. Rules and conditions for using this website and requesting asphalt maintenance services.`,
+  path: "/terms-of-use",
+});
 
 export default function TermsOfUsePage() {
   return (
@@ -97,9 +99,9 @@ export default function TermsOfUsePage() {
           <p className="mt-3">
             {orgLegalName}
             <br />
-            https://www.ryoutzasphalt.com/
+            {siteDefaultUrl}
             <br />
-            amarch84@gmail.com
+            {orgInquiryEmail}
           </p>
         </section>
       </div>

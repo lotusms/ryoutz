@@ -13,6 +13,9 @@ export const orgPhoneLabel = "(717) 304-5772";
 /** Inquiries — contact form and mailto links */
 export const orgInquiryEmail = "info@ryoutzsealing.com";
 
+/** Canonical production URL — override with NEXT_PUBLIC_SITE_URL in env. */
+export const siteDefaultUrl = "https://www.ryoutzsealing.com";
+
 /**
  * Contact form recipients — `id` is submitted with the form; `email` is the delivery address.
  * Override any address with env vars on the server (see contact-inquiry.mjs).

@@ -336,6 +336,25 @@ From `src/config/config.js` (change there unless overridden by env):
 
 ---
 
+## SEO
+
+| Item | Location |
+|------|----------|
+| **Page titles & meta descriptions** | Each page exports `metadata` via `buildPageMetadata()` from `src/lib/seo.js` |
+| **Canonical URLs & Open Graph** | Same helper; uses `NEXT_PUBLIC_SITE_URL` or `siteDefaultUrl` in `src/config/config.js` |
+| **Sitemap** | Auto-generated at `/sitemap.xml` (`src/app/sitemap.js`) |
+| **Robots** | Auto-generated at `/robots.txt` (`src/app/robots.js`) |
+| **Structured data (JSON-LD)** | `LocalBusiness` + `WebSite` on all main pages; breadcrumbs on gallery detail pages |
+| **Legacy URL redirects** | Photography/shop routes in `next.config.mjs` → asphalt pages |
+
+**After deploying to production:**
+
+1. Set `NEXT_PUBLIC_SITE_URL=https://www.ryoutzsealing.com` in Vercel and redeploy.
+2. Submit `https://www.ryoutzsealing.com/sitemap.xml` in [Google Search Console](https://search.google.com/search-console).
+3. Verify Open Graph previews with [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) or similar.
+
+---
+
 ## Support checklist
 
 When something breaks, work through this list:

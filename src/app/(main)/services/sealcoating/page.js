@@ -1,11 +1,13 @@
 import PageLayout from "@/components/PageLayout";
 import ServicePageBody from "@/components/services/ServicePageBody";
-import { orgLegalName, serviceAreaProse, sitePageTitle } from "@/config";
+import { orgLegalName, serviceAreaProse } from "@/config";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: sitePageTitle("Sealcoating"),
-  description: `Professional sealcoating by ${orgLegalName} — single-coat coal tar sealer applied by brush in ${serviceAreaProse} for a longer-lasting finish on driveways, parking lots, and private roads.`,
-};
+export const metadata = buildPageMetadata({
+  title: "Sealcoating",
+  description: `Professional sealcoating by ${orgLegalName}. Single-coat coal tar sealer applied by brush in ${serviceAreaProse} for driveways, parking lots, and private roads.`,
+  path: "/services/sealcoating",
+});
 
 const lead = [
   "Sealcoating is the most cost-effective way to protect asphalt before cracks, fading, and surface wear turn into bigger repairs. A properly applied coat shields against UV breakdown, moisture, and everyday traffic — and it makes the pavement look cared for again.",

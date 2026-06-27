@@ -4,12 +4,14 @@ import { notFound } from "next/navigation";
 import GalleryPieceHeroImage from "@/components/gallery/GalleryPieceHeroImage";
 import GalleryPieceNav from "@/components/gallery/GalleryPieceNav";
 import GalleryPieceStory from "@/components/gallery/GalleryPieceStory";
-import { orgLegalName, orgName, sitePageTitle } from "@/config";
+import JsonLd from "@/components/seo/JsonLd";
+import { orgLegalName, orgName } from "@/config";
 import {
   getFirestoreGalleryProductBySlug,
   getFirestoreGalleryProducts,
   listFirestoreGallerySlugs,
 } from "@/lib/gallery-firestore";
+import { buildPageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
 export const revalidate = 120;
 
@@ -20,14 +22,31 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const product = await getFirestoreGalleryProductBySlug(slug);
-  if (!product) return { title: "Piece not found" };
+  if (!product) {
+    return buildPageMetadata({
+      title: "Gallery project not found",
+      description: `Project not found in the ${orgLegalName} gallery.`,
+      path: `/gallery/${slug}`,
+      noIndex: true,
+    });
+  }
+
   const desc = String(product.description || product.title || "").trim();
-  return {
-    title: sitePageTitle(`${product.title} | Gallery`),
+  const imagePath =
+    typeof product.image === "string" && product.image.trim()
+      ? product.image
+      : undefined;
+
+  return buildPageMetadata({
+    title: `${product.title} | Gallery`,
     description:
       desc.slice(0, 160) ||
-      `${product.title} — asphalt project gallery, ${orgLegalName}.`,
-  };
+      `${product.title}. Asphalt project gallery photo from ${orgLegalName}.`,
+    path: `/gallery/${slug}`,
+    image: imagePath,
+    imageAlt: `${product.title} asphalt project by ${orgName}`,
+    type: "article",
+  });
 }
 
 function aspectRatioOf(product) {
@@ -49,12 +68,19 @@ export default async function GalleryPiecePage({ params }) {
 
   return (
     <main className="relative z-10 w-full">
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Gallery", path: "/gallery" },
+          { name: product.title, path: `/gallery/${slug}` },
+        ])}
+      />
       <article className="relative mx-auto w-full max-w-6xl px-6 pb-24 pt-28 sm:px-10 sm:pt-32 lg:px-12">
         {/* Hero image — full bleed within the reading column */}
         {product.image ? (
           <GalleryPieceHeroImage
             src={product.image}
-            alt={`${product.title} — ${orgName}`}
+            alt={`${product.title}, ${orgName} asphalt project`}
             aspectRatio={aspectRatioOf(product)}
           />
         ) : (

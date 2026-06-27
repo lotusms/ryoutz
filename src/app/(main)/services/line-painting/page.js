@@ -1,11 +1,13 @@
 import PageLayout from "@/components/PageLayout";
 import ServicePageBody from "@/components/services/ServicePageBody";
-import { orgLegalName, serviceAreaProse, sitePageTitle } from "@/config";
+import { orgLegalName, serviceAreaProse } from "@/config";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: sitePageTitle("Line Painting"),
-  description: `Line painting and pavement striping by ${orgLegalName} — parking lots, drive lanes, and traffic markings with crisp, durable lines in ${serviceAreaProse}.`,
-};
+export const metadata = buildPageMetadata({
+  title: "Line Painting",
+  description: `Line painting and pavement striping by ${orgLegalName}. Parking lots, drive lanes, and traffic markings with crisp, durable lines in ${serviceAreaProse}.`,
+  path: "/services/line-painting",
+});
 
 const lead = [
   "Fresh striping makes a lot easier to navigate, safer for traffic flow, and more professional for tenants and customers. Faded or missing lines create confusion — and they signal neglect before anyone reads a sign.",

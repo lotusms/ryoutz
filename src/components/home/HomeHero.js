@@ -66,18 +66,15 @@ export default function HomeHero({
         <HeroRoadLineOverlay opacity={roadLineOpacity} className="z-1" />
       ) : null}
 
-      <div className="relative z-2 mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 max-sm:pt-[max(5.25rem,calc(4.5rem+env(safe-area-inset-top,0px)))] sm:justify-end sm:px-10 sm:pb-10 sm:pt-28 lg:px-12">
-        <div
-          className="max-sm:min-h-[24svh] max-sm:flex-1"
-          aria-hidden
-        />
+      {/* Header (5.5rem) + home hero bleed (-mt-16 = 4rem) + 30px gap below header */}
+      <div className="relative z-2 mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 pt-[calc(9.5rem+30px+env(safe-area-inset-top,0px))] sm:px-10 sm:pb-10 lg:px-12">
         <div className="max-w-xl shrink-0 pb-5 text-left sm:pb-0">
           <p className="text-[0.65rem] font-bold uppercase tracking-[0.32em] text-blue-400 sm:text-xs sm:tracking-[0.38em]">
             {orgName}
           </p>
 
           <h1 className="font-serif mt-4 text-[2rem] font-bold uppercase italic leading-[1.1] tracking-[-0.03em] text-white sm:mt-5 sm:text-5xl sm:leading-[1.1] lg:text-6xl lg:leading-[1.08] xl:text-7xl">
-            Surfaces built to last
+            Asphalt maintenance built to last
           </h1>
 
           <HeroAccentLine />

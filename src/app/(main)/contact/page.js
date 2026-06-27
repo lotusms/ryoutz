@@ -1,12 +1,14 @@
 import ContactInquiryForm from "@/components/contact/ContactInquiryForm";
 import ContactServiceAreaMap from "@/components/contact/ContactServiceAreaMap";
 import PageLayout from "@/components/PageLayout";
-import { orgLegalName, orgName, serviceAreaProse, sitePageTitle } from "@/config";
+import { orgLegalName, orgName, serviceAreaProse } from "@/config";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: sitePageTitle("Contact"),
+export const metadata = buildPageMetadata({
+  title: "Contact",
   description: `Request a free asphalt maintenance estimate from ${orgLegalName}. Sealcoating, crack repair, patching, and line striping for driveways, parking lots, and private roads in ${serviceAreaProse}.`,
-};
+  path: "/contact",
+});
 
 const checklist = [
   "Property address or nearest cross streets, plus city or county",

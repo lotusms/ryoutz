@@ -1,10 +1,12 @@
 import PageLayout from "@/components/PageLayout";
-import { orgLegalName, siteLegalPageTitle } from "@/config";
+import { orgInquiryEmail, orgLegalName, siteDefaultUrl } from "@/config";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: siteLegalPageTitle("Privacy Policy"),
-  description: `Privacy Policy for ${orgLegalName}.`,
-};
+export const metadata = buildPageMetadata({
+  title: "Privacy Policy",
+  description: `Privacy Policy for ${orgLegalName}. How we collect, use, and protect information when you visit our website or request an estimate.`,
+  path: "/privacy-policy",
+});
 
 export default function PrivacyPolicyPage() {
   return (
@@ -171,9 +173,9 @@ export default function PrivacyPolicyPage() {
           <p className="mt-3">
             {orgLegalName}
             <br />
-            https://www.ryoutzasphalt.com/
+            {siteDefaultUrl}
             <br />
-            amarch84@gmail.com
+            {orgInquiryEmail}
           </p>
         </section>
       </div>

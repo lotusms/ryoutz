@@ -1,11 +1,13 @@
 import AboutStudioCards from "@/components/about/AboutStudioCards";
 import PageLayout from "@/components/PageLayout";
-import { orgLegalName, orgName, serviceAreaProse, sitePageTitle } from "@/config";
+import { orgLegalName, orgName, serviceAreaProse } from "@/config";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: sitePageTitle("About"),
-  description: `Meet ${orgLegalName} — asphalt maintenance for driveways, parking lots, and private roads in ${serviceAreaProse}. Sealcoating, crack repair, patching, and striping done cleanly and on schedule.`,
-};
+export const metadata = buildPageMetadata({
+  title: "About",
+  description: `Meet ${orgLegalName}, a third-generation family-owned asphalt maintenance company serving ${serviceAreaProse}. Honest estimates for sealcoating, crack repair, patching, and striping.`,
+  path: "/about",
+});
 
 const principles = [
   {

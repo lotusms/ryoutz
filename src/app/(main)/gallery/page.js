@@ -3,13 +3,15 @@ import { unstable_noStore as noStore } from "next/cache";
 import PageLayout from "@/components/PageLayout";
 import GalleryBeforeAfterCTA from "@/components/gallery/GalleryBeforeAfterCTA";
 import GalleryCatalogClient from "@/components/gallery/GalleryCatalogClient";
-import { orgLegalName, orgName, serviceAreaProse, sitePageTitle } from "@/config";
+import { orgLegalName, orgName, serviceAreaProse } from "@/config";
 import { getFirestoreGalleryProducts } from "@/lib/gallery-firestore";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: sitePageTitle("Gallery"),
-  description: `Project gallery by ${orgLegalName} — driveways, parking lots, crack sealing, and resurfacing work in ${serviceAreaProse}.`,
-};
+export const metadata = buildPageMetadata({
+  title: "Gallery",
+  description: `Asphalt project gallery by ${orgLegalName}. Driveways, parking lots, sealcoating, and crack repair work in ${serviceAreaProse}.`,
+  path: "/gallery",
+});
 
 export default async function GalleryPage() {
   // Same as the home page: do not statically freeze the catalog at build time.

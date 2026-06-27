@@ -1,7 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import ScrollToTopOnLoad from "@/components/ScrollToTopOnLoad";
-import { orgName } from "@/config";
+import { orgLegalName, orgName, serviceAreaProse } from "@/config";
 import { ACTIVE_THEME_ID } from "@/theme";
+import { absoluteUrl, buildPageMetadata, getSiteUrl } from "@/lib/seo";
 import "./globals.css";
 import "@/theme/themes.css";
 
@@ -16,10 +17,19 @@ const geistMono = Geist_Mono({
   preload: false,
 });
 
+const defaultDescription = `${orgLegalName} provides professional sealcoating, crack filling, line striping, and pavement maintenance for driveways, parking lots, and private roads in ${serviceAreaProse}.`;
+
 export const metadata = {
-  title: orgName,
-  description:
-    "R. Youtz Asphalt Maintenance — professional asphalt maintenance and sealcoating services.",
+  metadataBase: new URL(getSiteUrl()),
+  ...buildPageMetadata({
+    title: orgName,
+    description: defaultDescription,
+    path: "/",
+  }),
+  title: {
+    default: orgName,
+    template: `%s | ${orgName}`,
+  },
   icons: {
     icon: [
       { url: "/favicon/favicon.ico", sizes: "any" },
@@ -32,7 +42,8 @@ export const metadata = {
     ],
     apple: "/favicon/apple-touch-icon.png",
   },
-  manifest: "/favicon/site.webmanifest",
+  manifest: absoluteUrl("/favicon/site.webmanifest"),
+  category: "business",
 };
 
 export default function RootLayout({ children }) {

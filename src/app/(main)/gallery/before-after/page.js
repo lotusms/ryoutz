@@ -1,12 +1,14 @@
 import PageLayout from "@/components/PageLayout";
 import BeforeAfterShowcase from "@/components/gallery/BeforeAfterShowcase";
-import { orgLegalName, orgName, serviceAreaProse, sitePageTitle } from "@/config";
+import { orgLegalName, orgName, serviceAreaProse } from "@/config";
 import { getBeforeAfterPairsSync } from "@/lib/before-after";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: sitePageTitle("Before & After"),
-  description: `Before and after asphalt transformations by ${orgLegalName} — see how sealcoating, crack repair, and maintenance restore driveways and parking lots.`,
-};
+export const metadata = buildPageMetadata({
+  title: "Before & After",
+  description: `Before and after asphalt transformations by ${orgLegalName}. See how sealcoating, crack repair, and maintenance restore driveways and parking lots in ${serviceAreaProse}.`,
+  path: "/gallery/before-after",
+});
 
 export default function BeforeAfterPage() {
   const pairs = getBeforeAfterPairsSync();
