@@ -51,7 +51,7 @@ function clientFieldErrors(form, turnstileToken) {
     errors.phone = "Enter all 10 digits, or leave phone blank.";
   }
   if (TURNSTILE_ENABLED && !turnstileToken) {
-    errors.turnstile = "Complete the verification check.";
+    errors.turnstile = "Verification is still loading. Wait a moment, then try again.";
   }
   return errors;
 }
@@ -353,21 +353,6 @@ export default function ContactInquiryForm({ lines = [] }) {
           </p>
         ) : null}
 
-        {TURNSTILE_ENABLED ? (
-          <div>
-            <ContactTurnstile
-              onToken={setTurnstileToken}
-              onExpire={() => setTurnstileToken("")}
-              onError={() => setTurnstileToken("")}
-            />
-            {showError("turnstile") ? (
-              <p className={`${errorClass} mt-2`} role="alert">
-                {errors.turnstile}
-              </p>
-            ) : null}
-          </div>
-        ) : null}
-
         <div className="flex flex-wrap items-center gap-4 pt-1">
           <PrimaryButton type="submit" disabled={submitting} className="px-6 py-2.5">
             {submitting
@@ -385,6 +370,23 @@ export default function ContactInquiryForm({ lines = [] }) {
             directly.
           </p>
         </div>
+
+        {TURNSTILE_ENABLED ? (
+          <div className="pt-2">
+            <div className="flex justify-end">
+              <ContactTurnstile
+                onToken={setTurnstileToken}
+                onExpire={() => setTurnstileToken("")}
+                onError={() => setTurnstileToken("")}
+              />
+            </div>
+            {showError("turnstile") ? (
+              <p className={`${errorClass} mt-2 text-right`} role="alert">
+                {errors.turnstile}
+              </p>
+            ) : null}
+          </div>
+        ) : null}
       </form>
 
       <p className="mt-8 border-t border-site-fg/10 px-4 pt-6 text-center text-xs uppercase tracking-[0.22em] text-neutral-200/90 sm:px-12">
