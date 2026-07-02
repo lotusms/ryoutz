@@ -1,4 +1,5 @@
 import {
+  facebookPageUrl,
   orgInquiryEmail,
   orgLegalName,
   orgName,
@@ -109,7 +110,7 @@ export function localBusinessJsonLd() {
       addressRegion: "PA",
       addressCountry: "US",
     },
-    sameAs: ["https://www.facebook.com/RYoutzasphalt"],
+    sameAs: [facebookPageUrl],
     priceRange: "$$",
   };
 }
@@ -151,6 +152,7 @@ export const SITEMAP_STATIC_ROUTES = [
   { path: "/", priority: 1, changeFrequency: "weekly" },
   { path: "/about", priority: 0.9, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.95, changeFrequency: "monthly" },
+  { path: "/connect", priority: 0.85, changeFrequency: "monthly" },
   { path: "/gallery", priority: 0.9, changeFrequency: "weekly" },
   { path: "/gallery/before-after", priority: 0.85, changeFrequency: "monthly" },
   { path: "/services/sealcoating", priority: 0.9, changeFrequency: "monthly" },

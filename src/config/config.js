@@ -16,6 +16,18 @@ export const orgInquiryEmail = "info@ryoutzsealing.com";
 /** Canonical production URL — override with NEXT_PUBLIC_SITE_URL in env. */
 export const siteDefaultUrl = "https://www.ryoutzsealing.com";
 
+/** Public Facebook page — connect page, footer, JSON-LD. */
+export const facebookPageUrl = "https://www.facebook.com/RYoutzasphalt";
+
+/**
+ * Google Business review link for the /connect page.
+ * Set NEXT_PUBLIC_GOOGLE_REVIEW_URL when ready.
+ */
+export const googleReviewUrl =
+  typeof process !== "undefined"
+    ? process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL?.trim() || ""
+    : "";
+
 /**
  * Contact form recipients — `id` is submitted with the form; `email` is the delivery address.
  * Override any address with env vars on the server (see contact-inquiry.mjs).
